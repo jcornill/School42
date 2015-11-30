@@ -1,0 +1,29 @@
+#******************************************************************************#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/11/30 19:37:38 by jcornill          #+#    #+#              #
+#    Updated: 2015/11/30 19:46:22 by jcornill         ###   ########.fr        #
+#                                                                              #
+#******************************************************************************#
+
+FLAG=-Wall -Werror -Wextra
+INCLUDE=-I libft/includes/
+LIBFT=-L libft/ -lft
+
+noflag:
+	make -C libft/ fclean
+	make -C libft/
+	gcc $(INCLUDE) -c get_next_line.c
+	gcc $(INCLUDE) -c main.c
+	gcc -o test_gnl get_next_line.o main.o $(LIBFT)
+
+flag:
+	make -C libft/ fclean
+	make -C libft/
+	gcc $(FLAG) $(INCLUDE) -c get_next_line.c
+	gcc $(FLAG) $(INCLUDE) -c main.c
+	gcc -o test_gnl get_next_line.o main.o $(LIBFT)

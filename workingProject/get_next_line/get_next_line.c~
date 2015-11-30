@@ -1,0 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/28 17:09:45 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/29 19:36:20 by jcornill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+# include <stdio.h>
+
+static char		*process_line(char *buf, int line_len)
+{
+    char	*result;
+
+	if (!(result = (char *)malloc(sizeof(char) * (line_len + 1))))
+		return (NULL);
+	printf("%d\n", __LINE__);
+	ft_strncpy(result, buf, line_len + 1);
+	result[line_len] = 0;
+	printf("%d\n", __LINE__);
+	return (result);
+}
+
+static char		*read_line(char *buf, char *mem)
+{
+	int		line_len;
+	char	*memory;
+
+	line_len = 0;
+	while (buf[line_len] != '\n' && buf[line_len] != 26 && buf[line_len])
+		line_len++;
+	printf("%d\n", __LINE__);
+	printf("!%d!\n", buf[line_len]);
+	if (buf[line_len] == 0)
+	{
+		printf("%d\n", __LINE__);
+		printf("%p**\n", mem);
+		if (mem != 0)
+		{
+			if (!(memory = (char *)malloc(ft_strlen(mem) + line_len + 1)))
+				return (NULL);
+			memory = process_line(buf, line_len);
+			ft_strncat(memory, mem, line_len);
+			free(mem);
+			mem = memory;
+		}
+		else
+		{
+			if (!(memory = (char *)malloc(sizeof(char) * (1))))
+				return (NULL);
+			memory[0] = 0;
+			mem = memory;
+			printf("%p*\n", mem);
+		}
+		printf("%d\n", __LINE__);
+	}
+	else
+	{
+		printf("*%p**\n", mem);
+		printf("%d\n", __LINE__);
+	}
+	return (mem);
+}
+
+static int		read_file(int const fd, char **line)
+{
+	char	*buf;
+	int		byte_read;
+	int		line_len;
+	char	*mem;
+
+	mem = 0;
+	if (!(buf = (char *)ft_memalloc(sizeof(char) * BUFF_SIZE)))
+		return (-1);
+	printf("%d\n", __LINE__);
+	while (mem = read_line(buf, mem))
+	{
+		printf("%d\n", __LINE__);
+		byte_read = read(fd, buf, BUFF_SIZE);
+		printf("%d\n", __LINE__);
+		if (byte_read == -1)
+			return (-1);
+	}
+	printf("%d\n", __LINE__);
+	printf("**%p**\n", mem);
+	printf("%d\n", __LINE__);
+	return (0);
+}
+
+int				get_next_line(int const fd, char **line)
+{
+	printf("%d\n", __LINE__);
+	if (read_file(fd, line) == -1)
+		return (-1);
+	return (0);
+}
