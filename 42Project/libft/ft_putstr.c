@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/23 14:59:57 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/23 15:01:47 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_putstr(char const *s)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }

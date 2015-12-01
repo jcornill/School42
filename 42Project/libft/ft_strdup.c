@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 18:18:25 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:00:43 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strdup(const char *s)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	char	*result;
+	int		i;
+
+	if (!(result = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		result[i] = s[i];
+		i++;
+	}
+	result[i] = 0;
+	return (result);
 }

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 13:18:30 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:49:14 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	unsigned int		i;
+	char				*result;
+
+	if (!s || !f)
+		return (NULL);
+	if (!(result = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	result[i] = 0;
+	return (result);
 }

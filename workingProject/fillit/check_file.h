@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   check_file.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/12/01 21:21:40 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/01 21:29:50 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#ifndef CHECK_FILE_H
+# define CHECK_FILE_H
+# include <unistd.h>
+# include <fcntl.h>
+# define OPEN(FILE, VAR) VAR = open(FILE, O_RDONLY); if (VAR == -1) return (0);
+# define BUFF_SIZE 21
 
-int		main(void)
-{
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
-}
+int	is_valid_file(char *file);
+
+#endif

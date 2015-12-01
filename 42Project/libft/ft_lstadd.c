@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/27 19:49:46 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 20:08:03 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	t_list	*src;
+
+	src = *alst;
+	new->next = src;
+	*alst = new;
 }

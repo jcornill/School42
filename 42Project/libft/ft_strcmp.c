@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 15:47:36 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 22:28:21 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int		main(void)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
+	int		i;
+
+	i = 0;
+	while ((unsigned char)s1[i] || (unsigned char)s2[i])
+	{
+		if ((unsigned char)s1[i] - (unsigned char)s2[i] != 0)
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
 	return (0);
 }

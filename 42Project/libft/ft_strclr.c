@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 13:03:10 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:45:11 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int		main(void)
+void	ft_strclr(char *s)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	int		i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			s[i] = 0;
+			i++;
+		}
+	}
 }

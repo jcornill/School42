@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 20:42:25 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:51:03 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	char				*result;
+	unsigned int		i;
+	int					j;
+
+	if (!s)
+		return (NULL);
+	j = 0;
+	i = start;
+	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (len > 0)
+	{
+		result[j] = s[i];
+		j++;
+		i++;
+		len--;
+	}
+	result[j] = 0;
+	return (result);
 }

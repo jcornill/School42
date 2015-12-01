@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/27 20:19:00 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 21:04:03 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	t_list	**begin;
+	t_list	*src;
+
+	begin = &lst;
+	src = *begin;
+	if (!src)
+		return ;
+	while (src->next != NULL)
+	{
+		f(src);
+		src = src->next;
+	}
+	f(src);
 }

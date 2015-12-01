@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 15:08:59 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/25 15:09:45 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int		main(void)
+int		ft_isalpha(int c)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (1);
 	return (0);
 }

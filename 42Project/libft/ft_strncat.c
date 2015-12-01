@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 16:20:56 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/26 18:08:33 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	int					i;
+	unsigned int		j;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	j = 0;
+	while (s2[j] && j < n)
+	{
+		s1[i + j] = s2[j];
+		j++;
+	}
+	s1[i + j] = 0;
+	return (s1);
 }

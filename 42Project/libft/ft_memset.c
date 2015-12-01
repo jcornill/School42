@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/23 16:35:56 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:15:33 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include <unistd.h>
 
-int		main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	int				i;
+	unsigned char	*dst;
+
+	i = 0;
+	dst = (unsigned char *)b;
+	while (len > 0)
+	{
+		dst[i] = (unsigned char)c;
+		len--;
+		i++;
+	}
+	return (b);
 }

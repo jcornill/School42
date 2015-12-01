@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 15:58:56 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/26 16:07:33 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int		main(void)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
+	int		i;
+	int		j;
+	char	*result;
+
+	i = 0;
+	if (!s2[i])
+		return ((char *)s1);
+	while (s1[i])
+	{
+		result = (char *)&s1[i];
+		j = 0;
+		while (s1[i + j] == s2[j])
+		{
+			j++;
+			if (!s2[j])
+				return (result);
+		}
+		i++;
+	}
 	return (0);
 }

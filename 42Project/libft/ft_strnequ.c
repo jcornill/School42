@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 20:58:30 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:50:28 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
-	return (0);
+	int		i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i] && n > 0)
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+		n--;
+	}
+	return (1);
 }

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:45:49 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 15:47:36 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 22:43:40 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (!process_file("sample.fillit", 0))
-		printf("ERROR\n");
+	unsigned int	i;
+	unsigned char	*s11;
+	unsigned char	*s22;
+
+	s11 = (unsigned char *)s1;
+	s22 = (unsigned char *)s2;
+	i = 0;
+	while (i < n && (s11[i] || s22[i]))
+	{
+		if (s11[i] - s22[i] != 0)
+			return (s11[i] - s22[i]);
+		i++;
+	}
 	return (0);
 }
