@@ -6,12 +6,12 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:53:32 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/01 21:26:06 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/02 18:33:10 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_file.h"
-
+#include "fillit.h"
 /*
 ** Fonction qui check si la map est bien de 4 * 4
 */
@@ -83,18 +83,22 @@ static int	contains_valid_char(char *file)
 	int		fd;
 	char	buf[BUFF_SIZE + 1];
 	int		parser;
+	int		byte_read;
 
 	OPEN(file, fd);
-	while (read(fd, buf, BUFF_SIZE))
+	while ((byte_read = read(fd, buf, BUFF_SIZE)))
 	{
-		parser = -1;
-		while (buf[++parser])
+		parser = 0;
+		while (parser < byte_read)
+		{
 			if (buf[parser] != '.' && buf[parser] != '#'
 					&& buf[parser] != '\n')
 			{
 				close(fd);
 				return (0);
 			}
+			parser++;
+		}
 	}
 	close(fd);
 	return (1);

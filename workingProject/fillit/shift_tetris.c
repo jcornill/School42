@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 21:41:56 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:53:10 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 16:44:36 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,8 @@ int				shift_tetris(char **tetris)
 {
 	push_tetris_left(tetris, 0, 0);
 	push_tetris_top(tetris, 0, 0);
-	print_tetris(tetris, 3);
-	printf("%d\n", check_tetriminos(tetris));
-//	if (!check_tetriminos(tetris))
-//		return (0);
+	print_tetris(tetris);
+	if (!check_tetriminos(tetris))
+		return (0);
 	return (1);
 }

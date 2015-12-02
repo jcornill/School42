@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:19:13 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:53:27 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 20:05:04 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,28 @@
 # include <unistd.h>
 #  include <stdio.h>
 
-typedef struct	s_tetriminos
+typedef struct	s_tetrimino
 {
-	char		**tetriminos;
+	char		**map;
 	char		letter;
-}				t_tetriminos;
+	char		is_placed;
+}				t_tetrimino;
 
-int				process_file(char *file, int i);
+typedef struct	s_coord
+{
+	int			x;
+	int			y;
+}				t_coord;
+
+typedef struct	s_path
+{
+	char		*path;
+	int			square_size;
+}				t_path;
+
+int				fill_grid(char **grid, int nbr_tetris, t_tetrimino *tetris, t_coord co);
+int				process_file(char *file, int i, t_tetrimino **tetris);
 int				shift_tetris(char **tetris);
 int				check_tetriminos(char **tetris);
-void	print_tetris(char **tetris, int nbr);
+void	print_tetris(char **tetris);
 #endif

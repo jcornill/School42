@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 22:20:49 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 23:02:28 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 17:48:15 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,33 @@ static int	is_in_range(int i, int j)
 	return (1);
 }
 
-static int	check_neighbourg(char **tetris, int i, int j)
+static int	check_neighbourg(char **tetris, int i, int j, int n)
 {
 	int	memi;
 	int memj;
 
 	memi = i + 1;
-	i -= 1;
-	while (i < memi)
+	i -= 3;
+	while ((i += 2) <= memi + 2)
 	{
 		if (is_in_range(i, j))
 		{
 			if (tetris[i][j] == '#')
-				return (1);
+				n++;
 		}
-		i += 2;
 	}
 	memj = j + 1;
 	j -= 1;
-	while (j < memj)
+	while (j <= memj)
 	{
 		if (is_in_range(memi - 1, j))
 		{
 			if (tetris[memi - 1][j] == '#')
-				return (1);
+				n++;
 		}
 		j += 2;
 	}
-	return (0);
+	return (n);
 }
 
 int			check_tetriminos(char **tetris)
@@ -66,13 +65,13 @@ int			check_tetriminos(char **tetris)
 		{
 			if (tetris[i][j] == '#')
 			{
-				k += check_neighbourg(tetris, i, j);
+				k += check_neighbourg(tetris, i, j, 0);
 			}
 			j++;
 		}
 		i++;
 	}
-	if (k == 3)
+	if (k > 5)
 		return (1);
 	return (0);
 }

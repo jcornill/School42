@@ -6,14 +6,14 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 22:49:37 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/01 22:54:13 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 16:43:14 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_tetris(char **tetris , int nbr)
+void	print_tetris(char **tetris)
 {
-	for (int j = 0; j < nbr; j++)
+	for (int j = 0; j < 4; j++)
 		printf("%s", tetris[j]);
 }
