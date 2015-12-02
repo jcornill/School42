@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:49:10 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/02 20:58:14 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 20:22:35 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,42 +92,4 @@ static t_coord	next_coord(t_coord co)
 **}
 */
 
-int			is_all_tetris_placed(t_tetrimino *tet)
-{
-	int		i;
-
-	i = -1;
-	while (tet[++i])
-		if (!tet[i].is_placed)
-			return (0);
-	return (1);
-} 
-
-int			fill_grid(char **grid, t_tetrimino *tetris, t_coord co, t_path *parent)
-{
-	int		i;
-	t_path	child;
-	t_path	best;
-
-	child = *parent;
-	if (grid[co.y][co.x] != '.')
-		return (fill_grid(grid, tetris, next_co(co), &child));
-	i = -1;
-	if (is_all_tetris_placed(tetris))
-		parent->square_size = size_of_square(grid);
-	while (tetris[++i])
-	{
-		child = *parent;
-		ft_strcat(child.path, &(tetris[i].letter));
-		if (!tetris[i].is_placed && place_tetris_at(tetris[i], co, grid))
-		{
-			tetris[i].is_placed = 1;
-			fill_grid(grid, tetris, next_co(co), &child);
-			if (child.square_size < best.square_size)
-				best = child;
-			remove_tetris_from_grid(tetris[i].letter, grid);
-			tetris[i].is_placed = 0;
-		}
-	}
-	return (best.square_size);
-}
+int		fill_grid

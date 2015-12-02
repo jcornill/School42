@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:19:13 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/02 20:53:25 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 20:36:32 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct	s_path
 	int			square_size;
 }				t_path;
 
-int				fill_grid(char **grid, t_tetrimino *tetris, t_coord co, t_path *parent);
+int				fill_grid(char **grid, t_tetrimino *tetris, t_coord co);
 int				process_file(char *file, int i, t_tetrimino **tetris);
 int				shift_tetris(char **tetris);
 int				check_tetriminos(char **tetris);
