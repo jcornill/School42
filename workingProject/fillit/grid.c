@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:39:03 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/02 19:13:29 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/02 23:25:04 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	shift_coord(t_coord *coord, t_tetrimino tetris)
 {
-    printf("---------------SC--------------\n");
-
 	if (tetris.map[0][0] != '.')
 		return ;
 	else
@@ -31,8 +29,6 @@ char		**create_grid(int nbr_tetris)
 {
 	char	**grid;
 	int		line_parser;
-
-    printf("---------------CG--------------\n");
 
 	grid = (char **)malloc(sizeof(char *) * MAX_SIZE(nbr_tetris) + 1);
 	if (grid == NULL)
@@ -68,7 +64,6 @@ int			place_tetris_at(t_tetrimino tetris, t_coord c, char** grid)
 	int	x;
 	int	y;
 
-	printf("---------------PTA--------------\n");
 	if (grid[c.y][c.x] != '.')
 		return (0);
 	shift_coord(&c, tetris);
@@ -94,8 +89,6 @@ void		remove_tetris_from_grid(char letter, char **grid)
 {
 	int	y;
 	int	x;
-
-    printf("---------------RTFG--------------\n");
 
 	y = -1;
 	while (grid[++y])

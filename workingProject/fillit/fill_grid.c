@@ -6,14 +6,14 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:49:10 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/02 20:58:14 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 01:33:00 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "grid.h"
 
-static int		size_of_square(char **grid)
+int				size_of_square(char **grid)
 {
 	int		max;
 	int		i;
@@ -37,19 +37,15 @@ static int		size_of_square(char **grid)
 
 static void		debug(char **grid, t_tetrimino tetris, t_coord co)
 {
-	for (int k = 0; grid[k]; k++)
-	{
-		printf("\n");
-		for (int j = 0; grid[k][j]; j++)
-			printf("%c", grid[k][j]);
-	}
-	printf("\nplace\n");
-	print_tetris(tetris.map);
-	printf("at %d:%d\n", co.y, co.x);
-	printf("size of square %d\n", size_of_square(grid));
+    printf("\nplace\n");
+    print_tetris(tetris.map);
+    printf("at %d:%d\n", co.y, co.x);
+    printf("size of square %d\n", size_of_square(grid));
+	display_grid(grid);
+	printf("\n");
 }
 
-static t_coord	next_coord(t_coord co)
+t_coord			next_co(t_coord co)
 {
 	if (co.y == co.x - 1)
 	{
@@ -69,65 +65,62 @@ static t_coord	next_coord(t_coord co)
 	return (co);
 }
 
-/*
-**int		fill_grid(char **grid, int nbr_tetris, t_tetrimino *tetris, t_coord co)
-**{
-**	int		i;
-**
-**	i = 0;
-**	while (grid[co.y][co.x] != '.')
-**		co = next_coord(co);
-**	while (i < nbr_tetris)
-**	{
-**		if (!tetris[i].is_placed && place_tetris_at(tetris[i], co, grid))
-**		{
-**			debug(grid, tetris[i], co);
-**			tetris[i].is_placed = 1;
-**			if (!fill_grid(grid, nbr_tetris, tetris, next_coord(co)))
-**				return (0);
-**		}
-**		i++;
-**	}
-**	return (1);
-**}
-*/
-
 int			is_all_tetris_placed(t_tetrimino *tet)
 {
 	int		i;
 
 	i = -1;
-	while (tet[++i])
+	while (tet[++i].map != NULL)
 		if (!tet[i].is_placed)
 			return (0);
 	return (1);
 } 
 
-int			fill_grid(char **grid, t_tetrimino *tetris, t_coord co, t_path *parent)
+t_path		fill_grid(char **grid, t_tetrimino *tetris, t_coord co, int n)
 {
 	int		i;
 	t_path	child;
 	t_path	best;
+	t_path	other;
 
-	child = *parent;
+	child.square_size = -1;
+    child.path = ft_strnew(27);
+	best.square_size = -1;
+	printf("-----------fill_grid----------\n");
 	if (grid[co.y][co.x] != '.')
-		return (fill_grid(grid, tetris, next_co(co), &child));
-	i = -1;
+		return (fill_grid(grid, tetris, next_co(co), n));
+	i = 0;
 	if (is_all_tetris_placed(tetris))
-		parent->square_size = size_of_square(grid);
-	while (tetris[++i])
 	{
-		child = *parent;
-		ft_strcat(child.path, &(tetris[i].letter));
+		printf("all tetris placed\n");
+		child.square_size = -2;
+		return (child);
+	}
+	while (i < n)
+	{
 		if (!tetris[i].is_placed && place_tetris_at(tetris[i], co, grid))
 		{
+			ft_strcat(child.path, &(tetris[i].letter));
+			printf("%s\n", child.path);
+			debug(grid, tetris[i], co);
 			tetris[i].is_placed = 1;
-			fill_grid(grid, tetris, next_co(co), &child);
-			if (child.square_size < best.square_size)
+			other = fill_grid(grid, tetris, next_co(co), n);
+			if (best.square_size == -1 || (other.square_size < best.square_size && child.square_size != -2))
+			{
+				printf("NBest : %s\n", child.path);				
 				best = child;
+			}
+//			if (best.square_size == -1 || (child.square_size < best.square_size && child.square_size > 0))
+//			{
+//				printf("%d:%d\n", child.square_size, best.square_size);
+//				best = child;
+//				printf("Best : %s\n", best.path);
+//			}
 			remove_tetris_from_grid(tetris[i].letter, grid);
 			tetris[i].is_placed = 0;
 		}
+		i++;
 	}
-	return (best.square_size);
+	//printf("Best : %s\n", best.path);
+	return (best);
 }
