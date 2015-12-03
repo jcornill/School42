@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:39:03 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/02 23:25:04 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 17:58:13 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		free_grid(char **grid)
 	free(grid);
 }
 
-int			place_tetris_at(t_tetrimino tetris, t_coord c, char** grid)
+int			place_tetris_at(t_tetrimino tetris, t_coord c, char **grid)
 {
 	int	x;
 	int	y;

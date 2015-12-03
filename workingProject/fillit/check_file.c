@@ -6,12 +6,14 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:53:32 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/02 18:33:10 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 17:55:16 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_file.h"
 #include "fillit.h"
+#include "libft.h"
+
 /*
 ** Fonction qui check si la map est bien de 4 * 4
 */
@@ -21,17 +23,21 @@ static int	is_four_square(char *file)
 	int		fd;
 	char	buf[22];
 	int		i;
+	int		byte_read;
 
 	OPEN(file, fd);
-	while (read(fd, buf, 21))
+	while ((byte_read = read(fd, buf, 21)))
 	{
 		i = -1;
-		while (buf[++i])
+		while (++i < 20)
+		{
 			if (!(((i % 5 == 4 && i != 0) || i == 20) ^ (buf[i] != '\n')))
 			{
 				close(fd);
 				return (0);
 			}
+		}
+		ft_bzero(buf, 20);
 	}
 	close(fd);
 	return (1);

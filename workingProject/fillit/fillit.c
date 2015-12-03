@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 16:23:36 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:14:59 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include "grid.h"
 #include "libft.h"
 
-int		main(void)
+int			main(int argc, char **argv)
 {
 	int			nbr_tetris;
-	char 		**grid;
+	char		**grid;
 	t_tetrimino	*tetris;
 	t_coord		co;
 	t_path		path;
@@ -28,24 +28,26 @@ int		main(void)
 	co.x = 0;
 	co.y = 0;
 	nbr_tetris = -1;
-	tetris = NULL;
-	if (!(is_valid_file("sample.fillit")))
-		printf("ERROR1\n");
-	else if (!(nbr_tetris = process_file("sample.fillit", 0, &tetris)))
-		printf("ERROR2\n");
-	grid = create_grid(nbr_tetris);
-	path = fill_grid(grid, tetris, co, nbr_tetris);
-	ft_strrev(path.path);
-	grid_from_str(path.path, grid, tetris, co);
-	display_grid(grid);
-	free_grid(grid);
+	if (argc != 2 || !(is_valid_file(argv[1])))
+		write(1, "error\n", 6);
+	else if (!(nbr_tetris = process_file(argv[1], 0, &tetris)))
+		write(1, "error\n", 6);
+	else
+	{
+		grid = create_grid(nbr_tetris);
+		path = fill_grid(grid, tetris, co, nbr_tetris);
+		ft_strrev(path.path);
+		grid_from_str(path.path, grid, tetris, co);
+		display_grid(grid);
+		free_grid(grid);
+	}
 	return (0);
 }
 
-void	display_grid(char **grid)
+void		display_grid(char **grid)
 {
 	int		i;
-	int 	j;
+	int		j;
 	int		size;
 
 	size = size_of_square(grid);
@@ -59,21 +61,16 @@ void	display_grid(char **grid)
 	}
 }
 
-void	grid_from_str(char *str, char **grid, t_tetrimino *tetris, t_coord co)
+void		grid_from_str(char *str, char **grid, t_tetrimino *t, t_coord co)
 {
 	int		i;
 
-//	printf("%s\n", str);
-	if (*str == 1)	//
-		str++;		//
-//	printf("Je construit ma petit grille please wait lettre : %c%d\n", *str, *str);
-	if (is_all_tetris_placed(tetris) || *str == 0)
+	if (is_all_tetris_placed(t) || *str == 0)
 		return ;
 	i = 0;
-	while (tetris[i].letter != *str)
+	while (t[i].letter != *str)
 		i++;
-	if (place_tetris_at(tetris[i], co, grid))
+	if (place_tetris_at(t[i], co, grid))
 		str++;
-	grid_from_str(str, grid, tetris, next_co(co));
+	grid_from_str(str, grid, t, next_co(co));
 }
-

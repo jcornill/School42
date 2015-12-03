@@ -6,49 +6,15 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:19:13 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 00:57:03 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 17:50:28 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** ####      #
-**           #
-** ##        #
-** ##        #
-**
-**  #   #   ###    #
-** ###  ##   #    ##
-**      #          #
-**
-** ###    ###
-** #        #
-**
-** #       #
-** #       #
-** ##     ##
-**
-**   #    #
-** ###    ###
-**
-** ##     ##
-**  #     #
-**  #     #
-**
-** ##    ##
-**  ##  ##
-**
-**  #   #
-** ##   ##
-** #     #
-**
-*/
 
 #ifndef FILLIT_H
 # define FILLIT_H
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-#  include <stdio.h>
 
 typedef struct	s_tetrimino
 {
@@ -78,5 +44,4 @@ int				shift_tetris(char **tetris);
 int				check_tetriminos(char **tetris);
 void			display_grid(char **grid);
 void			grid_from_str(char *s, char **g, t_tetrimino *t, t_coord c);
-void	print_tetris(char **tetris);
 #endif

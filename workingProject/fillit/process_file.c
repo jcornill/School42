@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:35:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/02 22:25:14 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:00:38 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,5 @@ int				process_file(char *file, int i, t_tetrimino **tetrismem)
 		if (!(shift_tetris(tetris[i].map)))
 			return (0);
 	*tetrismem = &tetris[0];
-	tetris[i].map = NULL;
 	return (nbr);
 }
