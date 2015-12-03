@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvermeil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 12:24:10 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/11/27 16:10:25 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/11/27 13:41:47 by jcornill          #+#    #+#             */
+/*   Updated: 2015/12/03 16:09:47 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,7 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+int					ft_isspace(int c);
+void				*ft_memdup(void const *s, size_t n);
+void				ft_strrev(char *s);
 #endif

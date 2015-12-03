@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:49:10 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 16:39:50 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:25:09 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				size_of_square(char **grid)
 	}
 	return (max + 1);
 }
-/*
+
 static void		debug(char **grid, t_tetrimino tetris, t_coord co)
 {
     printf("\nplace\n");
@@ -44,7 +44,7 @@ static void		debug(char **grid, t_tetrimino tetris, t_coord co)
 	display_grid(grid);
 	printf("\n");
 }
-*/
+
 t_coord			next_co(t_coord co)
 {
 	if (co.y == co.x - 1)
@@ -83,7 +83,7 @@ t_path		fill_grid(char **grid, t_tetrimino *tetris, t_coord co, int n)
 	t_path	other;
 
 	best.square_size = -1;
-	best.path = ft_strnew(n + 1);
+	best.path = ft_strnew(27);
 //	printf("-----------fill_grid----------\n");
 	if (grid[co.y][co.x] != '.')
 		return (fill_grid(grid, tetris, next_co(co), n));
@@ -105,15 +105,11 @@ t_path		fill_grid(char **grid, t_tetrimino *tetris, t_coord co, int n)
 			tetris[i].is_placed = 1;
 			other = fill_grid(grid, tetris, next_co(co), n);
 			ft_strcat(other.path, &(tetris[i].letter));
-			for (int z = 0; other.path[z]; z++)
-				if (other.path[z] == 1)
-					printf("Je vien de te mettre un putin de 1 :D\n");
 			if (best.square_size == -1 || other.square_size < best.square_size)
 			{
 //				printf("NBest : %s\n", other.path);				
 				best = other;
 			}
-			//		free(other.path);
 //			if (best.square_size == -1 || (child.square_size < best.square_size && child.square_size > 0))
 //			{
 //				printf("%d:%d\n", child.square_size, best.square_size);
@@ -125,6 +121,7 @@ t_path		fill_grid(char **grid, t_tetrimino *tetris, t_coord co, int n)
 		}
 		i++;
 	}
+	free(other.path);
 	if (best.square_size == -1)
 		return (fill_grid(grid, tetris, next_co(co), n));
 //	printf("Best finale : %s\n", best.path);
