@@ -6,13 +6,11 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 17:09:45 by jcornill          #+#    #+#             */
-/*   Updated: 2015/11/30 21:30:31 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/04 18:06:05 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-# include <stdio.h>
 
 static void		process_line(char *memory, char *buf, int line_len)
 {

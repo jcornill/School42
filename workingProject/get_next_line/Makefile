@@ -1,3 +1,4 @@
+
 #******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -5,25 +6,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/11/30 19:37:38 by jcornill          #+#    #+#              #
-#    Updated: 2015/11/30 19:46:50 by jcornill         ###   ########.fr        #
+#    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
+#    Updated: 2015/12/04 18:04:55 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-FLAG=-Wall -Werror -Wextra
+NAME=gnl
+SRC=*.c
+OBJ=$(SRC:.c=.o)
+FLAG=-Wall -Wextra -Werror
+LIBFT=-L . -lft
 INCLUDE=-I libft/includes/
-LIBFT=-L libft/ -lft
 
-noflag:
-	make -C libft/ fclean
-	make -C libft/
-	gcc $(INCLUDE) -c get_next_line.c
-	gcc $(INCLUDE) -c main.c
-	gcc -o test_gnl get_next_line.o main.o $(LIBFT)
-	./test_gnl
-flag:
-	make -C libft/ fclean
-	make -C libft/
-	gcc $(FLAG) $(INCLUDE) -c get_next_line.c
-	gcc $(FLAG) $(INCLUDE) -c main.c
-	gcc -o test_gnl get_next_line.o main.o $(LIBFT)
+$(NAME): $(OBJ)
+	gcc $(FLAG) $(OBJ) -o $(NAME) $(LIBFT)
+
+all:$(NAME)
+
+clean:
+	rm -f $(OBJ)
+
+fclean:clean
+	rm -f $(NAME)
+
+re:fclean all
+
+%.o:%.c
+	gcc -c $(FLAG) $(SRC)
+
+.PHONY: $(NAME) all clean fclean re

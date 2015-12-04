@@ -6,20 +6,21 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 17:11:31 by jcornill          #+#    #+#             */
-/*   Updated: 2015/11/30 20:10:29 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/04 18:07:38 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft/includes/libft.h"
+#include "libft.h"
 #include <fcntl.h>
+#include "get_next_line.h"
 
 int		main(void)
 {
 	char	**buf;
 
+	buf = NULL;
 	int fd = open("./file.txt", O_RDONLY);
-	printf("%\n", get_next_line(fd, buf));
+	printf("%d\n", get_next_line(fd, buf));
 	close(fd);
 }
 
