@@ -1,0 +1,6 @@
+<enter>
+C-c C-h
+<down> <down> M-right <space>
+M-x 'whit' <TAB>'c'<TAB>
+C-c C-q
+C-x C-c y

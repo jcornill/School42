@@ -6,13 +6,13 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:35:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 18:00:38 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/05 17:11:08 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		get_nbr_tetriminos(char *file)
+int		get_nbr_tetriminos(char *file)
 {
 	int		nbr_tetriminos;
 	int		byte_read;

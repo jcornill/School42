@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 22:02:18 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 18:14:59 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/05 17:12:44 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		grid_from_str(char *str, char **grid, t_tetrimino *t, t_coord co)
 {
 	int		i;
 
-	if (is_all_tetris_placed(t) || *str == 0)
+	if (is_all_tetris_placed(t,ft_strlen(str))  || *str == 0)
 		return ;
 	i = 0;
 	while (t[i].letter != *str)

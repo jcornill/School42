@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:49:10 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 18:10:56 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/05 17:09:40 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ t_coord			next_co(t_coord co)
 	return (co);
 }
 
-int				is_all_tetris_placed(t_tetrimino *tet)
+int				is_all_tetris_placed(t_tetrimino *tet, int n)
 {
 	int		i;
 
 	i = -1;
-	while (tet[++i].map != NULL)
+	while (++i < n)
 		if (!tet[i].is_placed)
 			return (0);
 	return (1);
@@ -90,19 +90,22 @@ t_path			fill_grid(char **grid, t_tetrimino *tetris, t_coord co, int n)
 		return (best);
 	if (grid[co.y][co.x] != '.')
 		return (fill_grid(grid, tetris, next_co(co), n));
-	if (is_all_tetris_placed(tetris))
+	if (is_all_tetris_placed(tetris, n))
 	{
 		best.square_size = size_of_square(grid);
 		return (best);
 	}
 	i = -1;
 	while (++i < n)
+	{
+		
 		if (!tetris[i].is_placed && place_tetris_at(tetris[i], co, grid))
 		{
 			tetris[i].is_placed = 1;
 			other = fill_grid(grid, tetris, next_co(co), n);
 			comp_best(&best, &other, &tetris[i], grid);
 		}
+	}
 	if (best.square_size == -1)
 		return (fill_grid(grid, tetris, next_co(co), n));
 	return (best);

@@ -6,16 +6,16 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/02 22:25:06 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/03 18:26:35 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME=fillit
-SRC=*.c
+SRC=check_file.c check_tetris.c fill_grid.c fillit.c grid.c process_file.c \
+shift_tetris.c
 OBJ=$(SRC:.c=.o)
 FLAG=-Wall -Wextra -Werror
 LIBFT=-L . -lft
-INCLUDE=-I libft/includes/
 
 $(NAME): $(OBJ)
 	gcc $(FLAG) $(OBJ) -o $(NAME) $(LIBFT)
