@@ -1,23 +1,15 @@
-/* ************************************************************************** */
+n/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/28 17:11:06 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/09 18:54:52 by jcornill         ###   ########.fr       */
+/*   Created: 2015/12/06 21:22:40 by jcornill          #+#    #+#             */
+/*   Updated: 2015/12/07 17:32:54 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
-#  include <stdio.h>
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+int			...x			...		 main(void)
+{
+	int			...	 bondour;

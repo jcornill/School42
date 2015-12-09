@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:41:47 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 16:09:47 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:11:31 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-
 typedef struct		s_list
 {
 	void			*content;
