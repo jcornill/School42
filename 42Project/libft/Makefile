@@ -6,7 +6,7 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/03 16:10:42 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/09 19:10:58 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,6 +39,6 @@ fclean:clean
 re:fclean all
 
 %.o:%.c
-	gcc -c $(FLAG) $(SRC)
+	gcc -c $(FLAG) -I includes $(SRC)
 
 .PHONY: $(NAME) all clean fclean re

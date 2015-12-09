@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 16:07:11 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/03 16:08:38 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 15:13:00 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/25 15:13:21 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		main(void)
+int		ft_isdigit(int c)
 {
-	char	test[] = "Salut les gens !\n";
-	ft_strrev(test);
-	ft_putstr(test);
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }
