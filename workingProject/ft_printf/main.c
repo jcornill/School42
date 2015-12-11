@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/11 00:00:19 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/11 12:07:15 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int		main(void)
 {
-	ft_printf("Bonjour %s\n", "tout le monde");
+	ft_printf("Bonjour %s - %s\n", "tout le", "monde");
 	return (0);
 }
