@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 15:57:08 by jcornill          #+#    #+#             */
-/*   Updated: 2015/11/27 22:04:10 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/15 18:09:50 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		result->content_size = 0;
 		return (result);
 	}
-	else
-		result->content_size = content_size;
+	result->content_size = content_size;
 	result->content = ft_memdup(content, content_size);
 	return (result);
 }

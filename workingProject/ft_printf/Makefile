@@ -6,7 +6,7 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/11 14:06:37 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/15 16:20:11 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,6 +22,7 @@ $(NAME): $(OBJ)
 	gcc -o $(NAME) $(OBJ) libft.a -shared
 
 m: re
+	@clear
 	@gcc -c $(FLAG) $(INCLUDE) main.c
 	@gcc $(FLAG) main.o $(NAME) -o test
 	@rm main.o

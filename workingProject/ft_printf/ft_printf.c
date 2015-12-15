@@ -6,58 +6,73 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/11 19:29:22 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/15 19:45:38 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_arg(t_list *elem)
+char	*get_arg(char *str)
 {
-	ft_putstr(elem->content);
+	if (str[0] == 's')
+		return ("s");
+	else if (str[0] == 'S')
+		return ("S");
+	return (0);
+}
+
+void	print_arg(void *str, char *param)
+{
+	if (param == "s")
+		write(1, str, ft_strlen(str));
+	else if (param == "S")
+	{
+		write(1, str, 2);
+	}
+}
+
+int		process_input(char *str, char **param)
+{
+	char	*result;
+	int		len;
+
+	len = 0;
+	while (str[len])
+	{
+		if (((*param) = get_arg(&str[len])) != 0)
+			return (ft_strlenstr(str, (*param)));
+		len++;
+	}
+	return (ft_strlen(str));
 }
 
 int		ft_printf(char *str, ...)
 {
 	va_list		args;
-	t_list		*list;
 	size_t		val;
 	char		*content;
 	int			compteur;
 	int			len;
-	t_param		stock;
+	char		*param;
 	
 	compteur = 0;
-	list = NULL;
 	va_start(args, str);
 	len = ft_strlen(str);
+	param = NULL;
 	while (compteur < len)
 	{
-		printf(":%s: ", str);
 		if (compteur != 0)
 			str = &str[val + 2];
-		printf("====> :%s:\n", str);
-		val = ft_strlenstr(str, "%s");
-		compteur += val + 2;
-		stock.size = val + 1;
-		content = ft_memdup(str, stock.size);
-		content[val] = 0;
-		stock.content = content;
-		stock.param = "%s";
-		ft_lstpush(&list, ft_lstnew(content, stock.size));
-		printf("Add : '%s/0':size %zu\n", stock.content, stock.size);
+		val = process_input(str, &param);
+		if (param != NULL)
+			compteur += val + ft_strlen(param) + 1;
+		else
+			compteur += val + 2;
+		write(1, str, val);
 		if (val != ft_strlen(str))
-		{
-			content = va_arg(args, char *);
-			stock.size = ft_strlen(content) + 1;
-			stock.content = content;
-			stock.param = "%s";
-			ft_lstpush(&list, ft_lstnew(content, stock.size));
-			printf("Add%%s : '%s/0':size %zu\n", stock.content, stock.size);
-		}
+			print_arg(va_arg(args, void *), param);
 
 	}
-	ft_lstiter(list, &print_arg);
 	va_end(args);
 	return (0);
 }
