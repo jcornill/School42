@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/11 12:03:02 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/11 19:29:22 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_printf(char *str, ...)
 	char		*content;
 	int			compteur;
 	int			len;
+	t_param		stock;
 	
 	compteur = 0;
 	list = NULL;
@@ -32,18 +33,29 @@ int		ft_printf(char *str, ...)
 	len = ft_strlen(str);
 	while (compteur < len)
 	{
-		str = &str[compteur];
+		printf(":%s: ", str);
+		if (compteur != 0)
+			str = &str[val + 2];
+		printf("====> :%s:\n", str);
 		val = ft_strlenstr(str, "%s");
 		compteur += val + 2;
-		content = ft_memdup(str, val);
+		stock.size = val + 1;
+		content = ft_memdup(str, stock.size);
 		content[val] = 0;
-		ft_lstpush(&list, ft_lstnew(content, val));
+		stock.content = content;
+		stock.param = "%s";
+		ft_lstpush(&list, ft_lstnew(content, stock.size));
+		printf("Add : '%s/0':size %zu\n", stock.content, stock.size);
 		if (val != ft_strlen(str))
 		{
 			content = va_arg(args, char *);
-			ft_lstpush(&list, ft_lstnew(content, ft_strlen(content)));
+			stock.size = ft_strlen(content) + 1;
+			stock.content = content;
+			stock.param = "%s";
+			ft_lstpush(&list, ft_lstnew(content, stock.size));
+			printf("Add%%s : '%s/0':size %zu\n", stock.content, stock.size);
 		}
-		
+
 	}
 	ft_lstiter(list, &print_arg);
 	va_end(args);

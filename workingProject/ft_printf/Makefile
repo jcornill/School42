@@ -6,14 +6,15 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/11 12:02:40 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/11 14:06:37 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME=libftprintf.a
 SRC=ft_printf.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra -Werror
+FLAG=
+#-Wall -Wextra -Werror
 INCLUDE=-I includes
 LIBFT=../../42Project/libft/
 

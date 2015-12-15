@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:11:27 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/10 22:59:11 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/11 16:28:58 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,11 @@
 
 int		ft_printf(char *str, ...);
 
+typedef struct		s_param
+{
+	void			*content;
+	size_t			size;
+	char			*param;
+}					t_param;
 
 #endif

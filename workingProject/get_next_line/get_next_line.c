@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 17:09:45 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/10 21:14:13 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:53:04 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ static int		read_file(int const fd, char **line, char **test, int c)
 int				get_next_line(int const fd, char **line)
 {
 	int			read;
-	static char	*test = NULL;
+	static char	*test[100] = {NULL};
 
 	if (line)
 		(*line) = NULL;
 	else
 		return (-1);
-	if ((read = read_file(fd, line, &test, 0)) == -1)
+	if ((read = read_file(fd, line, &(test[fd]), 0)) == -1)
 		return (-1);
 	else if (read)
 		return (1);
