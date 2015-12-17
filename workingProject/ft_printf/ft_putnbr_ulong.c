@@ -21,7 +21,7 @@ static int	process(unsigned long work)
 	return (val);
 }
 
-int			ft_putnbr_long(unsigned long nb)
+int			ft_putnbr_ulong(unsigned long nb)
 {
 	return (process(nb));
 }

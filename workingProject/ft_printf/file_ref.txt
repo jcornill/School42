@@ -1,9 +1,7 @@
-42
-before 42 after
-110099942999988888
-a0b55555c100000d
-4294967295
-4294967254
-4294967295
-
- Written char : 88 Bad return (value);
+2a
+before 2a after
+1643e72a3b9a9e98
+a0bd903c186a0d
+0, ffffffff
+ffffffd6ffffffff
+ Written char : 79 Bad return value

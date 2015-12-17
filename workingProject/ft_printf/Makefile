@@ -6,13 +6,14 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/17 23:05:57 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/17 23:07:45 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME=libftprintf.a
 SRC=ft_printf.c ft_putstrprintf.c ft_putnbr_long.c ft_putaddr.c \
-ft_putnbr_base.c ft_putwchar.c ft_putnbr_base_long.c 
+ft_putnbr_base.c ft_putwchar.c ft_putnbr_base_long.c \
+ft_putnbr_ulong.c
 OBJ=$(SRC:.c=.o)
 FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes

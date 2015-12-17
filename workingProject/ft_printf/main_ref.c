@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 22:54:05 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 23:08:41 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,21 +166,33 @@ int		main(int argc, char **argv)
 		ret += printf("%u\n", UINT_MAX);
 		ret += printf("%u\n", -42);
 		ret += printf("%u\n", ~0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%U"))
+	{
+		ret += printf("%U\n", 42);
+		ret += printf("before %U after\n", -42);
+		ret += printf("%U\n", ULONG_MAX / 2);
+		ret += printf("%U\n", ULONG_MAX);
+		ret += printf("%U%U\n", -987, ~0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%x"))
+	{
+		ret += printf("%x\n", 42);
+		ret += printf("before %x after\n", 42);
+		ret += printf("%x%x%x%x%x\n", 1, 100, 999, 42, 999988888);
+		ret += printf("a%xb%xc%xd\n", 0, 55555, 100000);
+		ret += printf("%x, %x\n", 0, UINT_MAX);
+		ret += printf("%x%x", -42, ~0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
 	}
 /*
-ret += printf("%U\n", 42);
-ret += printf("before %U after\n", -42);
-ret += printf("%U\n", ULONG_MAX / 2);
-ret += printf("%U\n", ULONG_MAX);
-ret += printf("%U%U\n", -987, ~0);
-
-ret += printf("%x\n", 42);
-ret += printf("before %x after\n", 42);
-ret += printf("%x%x%x%x%x\n", 1, 100, 999, 42, 999988888);
-ret += printf("a%xb%xc%xd\n", 0, 55555, 100000);
-ret += printf("%x, %x\n", 0, UINT_MAX);
-ret += printf("%x%x", -42, ~0);
-
 ret += printf("%X\n", 42);
 ret += printf("Before %X after\n", 42);
 ret += printf("%X%X%X%X%X\n", 1, 100, 999, 42, 999988888);
