@@ -1,7 +1,10 @@
-2a
-before 2a after
-1643e72a3b9a9e98
-a0bd903c186a0d
-0, ffffffff
-ffffffd6ffffffff
- Written char : 79 Bad return value
+2A
+Before 2A after
+1643E72A3B9A9E98
+a0bD903c186A0d
+0, FFFFFFFF
+FFFFFFD6FFFFFFFF
+FFFFFFFF
+FFFFFFFF
+
+ Written char : 98 Bad return value

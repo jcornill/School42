@@ -235,6 +235,20 @@ if [ $actualsize -ge 1 ]; then
 else
 	g OK
 fi
+echo "=====%X TEST====="
+./user.out "%X" > file_user.txt
+./ref.out "%X" > file_ref.txt
+diff file_user.txt file_ref.txt > file_diff.txt
+file=file_diff.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	r Fail
+	echo "=====COMPARE====="
+	cat $file
+	exit
+else
+	g OK
+fi
 #rm file_user.txt
 #rm file_ref.txt
 #rm ./user.out

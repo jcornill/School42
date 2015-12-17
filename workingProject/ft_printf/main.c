@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 23:08:41 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/18 00:00:20 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,36 +192,20 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-/*
-ret += ft_printf("%X\n", 42);
-ret += ft_printf("Before %X after\n", 42);
-ret += ft_printf("%X%X%X%X%X\n", 1, 100, 999, 42, 999988888);
-ret += ft_printf("a%Xb%Xc%Xd\n", 0, 55555, 100000);
-ret += ft_printf("%X, %X\n", 0, UINT_MAX);
-ret += ft_printf("%X%X\n", -42, ~0);
-//	ret += ft_printf("%X\n", LONG_MAX);
-//	ret += ft_printf("%X\n", ULONG_MAX);
-
-
-int i;
-ret += ft_printf("%p", &i);
-printf("  :  %p\n", &i);
-fflush(stdout);
-unsigned long l;
-ret += ft_printf("%p", &l);
-printf("  :  %p\n", &l);
-fflush(stdout);
-char *str;
-ret += ft_printf("%p", &str);
-printf("  :  %p\n", &str);
-fflush(stdout);
-ret += ft_printf("%p", &strlen);
-printf("  :  %p\n", &strlen);
-fflush(stdout);
-ret += ft_printf("%p", 0);
-printf("  :  %p\n", 0);
-fflush(stdout);
-//*/
+	ret = 0;
+	if (!strcmp(argv[1], "%X"))
+	{
+		ret += ft_printf("%X\n", 42);
+		ret += ft_printf("Before %X after\n", 42);
+		ret += ft_printf("%X%X%X%X%X\n", 1, 100, 999, 42, 999988888);
+		ret += ft_printf("a%Xb%Xc%Xd\n", 0, 55555, 100000);
+		ret += ft_printf("%X, %X\n", 0, UINT_MAX);
+		ret += ft_printf("%X%X\n", -42, ~0);
+		ret += ft_printf("%X\n", LONG_MAX);
+		ret += ft_printf("%X\n", ULONG_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
 	printf("\n Written char : %d Bad return (value);\n", ret);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 23:08:41 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/18 00:00:20 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,36 +192,20 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-/*
-ret += printf("%X\n", 42);
-ret += printf("Before %X after\n", 42);
-ret += printf("%X%X%X%X%X\n", 1, 100, 999, 42, 999988888);
-ret += printf("a%Xb%Xc%Xd\n", 0, 55555, 100000);
-ret += printf("%X, %X\n", 0, UINT_MAX);
-ret += printf("%X%X\n", -42, ~0);
-//	ret += printf("%X\n", LONG_MAX);
-//	ret += printf("%X\n", ULONG_MAX);
-
-
-int i;
-ret += printf("%p", &i);
-printf("  :  %p\n", &i);
-fflush(stdout);
-unsigned long l;
-ret += printf("%p", &l);
-printf("  :  %p\n", &l);
-fflush(stdout);
-char *str;
-ret += printf("%p", &str);
-printf("  :  %p\n", &str);
-fflush(stdout);
-ret += printf("%p", &strlen);
-printf("  :  %p\n", &strlen);
-fflush(stdout);
-ret += printf("%p", 0);
-printf("  :  %p\n", 0);
-fflush(stdout);
-//*/
+	ret = 0;
+	if (!strcmp(argv[1], "%X"))
+	{
+		ret += printf("%X\n", 42);
+		ret += printf("Before %X after\n", 42);
+		ret += printf("%X%X%X%X%X\n", 1, 100, 999, 42, 999988888);
+		ret += printf("a%Xb%Xc%Xd\n", 0, 55555, 100000);
+		ret += printf("%X, %X\n", 0, UINT_MAX);
+		ret += printf("%X%X\n", -42, ~0);
+		ret += printf("%X\n", LONG_MAX);
+		ret += printf("%X\n", ULONG_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
 	printf("\n Written char : %d Bad return (value);\n", ret);
 	return (0);
 }
