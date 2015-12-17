@@ -7,16 +7,19 @@ touch file_makefile.txt
 #make fclean | grep "Makefile" 
 make re 2>&1 > file_makefile.txt
 make clean 2>&1 >> file_makefile.txt
-file=file_makefile.txt
+cat file_makefile.txt | grep " error" > file_test.txt
+cat file_makefile.txt | grep "Makefile" >> file_test.txt
+file=file_test.txt
 actualsize=$(wc -c <"$file")
-if [ $actualsize -ge 1400 ]; then
+if [ $actualsize -ge 1 ]; then
 	echo "Fail"
 	echo "=====ERROR====="
-	cat $file
+	cat file_test.txt
 	exit
 else
 	echo "OK"
 fi
+rm file_test.txt
 echo "=====COMPILING====="
 i=$(find . | grep "ft_printf.h" | cut -f 1 -d "f")
 echo "Found ft_printf.h in $i"
@@ -127,7 +130,35 @@ if [ $actualsize -ge 1 ]; then
 	exit
 else
 	echo "OK"
-	    fi
+fi
+echo "=====%D TEST====="
+./user.out "%D" > file_user.txt
+./ref.out "%D" > file_ref.txt
+diff file_user.txt file_ref.txt > file_diff.txt
+file=file_diff.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	echo "Fail"
+	echo "=====COMPARE====="
+	cat $file
+	exit
+else
+	echo "OK"
+fi
+echo "=====%i TEST====="
+./user.out "%i" > file_user.txt
+./ref.out "%i" > file_ref.txt
+diff file_user.txt file_ref.txt > file_diff.txt
+file=file_diff.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	echo "Fail"
+	echo "=====COMPARE====="
+	cat $file
+	exit
+else
+	echo "OK"
+	fi
 #rm file_user.txt
 #rm file_ref.txt
 #rm ./user.out

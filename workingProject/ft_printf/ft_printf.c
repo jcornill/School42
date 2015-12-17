@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 21:28:27 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 22:22:04 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ char	*get_arg(char *str)
 		return ("%s");
 	else if (str[1] == 'd')
 		return ("%d");
+	else if (str[1] == 'i')
+		return ("%i");
 	else if (str[1] == 'p')
 		return ("%p");
 	else if (str[1] == '%')
 		return ("%%");
 	else if (str[1] == 'S')
 		return ("%S");
+	else if (str[1] == 'D')
+		return ("%D");
 	return (0);
 }
 
@@ -33,14 +37,16 @@ int		print_arg(void *str, char *param)
 {
 	if (!ft_strcmp("%s", param))
 		return (ft_putstrprintf(str));
-	if (!ft_strcmp("%d", param))
+	else if (!ft_strcmp("%d", param) || !ft_strcmp("%i", param))
 		return (ft_putnbr_long((int)str));
-	if (!ft_strcmp("%p", param))
+	else if (!ft_strcmp("%p", param))
 		return (ft_putaddr((long)str));
-	if (!ft_strcmp("%%", param))
+	else if (!ft_strcmp("%%", param))
 		return (ft_putstrprintf("%"));
-	if (!ft_strcmp("%S", param))
+	else if (!ft_strcmp("%S", param))
 		return (ft_putwchar((wchar_t *)str));
+	else if (!ft_strcmp("%D", param))
+		return (ft_putnbr_long((long)str));
 	return (0);
 }
 
@@ -66,6 +72,7 @@ int		ft_printf(char *str, ...)
 	int			len;
 	char		*param;
 	int			written_char;
+	int			temp;
 	
 	compteur = 0;
 	written_char = 0;
@@ -83,9 +90,12 @@ int		ft_printf(char *str, ...)
 			compteur += val + 2;
 		written_char += val;
 		write(1, str, val);
+		temp = 0;
 		if (val != ft_strlen(str))
-			written_char += print_arg(va_arg(args, void *), param);
-
+			temp = print_arg(va_arg(args, void *), param);
+		if (temp == -1)
+			return (-1);
+		written_char += temp;
 	}
 	va_end(args);
 	return (written_char);

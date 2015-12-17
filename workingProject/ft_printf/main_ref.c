@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 20:39:38 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 22:21:33 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,33 +98,39 @@ int		main(int argc, char **argv)
 	if (!strcmp(argv[1], "%S"))
 	{
 		ret += printf("%S\n", L"米");
-		//  ret += printf("%\n", L"我是一只猫。");
-		//  ret += printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S\n", L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
-		//ret += printf("a%Sb%sc%S", L"我", "42", L"猫");
+		ret += printf("%S\n", L"我是一只猫。");
+		ret += printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S\n", L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
+		ret += printf("%S%S%S\n", L"42", "Bonjour", L"hahahaahahahah");
+		ret += printf("{%S}\n", NULL);
+		printf("\n Written char : %d Bad return (value);\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%D"))
+	{	
+		ret += printf("1. %D\n", 0L);
+		ret += printf("2. %D\n", 1L);
+		ret += printf("3. %D\n", -1L);
+		ret += printf("4. %D\n", 42L);
+		ret += printf("5. %D\n", LONG_MAX);
+		ret += printf("6. %D\n", LONG_MIN);
+		ret += printf("7. Coucou les %D!\n", 42);
+		printf("\n Written char : %d Bad return (value);\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%i"))
+	{
+		ret += printf("%i\n", 42);
+		ret += printf("%i\n", -42);
+		ret += printf("Before %i after\n", 42);
+		ret += printf("%i%i%i%i%i\n", 1, -2, 3, -4, 5);
+		ret += printf("a%ib%ic%id\n", 1, -2, 3);
+		ret += printf("%i%i\n", INT_MAX, INT_MIN);
 		printf("\n Written char : %d Bad return (value);\n", ret);
 		return (0);
 	}
 /*
-//	ret += printf("%S\n", L"米");
-//	ret += printf("%\n", L"我是一只猫。");
-//	ret += printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S\n", L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
-//	ret += printf("a%Sb%sc%S", L"我", "42", L"猫");
-
-ret += printf("{%S}\n", NULL);
-ret += printf("%D\n", 0L);
-ret += printf("%D\n", 1L);
-ret += printf("%D\n", -1L);
-ret += printf("%D\n", 42L);
-ret += printf("%D\n", LONG_MAX);
-ret += printf("%D\n", LONG_MIN);
-ret += printf("Coucou les %D!\n", 42);
-
-ret += printf("%i\n", 42);
-ret += printf("%i\n", -42);
-ret += printf("Before %i after\n", 42);
-ret += printf("%i%i%i%i%i\n", 1, -2, 3, -4, 5);
-ret += printf("a%ib%ic%id\n", 1, -2, 3);
-
 ret += printf("%o\n", 42);
 ret += printf("before %o after\n", 42);
 ret += printf("%o%o%o%o%o\n", 1, 100, 999, 42, 999988888);

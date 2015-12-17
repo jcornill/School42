@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 19:45:55 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 19:50:57 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 22:07:05 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,28 @@
 
 int		ft_putnbr_long(long n)
 {
-	char	c;
-	int		val;
+	char			c;
+	int				val;
+	unsigned long	work;
 	
 	val = 0;
+	work = n;
 	if (n < 0)
 	{
-		n = -n;
+		n += 1;
+		work = -n;
+		work += 1;
 		write(1, "-", 1);
 		val += 1;
 	}
-	if (n >= 10)
+	if (work >= 10)
 	{
-		val += ft_putnbr_long(n / 10);
-		val += ft_putnbr_long(n % 10);
+		val += ft_putnbr_long(work / 10);
+		val += ft_putnbr_long(work % 10);
 	}
 	else
 	{
-		c = '0' + n;
+		c = '0' + work;
 		write(1, &c, 1);
 		val += 1;
 	}
