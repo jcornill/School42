@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 20:03:41 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 20:26:14 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*get_arg(char *str)
 		return ("%d");
 	else if (str[1] == 'p')
 		return ("%p");
+	else if (str[1] == '%')
+		return ("%%");
 	return (0);
 }
 
@@ -32,7 +34,9 @@ int		print_arg(void *str, char *param)
 	if (!ft_strcmp("%d", param))
 		return (ft_putnbr_long((int)str));
 	if (!ft_strcmp("%p", param))
-		return (ft_putaddr((long)&str))
+		return (ft_putaddr((long)str));
+	if (!ft_strcmp("%%", param))
+		return (ft_putstrprintf("%"));
 	return (0);
 }
 
