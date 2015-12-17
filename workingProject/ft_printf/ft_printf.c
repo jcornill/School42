@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 22:58:47 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 23:03:29 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*get_arg(char *str)
 		return ("%O");
 	else if (str[1] == 'u')
 		return ("%u");
+	else if (str[1] == 'U')
+		return ("%U");
 	return (0);
 }
 
@@ -57,6 +59,10 @@ int		print_arg(void *str, char *param)
 		return (ft_putnbr_base((unsigned int)str, 8, 0));
 	else if (!ft_strcmp("%O", param))
 		return (ft_putnbr_base_long((unsigned long)str, 8, 0));
+	else if (!ft_strcmp("%u", param))
+		return (ft_putnbr_long((unsigned int)str));
+	else if (!ft_strcmp("%U", param))
+		return (ft_putnbr_ulong((unsigned long)str));
 	return (0);
 }
 

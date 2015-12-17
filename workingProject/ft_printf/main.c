@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 22:54:05 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 23:02:01 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,14 +166,21 @@ int		main(int argc, char **argv)
 		ret += ft_printf("%u\n", UINT_MAX);
 		ret += ft_printf("%u\n", -42);
 		ret += ft_printf("%u\n", ~0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%U"))
+	{
+		ret += ft_printf("%U\n", 42);
+		ret += ft_printf("before %U after\n", -42);
+		ret += ft_printf("%U\n", ULONG_MAX / 2);
+		ret += ft_printf("%U\n", ULONG_MAX);
+		ret += ft_printf("%U%U\n", -987, ~0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
 	}
 /*
-ret += ft_printf("%U\n", 42);
-ret += ft_printf("before %U after\n", -42);
-ret += ft_printf("%U\n", ULONG_MAX / 2);
-ret += ft_printf("%U\n", ULONG_MAX);
-ret += ft_printf("%U%U\n", -987, ~0);
-
 ret += ft_printf("%x\n", 42);
 ret += ft_printf("before %x after\n", 42);
 ret += ft_printf("%x%x%x%x%x\n", 1, 100, 999, 42, 999988888);
