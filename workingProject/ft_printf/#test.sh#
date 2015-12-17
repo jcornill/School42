@@ -193,6 +193,7 @@ if [ $actualsize -ge 1 ]; then
 else
 	g OK
 fi
+
 #rm file_user.txt
 #rm file_ref.txt
 #rm ./user.out

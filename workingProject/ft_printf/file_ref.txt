@@ -1,8 +1,9 @@
-42
--42
-Before 42 after
-1-23-45
-a1b-2c3d
-2147483647-2147483648
+52
+before 52 after
+11441747527346517230
+a0b154403c303240d
+777777777777777777777
+37777777726
+37777777777
 
- Written char : 62 Bad return (value);
+ Written char : 104 Bad return value
