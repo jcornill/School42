@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 20:26:56 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 20:39:38 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return (value);\n", ret);
 		return (0);
 	}
-//*
 	ret = 0;
 	if (!strcmp(argv[1], "%d"))
 	{
@@ -62,7 +61,6 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return (value);\n", ret);
 		return (0);
 	}
-//*
 	ret = 0;
 	if (!strcmp(argv[1], "%%"))
 	{
@@ -88,10 +86,25 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return (value);\n", ret);
 		return (0);
 	}
+	ret = 0;
+	if (!strcmp(argv[1], "multiple"))
+	{
+		ret += printf("s: %s, p: %p, d:%d\n", "a string", &strlen, 42);
+		ret += printf("%s%p%d%d%p%s%p%p%s\n", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
+		printf("\n Written char : %d Bad return (value);\n", ret);
+		return (0);
+	}
+	ret = 0 ;
+	if (!strcmp(argv[1], "%S"))
+	{
+		ret += printf("%S\n", L"米");
+		//  ret += printf("%\n", L"我是一只猫。");
+		//  ret += printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S\n", L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
+		//ret += printf("a%Sb%sc%S", L"我", "42", L"猫");
+		printf("\n Written char : %d Bad return (value);\n", ret);
+		return (0);
+	}
 /*
-  ret += printf("s: %s, p: %p, d:%d\n", "a string", &strlen, 42);
-  ret += printf("%s%p%d%d%p%s%p%p%s\n", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
-
 //	ret += printf("%S\n", L"米");
 //	ret += printf("%\n", L"我是一只猫。");
 //	ret += printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S\n", L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");

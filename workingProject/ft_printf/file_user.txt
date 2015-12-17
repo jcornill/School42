@@ -1,7 +1,3 @@
-0x7fff907d610f
-0x7fff9cd11800
-0x7fff90807df0
-0x7fff907c5d20
-0x0
 
- Written char : 64 Bad return (value);
+
+ Written char : 0 Bad return (value);

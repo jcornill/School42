@@ -6,18 +6,20 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/17 20:08:51 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/17 21:32:30 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME=libftprintf.a
-SRC=ft_printf.c ft_putstrprintf.c ft_putnbr_long.c ft_putaddr.c ft_putnbr_base.c
+SRC=ft_printf.c ft_putstrprintf.c ft_putnbr_long.c ft_putaddr.c \
+ft_putnbr_base.c ft_putwchar.c
 OBJ=$(SRC:.c=.o)
 FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)
-	gcc -o $(NAME) $(OBJ) libft.a -shared
+	make -C libft/
+	ar -rcs $(NAME) $(OBJ) libft/ft_*.o
 
 m: re
 	@gcc -c $(FLAG) $(INCLUDE) main.c

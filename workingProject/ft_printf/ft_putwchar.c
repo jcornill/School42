@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 13:35:01 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/16 15:36:13 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 20:42:27 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,32 @@
 **  }
 */
 
-void	ft_putwchar(wchar_t *str)
+int		ft_putwchar(wchar_t *str)
 {
 	int		i;
 	int		j;
-
+	int		val;
+	
 	i = 0;
 	j = -1;
+	val = 0;
 	while (j++ < 4)
 	{
 		if (*(str + i + j) == 0)
 			break ;
 		if (*(str + i + j) > 255)
-			return ;
+			return (-1);
 	}
 	while (*(str + i))
 	{
 		j = -1;
 		while (++j < 4)
 		{
+			val += 1;
 			if (*(str + i + j) > 0 && *(str + i + j) < 255)
 				write(1, (str + i + j), 1);
 		}
 		i += 4;
 	}
+	return (val);
 }

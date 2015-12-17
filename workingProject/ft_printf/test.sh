@@ -1,12 +1,22 @@
 clear
 echo "=====START====="
 echo "=====MAKEFILE====="
+touch file_makefile.txt
 #make | grep "Makefile"
 #make all | grep "Makefile"
-#make fclean | grep "Makefile"
-make re | grep "Makefile"
-make clean | grep "Makefile"
-echo "OK"
+#make fclean | grep "Makefile" 
+make re 2>&1 > file_makefile.txt
+make clean 2>&1 >> file_makefile.txt
+file=file_makefile.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1400 ]; then
+	echo "Fail"
+	echo "=====ERROR====="
+	cat $file
+	exit
+else
+	echo "OK"
+fi
 echo "=====COMPILING====="
 i=$(find . | grep "ft_printf.h" | cut -f 1 -d "f")
 echo "Found ft_printf.h in $i"
@@ -20,7 +30,7 @@ touch file_user.txt
 touch file_ref.txt
 touch file_diff.txt
 echo "Total test to do : $j"
-echo "=====SIMPLE TEST====="
+echo "=====simple TEST====="
 ./user.out "simple" > file_user.txt
 ./ref.out "simple" > file_ref.txt
 diff file_user.txt file_ref.txt > file_diff.txt
@@ -29,7 +39,7 @@ actualsize=$(wc -c <"$file")
 if [ $actualsize -ge 1 ]; then
 	echo "Fail"
 	echo "=====COMPARE====="
-	cat file_diff.txt
+	cat $file
 	exit
 else
 	echo "OK"
@@ -43,7 +53,7 @@ actualsize=$(wc -c <"$file")
 if [ $actualsize -ge 1 ]; then
 	echo "Fail"
 	echo "=====COMPARE====="
-	cat file_diff.txt
+	cat $file
 	exit
 else
 	echo "OK"
@@ -57,7 +67,7 @@ actualsize=$(wc -c <"$file")
 if [ $actualsize -ge 1 ]; then
 	echo "Fail"
 	echo "=====COMPARE====="
-	cat file_diff.txt
+	cat $file
 	exit
 else
 	echo "OK"
@@ -71,7 +81,7 @@ actualsize=$(wc -c <"$file")
 if [ $actualsize -ge 1 ]; then
 	echo "Fail"
 	echo "=====COMPARE====="
-	cat file_diff.txt
+	cat $file
 	exit
 else
 	echo "OK"
@@ -85,12 +95,39 @@ actualsize=$(wc -c <"$file")
 if [ $actualsize -ge 1 ]; then
 	echo "Fail"
 	echo "=====COMPARE====="
-	cat file_diff.txt
+	cat $file
 	exit
 else
 	echo "OK"
 fi
-
+echo "=====multiple TEST====="
+./user.out "multiple" > file_user.txt
+./ref.out "multiple" > file_ref.txt
+diff file_user.txt file_ref.txt > file_diff.txt
+file=file_diff.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	echo "Fail"
+	echo "=====COMPARE====="
+	cat $file
+	exit
+else
+	echo "OK"
+fi
+echo "=====%S TEST====="
+./user.out "%S" > file_user.txt
+./ref.out "%S" > file_ref.txt
+diff file_user.txt file_ref.txt > file_diff.txt
+file=file_diff.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	echo "Fail"
+	echo "=====COMPARE====="
+	cat $file
+	exit
+else
+	echo "OK"
+	    fi
 #rm file_user.txt
 #rm file_ref.txt
 #rm ./user.out
