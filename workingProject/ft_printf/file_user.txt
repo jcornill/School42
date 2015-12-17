@@ -1,0 +1,23 @@
+This is a simple test.
+Another simple test.
+Very simple.
+
+abc
+111222333
+222333
+111222
+{(null)}
+{}
+111222333444555
+111222333444555666aaabbbccc
+12345
+42
+-42
+before 42 after
+1-23-45
+a1b-2c3d
+2147483647
+-2147483648
+
+
+ Written char : 212 Bad return value

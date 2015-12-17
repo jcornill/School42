@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 20:03:36 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/17 18:27:34 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-int		main(int argc, char **argv)
+int		main(void)
 {
 	//wchar_t test2[7] = {195, 169, 196, 169, 197, 169};
 	//wchar_t test2[5] = L"ïßoO";
@@ -22,14 +22,11 @@ int		main(int argc, char **argv)
 
 	ret = 0;
 	fflush(stdout);
-	if (argv[1] == "simple")
-	{
-		ret += ft_printf("This is a simple test.\n");
-		ret += ft_printf("Another simple test.\nVery simple.\n");
-		ret += ft_printf("");
-		ret += ft_printf("\n");
-		printf("\n Written char : %d Bad return value\n", ret);
-	}
+	ret += ft_printf("This is a simple test.\n");
+	ret += ft_printf("Another simple test.\nVery simple.\n");
+	ret += ft_printf("");
+	ret += ft_printf("\n");
+
 	ret += ft_printf("%s", "abc\n");
 	ret += ft_printf("111%s333\n", "222");
 	ret += ft_printf("%s333\n", "222");
@@ -39,7 +36,7 @@ int		main(int argc, char **argv)
 	ret += ft_printf("111%s333%s555\n", "222", "444");
 	ret += ft_printf("111%s333%s555%saaa%sccc\n", "222", "444", "666", "bbb");
 	ret += ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
-//*
+
 	ret += ft_printf("%d\n", 42);
 	ret += ft_printf("%d\n", -42);
 	ret += ft_printf("before %d after\n", 42);
@@ -48,17 +45,16 @@ int		main(int argc, char **argv)
 	ret += ft_printf("%d\n", INT_MAX);
 	ret += ft_printf("%d\n", INT_MIN);
 	ret += ft_printf("\n");
-//*
+
 	ret += ft_printf("%%\n");
 	ret += ft_printf("aa%%bb\n");
 	ret += ft_printf("%%%%%%%%%%\n");
 	ret += ft_printf(".%%.%%.%%.%%.%%.%%.%%.%%.\n");
 	ret += ft_printf("%\n");
-	ret += ft_printf("{%}\n");
 //	ret += ft_printf("% Zoooo\n");
 //  ret += ft_printf("{% %}");
-	
-/*
+	ret += ft_printf("{%}\n");
+
 	ret += ft_printf("s: %s, p: %p, d:%d\n", "a string", &strlen, 42);
 	ret += ft_printf("%s%p%d%d%p%s%p%p%s\n", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
 
@@ -128,7 +124,7 @@ int		main(int argc, char **argv)
 //	ret += ft_printf("%X\n", LONG_MAX);
 //	ret += ft_printf("%X\n", ULONG_MAX);
 	
-
+/*
 	int i;
 	ret += ft_printf("%p", &i);
 	printf("  :  %p\n", &i);

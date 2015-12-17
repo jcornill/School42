@@ -6,12 +6,12 @@
 #    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/17 19:49:41 by jcornill         ###   ########.fr        #
+#    Updated: 2015/12/10 23:18:37 by jcornill         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME=libftprintf.a
-SRC=ft_printf.c ft_putstrprintf.c ft_putnbr_long.c
+SRC=ft_printf.c
 OBJ=$(SRC:.c=.o)
 FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes
@@ -25,11 +25,6 @@ m: re
 	@rm main.o
 	@echo "==========PROG=========="
 	@./test
-
-save:
-	git add --all
-	git commit -m "Autosaving on printf"
-	git push
 
 all:$(NAME)
 
