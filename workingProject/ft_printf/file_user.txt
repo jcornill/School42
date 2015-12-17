@@ -1,10 +1,2 @@
-2A
-Before 2A after
-1643E72A3B9A9E98
-a0bD903c186A0d
-0, FFFFFFFF
-FFFFFFD6FFFFFFFF
-FFFFFFFF
-FFFFFFFF
-
- Written char : 98 Bad return value
+bonjour  Q 42 0x7fff977b0ea8 2a Hellobonjour420x7fff9cd11800World
+ Written char : -2 Bad return value

@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/18 00:00:20 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/18 00:46:45 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,45 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	printf("\n Written char : %d Bad return (value);\n", ret);
-	return (0);
+	ret = 0;
+	if (!strcmp(argv[1], "%c"))
+	{
+		ret += printf("%c\n", 'c');
+		ret += printf("%c %c\n", '4', '2');
+		ret += printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",
+						 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+						 '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+						 '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+						 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+						 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+						 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+						 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+		ret += printf("%c\n", 0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%C"))
+	{
+		ret += printf("1. %C\n", 'c');
+		ret += printf("2. %C%C\n", '4', '2');
+		ret += printf("3 .%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\n",
+						 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+						 '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+						 '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+						 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+						 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+						 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+						 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "multiple2"))
+	{
+		ret += printf("%s %C %d %p %x %S \n", "bonjour ", L'Q', 42, &free, 42, L"Hello");
+		ret += printf("%s%d%p%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &strcmp, L"World", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'O');
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
 }

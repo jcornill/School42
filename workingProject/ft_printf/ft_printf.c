@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/18 00:09:27 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/18 00:25:08 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ char	*get_arg(char *str)
 		return ("%x");
 	else if (str[1] == 'X')
 		return ("%X");
-	else if (str[i] == 'c')
+	else if (str[1] == 'c')
 		return ("%c");
+	else if (str[1] == 'C')
+		return ("%C");
 	return (0);
 }
 
@@ -73,6 +75,10 @@ int		print_arg(void *str, char *param)
 		return (ft_putnbr_base((unsigned int)str, 16, 0));
 	else if (!ft_strcmp("%X", param))
 		return (ft_putnbr_base_long((unsigned int)str, 16, 1));
+	else if (!ft_strcmp("%c", param))
+		return (write(1, &str, 1));
+	else if (!ft_strcmp("%C", param))
+		return (write(1, &str, 1));
 	return (0);
 }
 
