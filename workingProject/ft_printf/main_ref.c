@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/18 00:46:45 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:11:12 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,12 @@ int		main(int argc, char **argv)
 	ret = 0 ;
 	if (!strcmp(argv[1], "%S"))
 	{
+		ret += printf("{%S}\n", NULL);
+		ret += printf("{%S}\n", L"Ã©");
 		ret += printf("%S\n", L"米");
 		ret += printf("%S\n", L"我是一只猫。");
 		ret += printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S\n", L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
-		ret += printf("%S%S%S\n", L"42", "Bonjour", L"hahahaahahahah", L"Ψ ψ");
-		ret += printf("{%S}\n", NULL);
+		ret += printf("%S%S%S\n", L"42", L"hahahaahahahah", L"Ψ ψ");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -242,8 +243,8 @@ int		main(int argc, char **argv)
 	ret = 0;
 	if (!strcmp(argv[1], "multiple2"))
 	{
-		ret += printf("%s %C %d %p %x %S \n", "bonjour ", L'Q', 42, &free, 42, L"Hello");
-		ret += printf("%s%d%p%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &strcmp, L"World", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'O');
+		ret += printf("%s %d %p %x \n", "bonjour ", 42, &free, 42);
+		ret += printf("%s%d%p%D%i%o%O%u%U%x%X%c\n","bonjour", 42, &strcmp, LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c');
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
