@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 19:44:20 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 20:08:28 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,42 @@ int		main(int argc, char **argv)
 		ret += printf("11. %llO, %llO\n", 0, USHRT_MAX);
 		ret += printf("12. %llU, %llU\n", 0, USHRT_MAX);
 		ret += printf("13. %llD, %llD\n", 0, USHRT_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%h%"))
+	{
+		ret += printf("1. %hd%hd\n", (short int)0, (short int)42);
+		ret += printf("2. %hd\n", SHRT_MAX);
+		ret += printf("3. %hd\n", SHRT_MIN);
+		ret += printf("4. %hi%hi\n", 0, 42);
+		ret += printf("5. %hi\n", SHRT_MAX);
+		ret += printf("6. %hi\n", SHRT_MIN);
+		ret += printf("7. %hu, %hu\n", 0, USHRT_MAX);
+		ret += printf("8. %ho, %ho\n", 0, USHRT_MAX);
+		ret += printf("9. %hx, %hx\n", 0, USHRT_MAX);
+		ret += printf("10. %hX, %hX\n", 0, USHRT_MAX);
+		ret += printf("11. %hO, %hO\n", 0, USHRT_MAX);
+		ret += printf("12. %hU, %hU\n", 0, USHRT_MAX);
+		ret += printf("13. %hD, %hD\n", 0, USHRT_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%hh%"))
+	{
+		ret += printf("%hhd%hhd", 1, 42);
+		ret += printf("%hhd", CHAR_MAX);
+		ret += printf("%hhd", CHAR_MAX + 42);
+		ret += printf("%hhd", CHAR_MIN);
+		ret += printf("%hhd", CHAR_MIN - 42);
+		ret += printf("%hhi%hhi", 0, 42);
+		ret += printf("%hhd", CHAR_MAX);
+		ret += printf("%hhd", CHAR_MAX + 42);
+		ret += printf("%hhi", CHAR_MIN);
+		ret += printf("%hhi", CHAR_MIN - 42);
+		
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
