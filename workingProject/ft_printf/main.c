@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 17:23:05 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:24:05 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ int		main(int argc, char **argv)
 	ret = 0;
 	if (!strcmp(argv[1], "multiple2"))
 	{
-		ret += ft_printf("%s %d %p %x \n", "bonjour ", 42, &free, 42);
+		ret += ft_printf("%s %d %p %x %S\n", "bonjour ", 42, &free, 42, L"Bonjour");
 		ret += ft_printf("%s%d%p%D%i%o%O%u%U%x%X%c\n","bonjour", 42, &strcmp, LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c');
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
