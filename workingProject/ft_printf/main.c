@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 17:11:12 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:23:05 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,6 +237,8 @@ int		main(int argc, char **argv)
 						 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
 						 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 						 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+		ret += ft_printf("4. %C\n", L'é');
+		ret += ft_printf("5. %C%C\n", L'Ã', L'©');
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
