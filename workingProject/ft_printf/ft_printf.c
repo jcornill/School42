@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/18 00:25:08 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 18:06:38 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ char	*get_arg(char *str)
 		return ("%c");
 	else if (str[1] == 'C')
 		return ("%C");
+	else if (str[1] == 'l' && str[2] == 'd')
+		return ("%ld");
+	else if (str[1] == 'l' && str[2] == 'i')
+		return ("%li");
+	else if (str[1] == 'l' && str[2] == 'u')
+		return ("%lu");
+	else if (str[1] == 'l' && str[2] == 'o')
+		return ("%lo");
+	else if (str[1] == 'l' && str[2] == 'x')
+		return ("%lx");
 	return (0);
 }
 
@@ -55,6 +65,8 @@ int		print_arg(void *str, char *param)
 		return (ft_putstrprintf(str));
 	else if (!ft_strcmp("%d", param) || !ft_strcmp("%i", param))
 		return (ft_putnbr_long((int)str));
+	else if (!ft_strcmp("%ld", param) || !ft_strcmp("%li", param))
+		return (ft_putnbr_long((long)str));
 	else if (!ft_strcmp("%p", param))
 		return (ft_putaddr((long)str));
 	else if (!ft_strcmp("%%", param))
@@ -65,11 +77,11 @@ int		print_arg(void *str, char *param)
 		return (ft_putnbr_long((long)str));
 	else if (!ft_strcmp("%o", param))
 		return (ft_putnbr_base((unsigned int)str, 8, 0));
-	else if (!ft_strcmp("%O", param))
+	else if (!ft_strcmp("%O", param) || !ft_strcmp("%lo", param))
 		return (ft_putnbr_base_long((unsigned long)str, 8, 0));
 	else if (!ft_strcmp("%u", param))
 		return (ft_putnbr_long((unsigned int)str));
-	else if (!ft_strcmp("%U", param))
+	else if (!ft_strcmp("%U", param) || !ft_strcmp("%lu", param))
 		return (ft_putnbr_ulong((unsigned long)str));
 	else if (!ft_strcmp("%x", param))
 		return (ft_putnbr_base((unsigned int)str, 16, 0));
