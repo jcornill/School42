@@ -1,14 +1,16 @@
-1,6c1,6
-< 9A
-< Before 9A after
-< 8=;:E>9A:B@A@E@?
-< a7bD@7:c8?=A7d
-< 7, FFFFFFFF
-< FFFFFFD=FFFFFFFF
+9,13c9,13
+< 9. llx, llx
+< 10. llX, llX
+< 11. llO, llO
+< 12. llU, llU
+< 13. llD, llD
 ---
-> 2A
-> Before 2A after
-> 1643E72A3B9A9E98
-> a0bD903c186A0d
-> 0, FFFFFFFF
-> FFFFFFD6FFFFFFFF
+> 9. 0, ffffffffffffffff
+> 10. 0, FFFFFFFFFFFFFFFF
+> 11. 0, 177777
+> 12. 0, 65535
+> 13. 0, 65535
+15c15
+<  Written char : 228 Bad return value
+---
+>  Written char : 251 Bad return value

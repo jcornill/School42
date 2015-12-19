@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 17:32:31 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 19:44:20 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 int		main(int argc, char **argv)
 {
-	//wchar_t test2[7] = {195, 169, 196, 169, 197, 169};
-	//wchar_t test2[5] = L"ïßoO";
 	int		ret;
 
 	ret = 0;
@@ -68,10 +66,10 @@ int		main(int argc, char **argv)
 		ret += ft_printf("aa%%bb\n");
 		ret += ft_printf("%%%%%%%%%%\n");
 		ret += ft_printf(".%%.%%.%%.%%.%%.%%.%%.%%.\n");
-		// ret += ft_printf("%\n");
-		//	ret += ft_printf("{%}\n");
-		//  ret += ft_printf("% Zoooo\n");
-		//  ret += ft_printf("{% %}");
+		ret += ft_printf("%\n");
+		ret += ft_printf("{%}\n");
+		//ret += ft_printf("% Zoooo\n");
+		//ret += ft_printf("{% %}");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -245,8 +243,52 @@ int		main(int argc, char **argv)
 	ret = 0;
 	if (!strcmp(argv[1], "multiple2"))
 	{
-		ret += ft_printf("%s %d %p %x %S %C\n", "bonjour ", 42, &free, 42, L"Bonjour", L'C');
-		ret += ft_printf("%s%S%d%p%D%i%o%O%u%U%x%X%c%C\n","bonjour", L"Ã©Ã©Ã©Ã©", 42, &strcmp, LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'Ã');
+		ret += ft_printf("1. %s %d %p %x %S %C\n", "bonjour ", 42, &free, 42, L"Bonjour", L'C');
+		ret += ft_printf("2. %s%S%d%p%D%i%o%O%u%U%x%X%c%C\n","bonjour", L"Ã©Ã©Ã©Ã©", 42, &strcmp, LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'Ã');
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%l%"))
+	{
+		ret += ft_printf("1. %ld%ld\n", 0, 42);
+		ret += ft_printf("2. %ld\n", (long)INT_MAX + 1);
+		ret += ft_printf("3. %ld\n", (long)INT_MIN - 1);
+		ret += ft_printf("4. %ld\n", LONG_MAX);
+		ret += ft_printf("5. %ld\n", LONG_MIN);
+		ret += ft_printf("6. %li%li\n", 0, 42);
+		ret += ft_printf("7. %li\n", (long)INT_MAX + 1);
+		ret += ft_printf("8. %li\n", (long)INT_MIN - 1);
+		ret += ft_printf("9. %li\n", LONG_MAX);
+		ret += ft_printf("10. %li\n", LONG_MIN);
+		ret += ft_printf("11. %lu, %lu\n", 0, ULONG_MAX);
+		ret += ft_printf("12. %lo, %lo\n", 0, ULONG_MAX);
+		ret += ft_printf("13. %lx, %lx\n", 0, ULONG_MAX);
+		ret += ft_printf("14. %lX, %lX\n", 0, ULONG_MAX);
+		ret += ft_printf("%lc, %lc\n", L'暖', L'ح');
+		ret += ft_printf("%ls, %ls\n", L"暖炉", L"Bonjour");
+		ret += ft_printf("15. %lO, %lO\n", 0, USHRT_MAX);
+		ret += ft_printf("16. %lU, %lU\n", 0, USHRT_MAX);
+		ret += ft_printf("17. %lD, %lD\n", 0, USHRT_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	ret = 0;
+	if (!strcmp(argv[1], "%ll%"))
+	{
+		ret += ft_printf("1. %lld%lld\n", 0, 42);
+		ret += ft_printf("2. %lld\n", LLONG_MAX);
+		ret += ft_printf("3. %lld\n", LLONG_MIN);
+		ret += ft_printf("4. %lli%lli\n", 0, 42);
+		ret += ft_printf("5. %lli\n", LLONG_MAX);
+		ret += ft_printf("6. %lli\n", LLONG_MIN);
+		ret += ft_printf("7. %llu, %llu\n", 0, ULLONG_MAX);
+		ret += ft_printf("8. %llo, %llo\n", 0, ULLONG_MAX);
+		ret += ft_printf("9. %llx, %llx\n", 0, ULLONG_MAX);
+		ret += ft_printf("10. %llX, %llX\n", 0, ULLONG_MAX);
+		ret += ft_printf("11. %llO, %llO\n", 0, USHRT_MAX);
+		ret += ft_printf("12. %llU, %llU\n", 0, USHRT_MAX);
+		ret += ft_printf("13. %llD, %llD\n", 0, USHRT_MAX);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}

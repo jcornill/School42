@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 23:28:04 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/11 11:51:07 by jcornill         ###   ########.fr       */
+/*   Updated: 2015/12/19 18:28:03 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_strlenstr(const char *s, const char *find)
 		{
 			i++;
 			if (!find[i])
-				return (len - 1);
+				return (len - ft_strlen(find) + 1);
 		}
 		else
 			i = 0;
