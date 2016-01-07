@@ -1,0 +1,5 @@
+rm -f ft_printf.o ft_putstrprintf.o ft_putnbr_long.o ft_putaddr.o ft_putnbr_base.o ft_putwchar.o ft_putnbr_base_long.o ft_putnbr_ulong.o ft_putonewchar.o
+rm -f libftprintf.a
+gcc -c -w -I includes ft_printf.c ft_putstrprintf.c ft_putnbr_long.c ft_putaddr.c ft_putnbr_base.c ft_putwchar.c ft_putnbr_base_long.c ft_putnbr_ulong.c ft_putonewchar.c
+Makefile:49: recipe for target 'ft_printf.o' failed
+rm -f ft_printf.o ft_putstrprintf.o ft_putnbr_long.o ft_putaddr.o ft_putnbr_base.o ft_putwchar.o ft_putnbr_base_long.o ft_putnbr_ulong.o ft_putonewchar.o
