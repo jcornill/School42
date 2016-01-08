@@ -1,0 +1,7 @@
+p
+p
+p
+p
+p
+
+ Written char : 10 Bad return value

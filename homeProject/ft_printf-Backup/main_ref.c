@@ -68,8 +68,8 @@ int		main(int argc, char **argv)
 		ret += printf(".%%.%%.%%.%%.%%.%%.%%.%%.\n");
 		ret += printf("%\n");
 		ret += printf("{%}\n");
-		//ret += printf("% Zoooo\n");
-		//ret += printf("{% %}");
+		ret += printf("% Zoooo\n");
+		ret += printf("{% %}");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}

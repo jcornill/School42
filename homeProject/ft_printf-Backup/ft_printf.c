@@ -12,15 +12,51 @@
 
 #include "ft_printf.h"
 
-void	*process_arg()
+int		print_arg_str(char *str, char param)
 {
-
+	if (param == 's')
+		return (ft_putstrprintf(str));
+	else if (param == '%')
+		return (write(1, "%", 1));
+	return (0);
 }
 
-int		print_arg(void *str, char *param)
+int		print_arg_nb(long nb, char param)
 {
-	if (!ft_strcmp("%s", param))
-		return (ft_putstrprintf(str));
+	if (param == 'd')
+		return (ft_putnbr_long(nb));
+	else if (param == 'p')
+		return (ft_putaddr(nb));
+	return (0);
+}
+
+int		process_arg(void *content, char *param, char convertion)
+{
+	char	*str;
+	int		number;
+
+	str = 0;
+	number = 0;
+	if (convertion == 's' || convertion == '%')
+	{
+		str = (char *)content;
+		return (print_arg_str(str, convertion));
+	}
+	else if (convertion == 'd')
+	{
+		number = (int)content;
+		number = (long)content;
+		return (print_arg_nb(number, convertion));
+	}
+	else if (convertion == 'p')
+	{
+		number = (long)content;
+		return (print_arg_nb(number, convertion));
+	}
+	return (0);
+}
+
+/*
 	else if (!ft_strcmp("%d", param) || !ft_strcmp("%i", param))
 		return (ft_putnbr_long((int)str));
 	else if (!ft_strcmp("%ld", param) || !ft_strcmp("%li", param) || !ft_strcmp("%lld", param) || !ft_strcmp("%lli", param))
@@ -59,30 +95,35 @@ int		print_arg(void *str, char *param)
 		return (ft_putnbr_ulong((unsigned long)str) * 0 - 1);
 	else if (!ft_strcmp("%lD", param))
 		return (ft_putnbr_long((long)str) * 0 - 1);
-	return (0);
-}
+*/
 
 char	*search_convertion(char *s)
 {
 	char	*param;
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (s[i])
 	{
 		if (s[i] == 's' || s[i] == 'd' || s[i] == '%')
 		{
-			param = strnew(i + 1);
-			ft_strncpy(param, &str[i], i + 1);
+			param = ft_strnew(i + 1);
+			param[0] = '%';
+			ft_strncpy(&param[1], &s[1], i);
+			//write(1, param, ft_strlen(param));
 			return (param);
 		}
-		if (s[i] == '#' || s[i] == '0' || s[i] == '-'
-			|| s[i] == '+' || s[i] == ' ')
+		if (s[i] == '#' || s[i] == '0' || s[i] == '-' || s[i] == '+'
+			|| s[i] == ' ' || s[i] == 'l' || s[i] == 'h')
 			i++;
 		else
 			break ;
 	}
-	return (NULL);
+	param = ft_strnew(i + 1);
+	param[0] = '%';
+	if (i > 1)
+		ft_strncpy(&param[1], &s[i - 1], i - 1);
+	return (param);
 }
 
 int		ft_printf(char *str, ...)
@@ -92,7 +133,7 @@ int		ft_printf(char *str, ...)
 	int			i;
 	int			written_char;
 	char		*param;
-	
+
 	i = 0;
 	written_char = 0;
 	va_start(args, str);
@@ -101,8 +142,24 @@ int		ft_printf(char *str, ...)
 	{
 		if (str[i] == '%')
 			param = search_convertion(&str[i]);
+		else
+			param = NULL;
 		if (param != NULL)
-			written_char = print_arg(va_arg(args, void *), param);
+		{
+			if (ft_strlen(param) > 1)
+			{
+//				write(1, param, ft_strlen(param));
+//				ft_putchar(param[ft_strlen(param) - 1]);
+				if (param[ft_strlen(param) - 1] != '%')
+					written_char += process_arg(va_arg(args, void *), param, param[ft_strlen(param) - 1]);
+				else
+					written_char += write(1, "%", 1);
+				i += ft_strlen(param) - 1;
+			}	
+		}
+		else
+			written_char += write(1, &str[i], 1);
+		i++;
 	}
 	va_end(args);
 	return (written_char);

@@ -1,0 +1,16 @@
+1,5c1,5
+< p
+< p
+< p
+< p
+< p
+---
+> 0x405994
+> 0x40598c
+> 0x405984
+> 0x40599c
+> 0x0
+7c7
+<  Written char : 10 Bad return value
+---
+>  Written char : 40 Bad return value

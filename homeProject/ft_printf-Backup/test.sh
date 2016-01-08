@@ -99,8 +99,8 @@ else
 	g OK
 fi
 echo "=====%p TEST====="
-#./user.out "%p" > file_user.txt
-#./ref.out "%p" > file_ref.txt
+./user.out "%p" > file_user.txt
+./ref.out "%p" > file_ref.txt
 diff file_user.txt file_ref.txt > file_diff.txt
 file=file_diff.txt
 actualsize=$(wc -c <"$file")
@@ -113,8 +113,8 @@ else
 	g OK
 fi
 echo "=====multiple TEST====="
-#./user.out "multiple" > file_user.txt
-#./ref.out "multiple" > file_ref.txt
+./user.out "multiple" > file_user.txt
+./ref.out "multiple" > file_ref.txt
 diff file_user.txt file_ref.txt > file_diff.txt
 file=file_diff.txt
 actualsize=$(wc -c <"$file")
