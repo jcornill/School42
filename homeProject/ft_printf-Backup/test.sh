@@ -126,20 +126,20 @@ if [ $actualsize -ge 1 ]; then
 else
 	g OK
 fi
-echo "=====%S TEST====="
+#echo "=====%S TEST====="
 #./user.out "%S" > file_user.txt
 #./ref.out "%S" > file_ref.txt
-diff file_user.txt file_ref.txt > file_diff.txt
-file=file_diff.txt
-actualsize=$(wc -c <"$file")
-if [ $actualsize -ge 1 ]; then
-	r Fail
-	echo "=====COMPARE====="
-	cat $file
-	exit
-else
-	g OK
-fi
+#diff file_user.txt file_ref.txt > file_diff.txt
+#file=file_diff.txt
+#actualsize=$(wc -c <"$file")
+#if [ $actualsize -ge 1 ]; then
+#	r Fail
+#	echo "=====COMPARE====="
+#	cat $file
+#	exit
+#else
+#	g OK
+#fi
 echo "=====%D TEST====="
 ./user.out "%D" > file_user.txt
 ./ref.out "%D" > file_ref.txt
@@ -168,20 +168,20 @@ if [ $actualsize -ge 1 ]; then
 else
 	g OK
 fi
-echo "=====%o TEST====="
-./user.out "%o" > file_user.txt
-./ref.out "%o" > file_ref.txt
-diff file_user.txt file_ref.txt > file_diff.txt
-file=file_diff.txt
-actualsize=$(wc -c <"$file")
-if [ $actualsize -ge 1 ]; then
-	r Fail
-	echo "=====COMPARE====="
-	cat $file
-	exit
-else
-	g OK
-fi
+#echo "=====%o TEST====="
+#./user.out "%o" > file_user.txt
+#./ref.out "%o" > file_ref.txt
+#diff file_user.txt file_ref.txt > file_diff.txt
+#file=file_diff.txt
+#actualsize=$(wc -c <"$file")
+#if [ $actualsize -ge 1 ]; then
+#	r Fail
+#	echo "=====COMPARE====="
+#	cat $file
+#	exit
+#else
+#	g OK
+#fi
 echo "=====%O TEST====="
 ./user.out "%O" > file_user.txt
 ./ref.out "%O" > file_ref.txt

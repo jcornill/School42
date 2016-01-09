@@ -1,7 +1,9 @@
-0x405994
-0x40598c
-0x405984
-0x40599c
-0x0
+52
+before 52 after
+11441747527346517230
+a0b154403c303240d
+17777777777
+37777777726
+37777777777
 
- Written char : 40 Bad return value
+ Written char : 94 Bad return value

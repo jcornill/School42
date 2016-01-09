@@ -1,7 +1,9 @@
-p
-p
-p
-p
-p
+O
+before O after
+OOOOO
+aObOcOd
+O
+O
+O
 
- Written char : 10 Bad return value
+ Written char : 37 Bad return value

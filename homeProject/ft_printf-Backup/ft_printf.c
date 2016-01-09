@@ -23,37 +23,36 @@ int		print_arg_str(char *str, char param)
 
 int		print_arg_nb(long nb, char param)
 {
-	if (param == 'd')
+	if (param == 'd' || param == 'D' || param == 'i')
 		return (ft_putnbr_long(nb));
 	else if (param == 'p')
 		return (ft_putaddr(nb));
+	else if (param == 'o')
+		return (ft_putnbr_base(nb, 8, 0));
 	return (0);
 }
 
-int		process_arg(void *content, char *param, char convertion)
+int		process_arg(void *content, char *param, char c)
 {
 	char	*str;
 	int		number;
 
 	str = 0;
 	number = 0;
-	if (convertion == 's' || convertion == '%')
-	{
+	if (c == 'S')
+		return (ft_putwchar((wchar_t *)str));
+	if (c == 's' || c == '%')
 		str = (char *)content;
-		return (print_arg_str(str, convertion));
-	}
-	else if (convertion == 'd')
-	{
+	else if (c == 'd' || c == 'i')
 		number = (int)content;
+	else if (c == 'p' || c == 'D')
 		number = (long)content;
-		return (print_arg_nb(number, convertion));
-	}
-	else if (convertion == 'p')
-	{
-		number = (long)content;
-		return (print_arg_nb(number, convertion));
-	}
-	return (0);
+	else if (c == 'o')
+		number = (unsigned int)content;
+	if (c == 'S' || c == 's')
+		return (print_arg_str(str, c));
+	else
+		return (print_arg_nb(number, c));
 }
 
 /*
@@ -105,7 +104,8 @@ char	*search_convertion(char *s)
 	i = 1;
 	while (s[i])
 	{
-		if (s[i] == 's' || s[i] == 'd' || s[i] == '%')
+		if (s[i] == 's' || s[i] == 'd' || s[i] == '%' || s[i] == 'p' ||
+			s[i] == 'S' || s[i] == 'D' || s[i] == 'i' || s[i] == 'o')
 		{
 			param = ft_strnew(i + 1);
 			param[0] = '%';
