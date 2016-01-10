@@ -21,36 +21,91 @@ int		print_arg_str(char *str, char param)
 	return (0);
 }
 
-int		print_arg_nb(long nb, char param)
+int		print_arg_nb(long nb, char c)
 {
-	if (param == 'd' || param == 'D' || param == 'i')
+	if (c == 'd' || c == 'D' || c == 'i' || c == 'u')
 		return (ft_putnbr_long(nb));
-	else if (param == 'p')
+	else if (c == 'p')
 		return (ft_putaddr(nb));
-	else if (param == 'o')
+	else if (c == 'o')
 		return (ft_putnbr_base(nb, 8, 0));
+	else if (c == 'x')
+		return (ft_putnbr_base(nb, 16, 0));
+	else if (c == 'X')
+		return (ft_putnbr_base_long(nb, 16, 1));
+	return (0);
+}
+
+int		print_arg_unb(unsigned long nb, char c)
+{
+	if (c == 'O' || c == 'o')
+		return (ft_putnbr_base_long(nb, 8, 0));
+	else if (c == 'U' || c == 'd' || c == 'D' || c == 'i' || c == 'u')
+		return (ft_putnbr_ulong(nb));
+	else if (c == 'x')
+		return (ft_putnbr_base_long(nb, 16, 0));
+	else if (c == 'X')
+		return (ft_putnbr_base_long(nb, 16, 1));
 	return (0);
 }
 
 int		process_arg(void *content, char *param, char c)
 {
-	char	*str;
-	int		number;
+	char			*str;
+	long			number;
+	unsigned long	unumber;
+	int				i;
+	char			ulong;
 
 	str = 0;
 	number = 0;
+	unumber = 0;
+	ulong = 0;
 	if (c == 'S')
-		return (ft_putwchar((wchar_t *)str));
-	if (c == 's' || c == '%')
+		return (ft_putwchar((wchar_t *)content));
+	else if (c == 'c')
+		return (write(1, &str, 1));
+	else if (c == 'C')
+		return (ft_putonewchar((wchar_t)content));
+	else if (c == 's' || c == '%')
 		str = (char *)content;
 	else if (c == 'd' || c == 'i')
 		number = (int)content;
 	else if (c == 'p' || c == 'D')
 		number = (long)content;
-	else if (c == 'o')
+	else if (c == 'o' || c == 'u' || c == 'x' || c == 'X')
 		number = (unsigned int)content;
+	else if (c == 'O' || c == 'U')
+	{
+		unumber = (unsigned long)content;
+		ulong = 1;
+	}
+	if (ft_strlen(param) > 2)
+	{
+		i = 1;
+		while (param[i] != c)
+		{
+			if (param[i] == 'l' && (c != 'u' || c != 'o' || c != 'x') && param[i - 1] != 'l')
+				number = (long)content;
+			else if (param[i - 1] == 'l' || (c == 'u' || c == 'x' || c == 'o') && param[i] == 'l')
+			{
+				unumber = (unsigned long)content;
+				ulong = 1;
+			}
+			else if (param[i] == 'h' && param[i - 1] != 'h' &&
+					(c == 'u' || c == 'x' || c == 'o' || c == 'X' || c == 'D'))
+				number = (unsigned short)content;
+			else if (param[i] == 'h' && param[i - 1] != 'h')
+				number = (short)content;
+			else if (param[i] == 'h' && param[i - 1] == 'h')
+				number = (char)content;
+			i++;
+		}
+	}
 	if (c == 'S' || c == 's')
 		return (print_arg_str(str, c));
+	else if (ulong)
+		return (print_arg_unb(unumber, c));
 	else
 		return (print_arg_nb(number, c));
 }
@@ -105,7 +160,9 @@ char	*search_convertion(char *s)
 	while (s[i])
 	{
 		if (s[i] == 's' || s[i] == 'd' || s[i] == '%' || s[i] == 'p' ||
-			s[i] == 'S' || s[i] == 'D' || s[i] == 'i' || s[i] == 'o')
+			s[i] == 'S' || s[i] == 'D' || s[i] == 'i' || s[i] == 'o' ||
+			s[i] == 'O' || s[i] == 'u' || s[i] == 'U' || s[i] == 'x' ||
+			s[i] == 'X' || s[i] == 'c' || s[i] == 'C')
 		{
 			param = ft_strnew(i + 1);
 			param[0] = '%';

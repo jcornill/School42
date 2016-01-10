@@ -261,12 +261,12 @@ int		main(int argc, char **argv)
 		//ret += ft_printf("8. %li\n", (long)INT_MIN - 1);
 		ret += ft_printf("9. %li\n", LONG_MAX);
 		ret += ft_printf("10. %li\n", LONG_MIN);
-		ret += ft_printf("11. %lu, %lu\n", 0, ULONG_MAX);
-		ret += ft_printf("12. %lo, %lo\n", 0, ULONG_MAX);
-		ret += ft_printf("13. %lx, %lx\n", 0, ULONG_MAX);
+		//ret += ft_printf("11. %lu, %lu\n", 0, ULONG_MAX);
+		//ret += ft_printf("12. %lo, %lo\n", 0, ULONG_MAX);
+		//ret += ft_printf("13. %lx, %lx\n", 0, ULONG_MAX);
 		ret += ft_printf("14. %lX, %lX\n", 0, ULONG_MAX);
-		ret += ft_printf("%lc, %lc\n", L'暖', L'ح');
-		ret += ft_printf("%ls, %ls\n", L"暖炉", L"Bonjour");
+		//ret += ft_printf("%lc, %lc\n", L'暖', L'ح');
+		//ret += ft_printf("%ls, %ls\n", L"暖炉", L"Bonjour");
 		ret += ft_printf("15. %lO, %lO\n", 0, USHRT_MAX);
 		ret += ft_printf("16. %lU, %lU\n", 0, USHRT_MAX);
 		ret += ft_printf("17. %lD, %lD\n", 0, USHRT_MAX);

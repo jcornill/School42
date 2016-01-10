@@ -261,12 +261,12 @@ int		main(int argc, char **argv)
 		//ret += printf("8. %li\n", (long)INT_MIN - 1);
 		ret += printf("9. %li\n", LONG_MAX);
 		ret += printf("10. %li\n", LONG_MIN);
-		ret += printf("11. %lu, %lu\n", 0, ULONG_MAX);
-		ret += printf("12. %lo, %lo\n", 0, ULONG_MAX);
-		ret += printf("13. %lx, %lx\n", 0, ULONG_MAX);
+		//ret += printf("11. %lu, %lu\n", 0, ULONG_MAX);
+		//ret += printf("12. %lo, %lo\n", 0, ULONG_MAX);
+		//ret += printf("13. %lx, %lx\n", 0, ULONG_MAX);
 		ret += printf("14. %lX, %lX\n", 0, ULONG_MAX);
-		ret += printf("%lc, %lc\n", L'暖', L'ح');
-		ret += printf("%ls, %ls\n", L"暖炉", L"Bonjour");
+		//ret += printf("%lc, %lc\n", L'暖', L'ح');
+		//ret += printf("%ls, %ls\n", L"暖炉", L"Bonjour");
 		ret += printf("15. %lO, %lO\n", 0, USHRT_MAX);
 		ret += printf("16. %lU, %lU\n", 0, USHRT_MAX);
 		ret += printf("17. %lD, %lD\n", 0, USHRT_MAX);

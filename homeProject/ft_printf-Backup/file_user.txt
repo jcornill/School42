@@ -1,9 +1,2 @@
-O
-before O after
-OOOOO
-aObOcOd
-O
-O
-O
-
- Written char : 37 Bad return value
+142127-87-12886042127-87-12886
+ Written char : 30 Bad return value
