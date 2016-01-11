@@ -393,7 +393,7 @@ int		main(int argc, char **argv)
 	}
 	if (!strcmp(argv[1], "%+%"))
 	{
-		//ret += ft_printf("1. %+d\n", 42);
+		ret += ft_printf("1. %+d\n", 42);
 		ret += ft_printf("2. %+d\n", -42);
 		ret += ft_printf("3. %+i\n", 42);
 		ret += ft_printf("4. %+i\n", -42);
@@ -406,6 +406,26 @@ int		main(int argc, char **argv)
 		//ret += ft_printf("11. [%+s]\n", 0);
 		ret += ft_printf("12. [%+s]\n", "(null)");
 		ret += ft_printf("13. %+O\n", 1);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "% %"))
+	{
+		ret += ft_printf("% d", 9999);
+		ret += ft_printf("% d", -9999);
+		ret += ft_printf("% i", 9999);
+		ret += ft_printf("% i", -9999);
+		ret += ft_printf("% u", 9999);
+		ret += ft_printf("{% c}", 0);
+		ret += ft_printf("{% c}", 'a');
+		ret += ft_printf("{% s}", NULL);
+		ret += ft_printf("{% s}", "(null)");
+		ret += ft_printf("{% s}", "");
+		ret += ft_printf("{% C}", 0);
+		ret += ft_printf("{% C}", L'a');
+		ret += ft_printf("{% S}", NULL);
+		ret += ft_printf("{% S}", L"(null)");
+		ret += ft_printf("{% S}", L"");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}

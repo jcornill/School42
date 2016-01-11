@@ -67,6 +67,13 @@ int		process_add(void *content, char c, char *param)
 	return (0);
 }
 
+int		process_space(void *content, char c, char *param)
+{
+	if ((long)content > 0)
+		return (write(1, " ", 1));
+	return (0);
+}
+
 int		process_arg(void *content, char *p, char c)
 {
 	char			*str;
@@ -130,6 +137,8 @@ int		process_arg(void *content, char *p, char c)
 				val = process_sharp(content, c, p);
 			else if (p[i] == '+' && c != 's' && c != 'S')
 				val = process_add(content, c, p);
+			else if (p[i] == ' ')
+				val = process_space(content, c, p);
 			i++;
 		}
 	}
