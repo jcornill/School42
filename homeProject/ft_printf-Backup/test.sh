@@ -151,6 +151,14 @@ echo "=====%z% TEST====="
 ./user.out "%z%" > file_user.txt
 ./ref.out "%z%" > file_ref.txt
 funct_comp
+echo "=====%#% TEST====="
+./user.out "%#%" > file_user.txt
+./ref.out "%#%" > file_ref.txt
+funct_comp
+echo "=====%+% TEST====="
+./user.out "%+%" > file_user.txt
+./ref.out "%+%" > file_ref.txt
+funct_comp
 echo "=====ad1 TEST====="
 ./user.out "ad1" > file_user.txt
 ./ref.out "ad1" > file_ref.txt

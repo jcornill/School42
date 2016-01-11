@@ -49,6 +49,24 @@ int		print_arg_unb(unsigned long nb, char c)
 	return (0);
 }
 
+int		process_sharp(void *content, char c, char *param)
+{
+	if ((c == 'o' || c == 'O') && (long)content != 0)
+		return (write(1, "0", 1));
+	else if (c == 'x' && (long)content != 0)
+		return (write(1, "0x", 2));
+	else if (c == 'X' && (long)content != 0)
+		return (write(1, "0X", 2));
+	return (0);
+}
+
+int		process_add(void *content, char c, char *param)
+{
+	if ((long)content > 0 && c != 'o' && c != 'O')
+		return (write(1, "+", 1));
+	return (0);
+}
+
 int		process_arg(void *content, char *p, char c)
 {
 	char			*str;
@@ -108,6 +126,10 @@ int		process_arg(void *content, char *p, char c)
 				number = (char)content;
 			else if (ft_isdigit(p[i]) && !ft_isdigit(p[i - 1]))
 				val = ft_write_space(p, content, c, 0);
+			else if (p[i] == '#')
+				val = process_sharp(content, c, p);
+			else if (p[i] == '+' && c != 's' && c != 'S')
+				val = process_add(content, c, p);
 			i++;
 		}
 	}

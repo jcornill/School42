@@ -375,6 +375,40 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
+	if (!strcmp(argv[1], "%#%"))
+	{
+		ret += ft_printf("1. %#o\n", 42);
+		ret += ft_printf("2. %#o\n", 0);
+		ret += ft_printf("3. %#o\n", INT_MAX);
+		ret += ft_printf("4. %#O\n", 1);
+		ret += ft_printf("5. %#x\n", 42);
+		ret += ft_printf("6. %#x\n", 0);
+		ret += ft_printf("7. %#x\n", INT_MAX);
+		ret += ft_printf("8. %#X\n", 42);
+		ret += ft_printf("9. %#X\n", 0);
+		ret += ft_printf("10. %#X\n", INT_MAX);
+		//ret += ft_printf("11. %#c\n", 0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "%+%"))
+	{
+		//ret += ft_printf("1. %+d\n", 42);
+		ret += ft_printf("2. %+d\n", -42);
+		ret += ft_printf("3. %+i\n", 42);
+		ret += ft_printf("4. %+i\n", -42);
+		//ret += ft_printf("5. %+c", 0);
+		//ret += ft_printf("6. %+C", 0);
+		ret += ft_printf("7. %+o\n", 0);
+		ret += ft_printf("8. %+o\n", 42);
+		ret += ft_printf("9. %+O\n", 0);
+		ret += ft_printf("10. %+O\n", 42);
+		//ret += ft_printf("11. [%+s]\n", 0);
+		ret += ft_printf("12. [%+s]\n", "(null)");
+		ret += ft_printf("13. %+O\n", 1);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
 	if (!strcmp(argv[1], "ad1"))
 	{
 		ret += ft_printf("1. {%10d}\n", 42);
@@ -407,6 +441,7 @@ int		main(int argc, char **argv)
 		//ret += ft_printf("{%030S}", L"我是一只猫。");
 		//ret += ft_printf("8. {%05p}\n", 0);
 		//ret += ft_printf("9. {%015p}\n", &strcmp);
+		//ret += ft_printf("10. {%-15Z}\n", 123);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
