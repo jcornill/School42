@@ -29,4 +29,5 @@ int		ft_putstrprintf(char *str);
 int		ft_putnbrprintf(int n);
 int		ft_putnbr_ulong(unsigned long n);
 int		ft_putonewchar(wchar_t str);
+int		ft_write_space(char *param, void *content, char c, int k);
 #endif

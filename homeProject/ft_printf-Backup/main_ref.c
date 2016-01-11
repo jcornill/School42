@@ -270,6 +270,7 @@ int		main(int argc, char **argv)
 		ret += printf("15. %lO, %lO\n", 0, USHRT_MAX);
 		ret += printf("16. %lU, %lU\n", 0, USHRT_MAX);
 		ret += printf("17. %lD, %lD\n", 0, USHRT_MAX);
+		ret += printf("18. %lp\n", 42);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -314,17 +315,98 @@ int		main(int argc, char **argv)
 	ret = 0;
 	if (!strcmp(argv[1], "%hh%"))
 	{
-		ret += printf("%hhd%hhd", 1, 42);
-		ret += printf("%hhd", CHAR_MAX);
-		ret += printf("%hhd", CHAR_MAX + 42);
-		ret += printf("%hhd", CHAR_MIN);
-		ret += printf("%hhd", CHAR_MIN - 42);
-		ret += printf("%hhi%hhi", 0, 42);
-		ret += printf("%hhd", CHAR_MAX);
-		ret += printf("%hhd", CHAR_MAX + 42);
-		ret += printf("%hhi", CHAR_MIN);
-		ret += printf("%hhi", CHAR_MIN - 42);
-		
+		ret += printf("1. %hhd%hhd\n", 1, 42);
+		ret += printf("2. %hhd\n", CHAR_MAX);
+		ret += printf("3. %hhd\n", CHAR_MAX + 42);
+		ret += printf("4. %hhd\n", CHAR_MIN);
+		ret += printf("5. %hhd\n", CHAR_MIN - 42);
+		ret += printf("6. %hhi%hhi\n", 0, 42);
+		ret += printf("7. %hhd\n", CHAR_MAX);
+		ret += printf("8. %hhd\n", CHAR_MAX + 42);
+		ret += printf("9. %hhi\n", CHAR_MIN);
+		ret += printf("10. %hhi\n", CHAR_MIN - 42);
+		ret += printf("11. %hhu, %hhu\n", 0, UCHAR_MAX);
+		ret += printf("12. %hho, %hho\n", 0, UCHAR_MAX);
+		ret += printf("13. %hhx, %hhx\n", 0, UCHAR_MAX);
+		ret += printf("14. %hhX, %hhX\n", 0, UCHAR_MAX);
+		ret += printf("15. %hhu, %hhu\n", 0, UCHAR_MAX + 42);
+		ret += printf("16. %hho, %hho\n", 0, UCHAR_MAX + 42);
+		ret += printf("17. %hhx, %hhx\n", 0, UCHAR_MAX + 42);
+		ret += printf("18. %hhX, %hhX\n", 0, UCHAR_MAX + 42);
+		ret += printf("19. %hhO, %hhO\n", 0, USHRT_MAX);
+		ret += printf("20. %hhU, %hhU\n", 0, USHRT_MAX);
+		ret += printf("21. %hhD, %hhD\n", 0, USHRT_MAX);
+		//ret += printf("22. %hhC, %hhC\n", 0, L'米');
+		//ret += printf("23. %hhS, %hhS\n", 0, L"米米");
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "%j%"))
+	{
+		ret += printf("%jd%jd\n", 0, 42);
+		ret += printf("%jd\n", LLONG_MAX);
+		ret += printf("%jd\n", LLONG_MIN);
+		ret += printf("%ji%ji\n", 0, 42);
+		ret += printf("%ji\n", LLONG_MAX);
+		ret += printf("%ji\n", LLONG_MIN);
+		ret += printf("%ju, %ju\n", 0, ULLONG_MAX);
+		ret += printf("%jo, %jo\n", 0, ULLONG_MAX);
+		ret += printf("%jx, %jx\n", 0, ULLONG_MAX);
+		ret += printf("%jX, %jX\n", 0, ULLONG_MAX);
+		ret += printf("%jO, %jO\n", 0, USHRT_MAX);
+		ret += printf("%jU, %jU\n", 0, USHRT_MAX);
+		ret += printf("%jD, %jD\n", 0, USHRT_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "%z%"))
+	{
+		ret += printf("1. %zd%zd\n", 0, 42);
+		//ret += printf("2. %zd\n", LLONG_MAX);
+		ret += printf("3. %zi%zi\n", 0, 42);
+		//ret += printf("4. %zi\n", LLONG_MAX);
+		ret += printf("5. %zu, %zu\n", 0, ULLONG_MAX);
+		ret += printf("6. %zo, %zo\n", 0, ULLONG_MAX);
+		ret += printf("7. %zx, %zx\n", 0, ULLONG_MAX);
+		ret += printf("8, %zX, %zX\n", 0, ULLONG_MAX);
+		ret += printf("9. %zO, %zO\n", 0, USHRT_MAX);
+		ret += printf("10. %zU, %zU\n", 0, USHRT_MAX);
+		ret += printf("11. %zD, %zD\n", 0, USHRT_MAX);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "ad1"))
+	{
+		ret += printf("1. {%10d}\n", 42);
+		ret += printf("2. {%4d}\n", 10000);
+		ret += printf("3. {%30d}\n", 10000);
+		ret += printf("4. {%10d}\n", -42);
+		//ret += printf("5. {%3c}\n", 0);
+		ret += printf("6. {%5p}\n", 0);
+		ret += printf("7. {%-15p}\n", 0);
+		ret += printf("8. {%-13p}\n", &strlen);
+		ret += printf("9. {%-12p}\n", &strlen);
+		ret += printf("10. {%-10d}", 42);
+		ret += printf("11. {%-4d}\n", 10000);
+		ret += printf("12. {%-30d}\n", 10000);
+		//ret += printf("{%30S}", L"我是一只猫。");
+		//ret += printf("{%-30S}", L"我是一只猫。");
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "ad2"))
+	{
+		ret += printf("1. {%010d}\n", 42);
+		ret += printf("2. {%010d}\n", 0);
+		ret += printf("3. {%04d}\n", 10000);
+		ret += printf("4. {%030d}\n", 10000);
+		ret += printf("5. {%030x}\n", 0xFFFF);
+		ret += printf("6. {%030X}\n", 0xFFFF);
+		//ret += printf("{%03c}", 0);
+		ret += printf("7. {%05s}\n", "abc");
+		//ret += printf("{%030S}", L"我是一只猫。");
+		//ret += printf("8. {%05p}\n", 0);
+		//ret += printf("9. {%015p}\n", &strcmp);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}

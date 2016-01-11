@@ -49,18 +49,20 @@ int		print_arg_unb(unsigned long nb, char c)
 	return (0);
 }
 
-int		process_arg(void *content, char *param, char c)
+int		process_arg(void *content, char *p, char c)
 {
 	char			*str;
 	long			number;
 	unsigned long	unumber;
 	int				i;
-	char			ulong;
+	int				ulong;
+	int				val;
 
 	str = 0;
 	number = 0;
 	unumber = 0;
 	ulong = 0;
+	val = 0;
 	if (c == 'S')
 		return (ft_putwchar((wchar_t *)content));
 	else if (c == 'c')
@@ -80,34 +82,50 @@ int		process_arg(void *content, char *param, char c)
 		unumber = (unsigned long)content;
 		ulong = 1;
 	}
-	if (ft_strlen(param) > 2)
+	if (ft_strlen(p) > 2)
 	{
 		i = 1;
-		while (param[i] != c)
+		while (p[i] != c)
 		{
-			if (param[i] == 'l' && (c != 'u' || c != 'o' || c != 'x') && param[i - 1] != 'l')
+			if ((p[i] == 'l' || p[i] == 'j') && (c != 'u' || c != 'o' || c != 'x'))
 				number = (long)content;
-			else if (param[i - 1] == 'l' || (c == 'u' || c == 'x' || c == 'o') && param[i] == 'l')
+			else if (p[i] == 'l' || p[i] == 'j' || p[i] == 'z')
 			{
 				unumber = (unsigned long)content;
 				ulong = 1;
 			}
-			else if (param[i] == 'h' && param[i - 1] != 'h' &&
+			else if (p[i] == 'h' && p[i - 1] != 'h' &&
 					(c == 'u' || c == 'x' || c == 'o' || c == 'X' || c == 'D'))
 				number = (unsigned short)content;
-			else if (param[i] == 'h' && param[i - 1] != 'h')
+			else if (p[i] == 'h' && p[i - 1] != 'h')
 				number = (short)content;
-			else if (param[i] == 'h' && param[i - 1] == 'h')
+			else if (p[i] == 'h' && p[i - 1] == 'h' &&
+				(c == 'u' || c == 'x' || c == 'o' || c == 'X'))
+				number = (unsigned char)content;
+			else if (p[i] == 'h' && p[i - 1] == 'h' && c == 'D')
+				number = (unsigned short)content;
+			else if (p[i] == 'h' && p[i - 1] == 'h')
 				number = (char)content;
+			else if (ft_isdigit(p[i]) && !ft_isdigit(p[i - 1]))
+				val = ft_write_space(p, content, c, 0);
 			i++;
 		}
 	}
-	if (c == 'S' || c == 's')
-		return (print_arg_str(str, c));
-	else if (ulong)
-		return (print_arg_unb(unumber, c));
-	else
-		return (print_arg_nb(number, c));
+	if (val >= 0)
+	{
+		if (c == 'S' || c == 's')
+			return (print_arg_str(str, c) + val);
+		else if (ulong)
+			return (print_arg_unb(unumber, c) + val);
+		else
+			return (print_arg_nb(number, c) + val);
+	}
+	if (val < 0)
+	{
+		ulong = print_arg_nb(number, c);
+		val = ft_write_space(p, content, c, 1);
+		return (val + ulong);
+	}
 }
 
 /*
@@ -170,8 +188,9 @@ char	*search_convertion(char *s)
 			//write(1, param, ft_strlen(param));
 			return (param);
 		}
-		if (s[i] == '#' || s[i] == '0' || s[i] == '-' || s[i] == '+'
-			|| s[i] == ' ' || s[i] == 'l' || s[i] == 'h')
+		if (s[i] == '#' || s[i] == '0' || s[i] == '-' || s[i] == '+' ||
+			s[i] == ' ' || s[i] == 'l' || s[i] == 'h' || s[i] == 'j' ||
+			s[i] == 'z' || ft_isdigit(s[i]))
 			i++;
 		else
 			break ;
