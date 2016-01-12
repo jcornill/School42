@@ -7,6 +7,24 @@ static void	print(int nb, char c)
 		write(1, &c, 1);
 }
 
+int			get_content_len(void *content, char c)
+{
+	int		val;
+
+	val = 0;
+	if (c == 'p')
+		val += 2;
+	if (c == 'x' || c == 'X' || c == 'p')
+		val += ft_nbrlen((long)content, 16);
+	else if (c == 'o' || c == 'O')
+		val += ft_nbrlen((long)content, 8);
+	else if (c == 's' || c == 'S')
+		val += ft_strlen((char *)content);
+	else
+		val += ft_nbrlen((long)content, 10);
+	return (val);
+}
+
 int			ft_write_space(char *param, void *content, char c, int k)
 {
 	int		i;
@@ -33,16 +51,7 @@ int			ft_write_space(char *param, void *content, char c, int k)
 			ch = '0';
 		i--;
 	}
-	if (c == 'p')
-		val -= 2;
-	if (c == 'x' || c == 'X' || c == 'p')
-		val -= ft_nbrlen((long)content, 16);
-	else if (c == 'o' || c == 'O')
-		val -= ft_nbrlen((long)content, 8);
-	else if (c == 's' || c == 'S')
-		val -= ft_strlen((char *)content);
-	else
-		val -= ft_nbrlen((long)content, 10);
+	val -= get_content_len(content, c);
 	if (neg == 1 || k)
 		print(val + 1, ch);
 	if (val < 0)

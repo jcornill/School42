@@ -62,16 +62,58 @@ int		process_sharp(void *content, char c, char *param)
 
 int		process_add(void *content, char c, char *param)
 {
-	if ((long)content > 0 && c != 'o' && c != 'O')
+	if ((long)content >= 0 && c != 'o' && c != 'O')
 		return (write(1, "+", 1));
 	return (0);
 }
 
 int		process_space(void *content, char c, char *param)
 {
-	if ((long)content > 0)
+	if ((long)content >= 0 && c != 'u')
 		return (write(1, " ", 1));
 	return (0);
+}
+
+int		get_nbr_from_back(char *p, int i)
+{
+	int		val;
+	int		j;
+
+	val = 0;
+	j = 1;
+	while (ft_isdigit(p[i]))
+	{
+		val += (p[i] - 48) * j;
+		j *= 10;
+		i--;
+	}
+	return (val);
+}
+
+int		process_point(void *content, char c, char *param, int i)
+{
+	int		val1;
+	int		val2;
+	int		j;
+	int		result;
+
+	val1 = 0;
+	val2 = 0;
+	result = 0;
+	if (ft_isdigit(param[i - 1]))
+		val1 = get_nbr_from_back(param, i - 1);
+	if (ft_isdigit(param[i + 1]))
+		val2 = get_nbr_from_back(param, i + 1);
+	if (val2 > get_content_len(content, c))
+		j = val1 - val2;
+	else
+		j = val1 - get_content_len(content, c);
+	while (--j >= 0)
+		result += write(1, " ", 1);
+	j = (val2 - get_content_len(content, c));
+	while (--j >= 0)
+		result += write(1, "0", 1);
+	return (result);
 }
 
 int		process_arg(void *content, char *p, char c)
@@ -91,7 +133,7 @@ int		process_arg(void *content, char *p, char c)
 	if (c == 'S')
 		return (ft_putwchar((wchar_t *)content));
 	else if (c == 'c')
-		return (write(1, &str, 1));
+		return (write(1, &content, 1));
 	else if (c == 'C')
 		return (ft_putonewchar((wchar_t)content));
 	else if (c == 's' || c == '%')
@@ -131,14 +173,16 @@ int		process_arg(void *content, char *p, char c)
 				number = (unsigned short)content;
 			else if (p[i] == 'h' && p[i - 1] == 'h')
 				number = (char)content;
-			else if (ft_isdigit(p[i]) && !ft_isdigit(p[i - 1]))
-				val = ft_write_space(p, content, c, 0);
+			else if (ft_isdigit(p[i]) && !ft_isdigit(p[i - 1]) && ft_strchr(p, '.') == NULL)
+				val += ft_write_space(p, content, c, 0);
 			else if (p[i] == '#')
-				val = process_sharp(content, c, p);
+				val += process_sharp(content, c, p);
 			else if (p[i] == '+' && c != 's' && c != 'S')
-				val = process_add(content, c, p);
-			else if (p[i] == ' ')
-				val = process_space(content, c, p);
+				val += process_add(content, c, p);
+			else if (p[i] == ' ' && c != 's' && c != 'S' && c != 'c' && c != 'C' && ft_strchr(p, '+') == NULL)
+				val += process_space(content, c, p);
+			else if (p[i] == '.')
+				val += process_point(content, c, p, i);
 			i++;
 		}
 	}
@@ -158,47 +202,6 @@ int		process_arg(void *content, char *p, char c)
 		return (val + ulong);
 	}
 }
-
-/*
-	else if (!ft_strcmp("%d", param) || !ft_strcmp("%i", param))
-		return (ft_putnbr_long((int)str));
-	else if (!ft_strcmp("%ld", param) || !ft_strcmp("%li", param) || !ft_strcmp("%lld", param) || !ft_strcmp("%lli", param))
-		return (ft_putnbr_long((long)str));
-	else if (!ft_strcmp("%p", param))
-		return (ft_putaddr((long)str));
-	else if (!ft_strcmp("%%", param))
-		return (ft_putstrprintf("%"));
-	else if (!ft_strcmp("%S", param) || !ft_strcmp("%ls", param))
-		return (ft_putwchar((wchar_t *)str));
-	else if (!ft_strcmp("%D", param))
-		return (ft_putnbr_long((long)str));
-	else if (!ft_strcmp("%o", param))
-		return (ft_putnbr_base((unsigned int)str, 8, 0));
-	else if (!ft_strcmp("%O", param) || !ft_strcmp("%lo", param) || !ft_strcmp("%llo", param))
-		return (ft_putnbr_base_long((unsigned long)str, 8, 0));
-	else if (!ft_strcmp("%u", param))
-		return (ft_putnbr_long((unsigned int)str));
-	else if (!ft_strcmp("%U", param) || !ft_strcmp("%lu", param) || !ft_strcmp("%llu", param))
-		return (ft_putnbr_ulong((unsigned long)str));
-	else if (!ft_strcmp("%x", param))
-		return (ft_putnbr_base((unsigned int)str, 16, 0));
-	else if (!ft_strcmp("%X", param))
-		return (ft_putnbr_base_long((unsigned int)str, 16, 1));
-	else if (!ft_strcmp("%lx", param))
-		return (ft_putnbr_base_long((unsigned long)str, 16, 0));
-	else if (!ft_strcmp("%lX", param))
-		return (ft_putnbr_base_long((unsigned long)str, 16, 1));
-	else if (!ft_strcmp("%c", param))
-		return (write(1, &str, 1));
-	else if (!ft_strcmp("%C", param) || !ft_strcmp("%lc", param))
-		return (ft_putonewchar((wchar_t)str));
-	else if (!ft_strcmp("%lO", param))
-		return (ft_putnbr_base_long((unsigned long)str, 8, 0) * 0 - 1);
-	else if (!ft_strcmp("%lU", param))
-		return (ft_putnbr_ulong((unsigned long)str) * 0 - 1);
-	else if (!ft_strcmp("%lD", param))
-		return (ft_putnbr_long((long)str) * 0 - 1);
-*/
 
 char	*search_convertion(char *s)
 {
@@ -221,7 +224,7 @@ char	*search_convertion(char *s)
 		}
 		if (s[i] == '#' || s[i] == '0' || s[i] == '-' || s[i] == '+' ||
 			s[i] == ' ' || s[i] == 'l' || s[i] == 'h' || s[i] == 'j' ||
-			s[i] == 'z' || ft_isdigit(s[i]))
+			s[i] == 'z' || s[i] == '.' || ft_isdigit(s[i]))
 			i++;
 		else
 			break ;

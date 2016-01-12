@@ -393,11 +393,11 @@ int		main(int argc, char **argv)
 	}
 	if (!strcmp(argv[1], "%+%"))
 	{
-		//ret += printf("1. %+d\n", 42);
+		ret += printf("1. %+d\n", 42);
 		ret += printf("2. %+d\n", -42);
 		ret += printf("3. %+i\n", 42);
 		ret += printf("4. %+i\n", -42);
-		//ret += printf("5. %+c", 0);
+		ret += printf("5. %+c", 0);
 		//ret += printf("6. %+C", 0);
 		ret += printf("7. %+o\n", 0);
 		ret += printf("8. %+o\n", 42);
@@ -406,6 +406,49 @@ int		main(int argc, char **argv)
 		//ret += printf("11. [%+s]\n", 0);
 		ret += printf("12. [%+s]\n", "(null)");
 		ret += printf("13. %+O\n", 1);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "% %"))
+	{
+		ret += printf("1. % d\n", 9999);
+		ret += printf("2. % d\n", -9999);
+		ret += printf("3. % i\n", 9999);
+		ret += printf("4. % i\n", -9999);
+		ret += printf("5. % u\n", 9999);
+		ret += printf("6. {% c}\n", 0);
+		ret += printf("7. {% c}\n", 'a');
+		ret += printf("8. {% s}\n", NULL);
+		ret += printf("9. {% s}\n", "(null)");
+		ret += printf("10. {% s}\n", "");
+		//ret += printf("11. {% C}\n", 0);
+		//ret += printf("12. {% C}\n", L'a');
+		//ret += printf("13. {% S}\n", NULL);
+		//ret += printf("14. {% S}\n", L"(null)");
+		//ret += printf("15. {% S}\n", L"");
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "%.%"))
+	{
+		ret += printf("1. %.4d\n", 42);
+		ret += printf("2. %.4d\n", 424242);
+		ret += printf("3. %.4d\n", -424242);
+		ret += printf("4. %15.4d\n", 42);
+		ret += printf("5. %15.4d\n", 424242);
+		ret += printf("6. %8.4d\n", 424242424);
+		ret += printf("7. %15.4d\n", -424242);
+		ret += printf("8. %8.4d\n", -424242424);
+		ret += printf("9. %4.8d\n", 424242424);
+		ret += printf("10. %4.8d\n", -424242424);
+		ret += printf("11. %.4i\n", 42);
+		ret += printf("12. %15.4i\n", 42);
+		ret += printf("13. %.4u\n", 42);
+		ret += printf("14. %.4u\n", 424242);
+		ret += printf("15. %15.4u\n", 42);
+		ret += printf("16. %15.4u\n", 424242);
+		ret += printf("17. %8.4u\n", 424242424);
+		ret += printf("18. %4.8u\n", 424242424);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -442,6 +485,15 @@ int		main(int argc, char **argv)
 		//ret += printf("8. {%05p}\n", 0);
 		//ret += printf("9. {%015p}\n", &strcmp);
 		//ret += printf("10. {%-15Z}\n", 123);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "ad3"))
+	{
+		ret += printf("1. {% +d}\n", 42);
+		ret += printf("2. {%+ d}\n", 42);
+		ret += printf("3. {%+03d}\n", 123456);
+		ret += printf("4. %#O", 0);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}

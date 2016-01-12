@@ -397,7 +397,7 @@ int		main(int argc, char **argv)
 		ret += ft_printf("2. %+d\n", -42);
 		ret += ft_printf("3. %+i\n", 42);
 		ret += ft_printf("4. %+i\n", -42);
-		//ret += ft_printf("5. %+c", 0);
+		ret += ft_printf("5. %+c", 0);
 		//ret += ft_printf("6. %+C", 0);
 		ret += ft_printf("7. %+o\n", 0);
 		ret += ft_printf("8. %+o\n", 42);
@@ -411,21 +411,44 @@ int		main(int argc, char **argv)
 	}
 	if (!strcmp(argv[1], "% %"))
 	{
-		ret += ft_printf("% d", 9999);
-		ret += ft_printf("% d", -9999);
-		ret += ft_printf("% i", 9999);
-		ret += ft_printf("% i", -9999);
-		ret += ft_printf("% u", 9999);
-		ret += ft_printf("{% c}", 0);
-		ret += ft_printf("{% c}", 'a');
-		ret += ft_printf("{% s}", NULL);
-		ret += ft_printf("{% s}", "(null)");
-		ret += ft_printf("{% s}", "");
-		ret += ft_printf("{% C}", 0);
-		ret += ft_printf("{% C}", L'a');
-		ret += ft_printf("{% S}", NULL);
-		ret += ft_printf("{% S}", L"(null)");
-		ret += ft_printf("{% S}", L"");
+		ret += ft_printf("1. % d\n", 9999);
+		ret += ft_printf("2. % d\n", -9999);
+		ret += ft_printf("3. % i\n", 9999);
+		ret += ft_printf("4. % i\n", -9999);
+		ret += ft_printf("5. % u\n", 9999);
+		ret += ft_printf("6. {% c}\n", 0);
+		ret += ft_printf("7. {% c}\n", 'a');
+		ret += ft_printf("8. {% s}\n", NULL);
+		ret += ft_printf("9. {% s}\n", "(null)");
+		ret += ft_printf("10. {% s}\n", "");
+		//ret += ft_printf("11. {% C}\n", 0);
+		//ret += ft_printf("12. {% C}\n", L'a');
+		//ret += ft_printf("13. {% S}\n", NULL);
+		//ret += ft_printf("14. {% S}\n", L"(null)");
+		//ret += ft_printf("15. {% S}\n", L"");
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "%.%"))
+	{
+		ret += ft_printf("1. %.4d\n", 42);
+		ret += ft_printf("2. %.4d\n", 424242);
+		ret += ft_printf("3. %.4d\n", -424242);
+		ret += ft_printf("4. %15.4d\n", 42);
+		ret += ft_printf("5. %15.4d\n", 424242);
+		ret += ft_printf("6. %8.4d\n", 424242424);
+		ret += ft_printf("7. %15.4d\n", -424242);
+		ret += ft_printf("8. %8.4d\n", -424242424);
+		ret += ft_printf("9. %4.8d\n", 424242424);
+		ret += ft_printf("10. %4.8d\n", -424242424);
+		ret += ft_printf("11. %.4i\n", 42);
+		ret += ft_printf("12. %15.4i\n", 42);
+		ret += ft_printf("13. %.4u\n", 42);
+		ret += ft_printf("14. %.4u\n", 424242);
+		ret += ft_printf("15. %15.4u\n", 42);
+		ret += ft_printf("16. %15.4u\n", 424242);
+		ret += ft_printf("17. %8.4u\n", 424242424);
+		ret += ft_printf("18. %4.8u\n", 424242424);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -462,6 +485,15 @@ int		main(int argc, char **argv)
 		//ret += ft_printf("8. {%05p}\n", 0);
 		//ret += ft_printf("9. {%015p}\n", &strcmp);
 		//ret += ft_printf("10. {%-15Z}\n", 123);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	if (!strcmp(argv[1], "ad3"))
+	{
+		ret += ft_printf("1. {% +d}\n", 42);
+		ret += ft_printf("2. {%+ d}\n", 42);
+		ret += ft_printf("3. {%+03d}\n", 123456);
+		ret += ft_printf("4. %#O", 0);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
