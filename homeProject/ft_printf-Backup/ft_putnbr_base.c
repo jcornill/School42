@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 16:25:42 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 18:24:38 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:35:42 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_putnbr_base(long nb, int base, char a)
 		nb = -nb;
 		val = 1;
 	}
-	if (nb >= (long)base)
+	if (nb >= base)
 	{
 		val += ft_putnbr_base(nb / base, base, a);
 		val += ft_putnbr_base(nb % base, base, a);

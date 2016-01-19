@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:41:47 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/10 23:37:26 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:15:16 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ void				ft_lstpush(t_list **alst, t_list *new);
 int					ft_isspace(int c);
 void				*ft_memdup(void const *s, size_t n);
 void				ft_strrev(char *s);
+int                 ft_nbrlen(long nbr, int base);
 #endif

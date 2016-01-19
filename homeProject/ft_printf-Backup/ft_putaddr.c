@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 19:56:11 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 20:08:58 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:35:55 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int		ft_putaddr(long nb)
 
 	write(1, "0x", 2);
 	val = 2;
-	val += ft_putnbr_base((long)nb, 16, 0);
+	val += ft_putnbr_base(nb, 16, 0);
 	return (val);
 }

@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 19:41:30 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:40:43 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			ft_printf(char *str, ...)
 	int			i;
 	int			written_char;
 	char		*param;
+	int			temp;
 
 	i = -1;
 	written_char = 0;
@@ -79,9 +80,13 @@ int			ft_printf(char *str, ...)
 			if (ft_strlen(param) > 1)
 			{
 				if (param[ft_strlen(param) - 1] != '%')
-					written_char += process_arg(va_arg(args, void *), param, param[ft_strlen(param) - 1]);
+					temp = process_arg(va_arg(args, void *), param, param[ft_strlen(param) - 1]);
 				else
-					written_char += write(1, "%", 1);
+					temp = write(1, "%", 1);
+				if (temp == -1)
+					return (-1);
+				else
+					written_char += temp;
 				i += ft_strlen(param) - 1;
 			}
 		}

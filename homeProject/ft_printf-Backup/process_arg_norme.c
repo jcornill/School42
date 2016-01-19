@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int		get_number(char c, void *content)
+static long		get_number(char c, void *content)
 {
 		if (c == 'd' || c == 'i')
 			return ((int)content);
@@ -75,18 +75,25 @@ int				process_arg(void *content, char *p, char c)
 	else if (c == 'O' || c == 'U')
 		t[2] = ((unumber = (unsigned long)content) == 0) ? 1 : 1;
 	if ((t[1] = 0) == 0 && ft_strlen(p) > 2)
+	{
 		while (p[++t[1]] != c)
+		{
 			if (p[t[1]] == '.' && c != 's' && c != 'S')
 				t[3] += process_point(content, c, p, t[1]);
 			else if (p[t[1]] == '.')
 				t[3] += process_point_str(str, p, t[1]);
 			else
-				if ((p[t[1]] == 'l' || p[t[1]] == 'j') && (c != 'u' || c != 'o' || c != 'x'))
+				if ((p[t[1]] == 'l' || p[t[1]] == 'j') && (c != 'u' || c != 'o' || c != 'x') && p[t[1] - 1] != 'l')
 					t[0] = (long)content;
 				else if (p[t[1]] == 'l' || p[t[1]] == 'j' || p[t[1]] == 'z')
-					t[2] = ((unumber = (unsigned long)content) == 0) ? 1 : 1;
+				{
+					unumber = (unsigned long)content;
+					t[2] = 1;
+				}
 				else
 					process(p, t, c, content);
+		}
+	}
 	if (t[3] < 0)
 		return (print_arg_nb(t[0], c) + ft_write_space(p, content, c, 1));
 	return (print(unumber, c, str, t));

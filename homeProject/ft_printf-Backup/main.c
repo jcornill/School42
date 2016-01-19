@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 20:08:28 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:26:44 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int		main(int argc, char **argv)
 
 	ret = 0;
 	fflush(stdout);
+//	long test1 = LONG_MAX;
+//	long long test2 = LLONG_MAX;
+//	printf("%ld,%lld\n",test1 ,test2);
 	if (!strcmp(argv[1], "simple"))
 	{
 		ret += ft_printf("This is a simple test.\n");
@@ -77,7 +80,7 @@ int		main(int argc, char **argv)
 		ret += ft_printf("%p\n", &printf);
 		ret += ft_printf("%p\n", &strlen);
 		ret += ft_printf("%p\n", 0);
-		printf("\n Written char : %d Bad return value\n", ret);
+		printf("Written char : %d Bad return value\n", ret);
 		return (0);
 	}
 	else if (!strcmp(argv[1], "multiple"))
@@ -234,21 +237,21 @@ int		main(int argc, char **argv)
 	else if (!strcmp(argv[1], "%l%"))
 	{
 		ret += ft_printf("1. %ld%ld\n", 0, 42);
-		//ret += ft_printf("2. %ld\n", (long)INT_MAX + 1);
-		//ret += ft_printf("3. %ld\n", (long)INT_MIN - 1);
+		ret += ft_printf("2. %ld\n", (long)INT_MAX + 1);
+		ret += ft_printf("3. %ld\n", (long)INT_MIN - 1);
 		ret += ft_printf("4. %ld\n", LONG_MAX);
 		ret += ft_printf("5. %ld\n", LONG_MIN);
 		ret += ft_printf("6. %li%li\n", 0, 42);
-		//ret += ft_printf("7. %li\n", (long)INT_MAX + 1);
-		//ret += ft_printf("8. %li\n", (long)INT_MIN - 1);
+		ret += ft_printf("7. %li\n", (long)INT_MAX + 1);
+		ret += ft_printf("8. %li\n", (long)INT_MIN - 1);
 		ret += ft_printf("9. %li\n", LONG_MAX);
 		ret += ft_printf("10. %li\n", LONG_MIN);
-		//ret += ft_printf("11. %lu, %lu\n", 0, ULONG_MAX);
-		//ret += ft_printf("12. %lo, %lo\n", 0, ULONG_MAX);
-		//ret += ft_printf("13. %lx, %lx\n", 0, ULONG_MAX);
+		ret += ft_printf("11. %lu, %lu\n", 0, ULONG_MAX);
+		ret += ft_printf("12. %lo, %lo\n", 0, ULONG_MAX);
+		ret += ft_printf("13. %lx, %lx\n", 0, ULONG_MAX);
 		ret += ft_printf("14. %lX, %lX\n", 0, ULONG_MAX);
-		//ret += ft_printf("%lc, %lc\n", L'暖', L'ح');
-		//ret += ft_printf("%ls, %ls\n", L"暖炉", L"Bonjour");
+		ret += ft_printf("%lc, %lc\n", L'暖', L'ح');
+		ret += ft_printf("%ls, %ls\n", L"暖炉", L"Bonjour");
 		ret += ft_printf("15. %lO, %lO\n", 0, USHRT_MAX);
 		ret += ft_printf("16. %lU, %lU\n", 0, USHRT_MAX);
 		ret += ft_printf("17. %lD, %lD\n", 0, USHRT_MAX);
