@@ -30,8 +30,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%s"))
+	else if (!strcmp(argv[1], "%s"))
 	{
 		ret += printf("%s", "abc\n");
 		ret += printf("111%s333\n", "222");
@@ -45,8 +44,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%d"))
+	else if (!strcmp(argv[1], "%d"))
 	{
 		ret += printf("%d\n", 42);
 		ret += printf("%d\n", -42);
@@ -59,8 +57,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%%"))
+	else if (!strcmp(argv[1], "%%"))
 	{
 		ret += printf("%%\n");
 		ret += printf("aa%%bb\n");
@@ -73,8 +70,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%p"))
+	else if (!strcmp(argv[1], "%p"))
 	{
 		ret += printf("%p\n", &strlcat);
 		ret += printf("%p\n", &strcmp);
@@ -84,16 +80,14 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "multiple"))
+	else if (!strcmp(argv[1], "multiple"))
 	{
 		ret += printf("s: %s, p: %p, d:%d\n", "a string", &strlen, 42);
 		ret += printf("%s%p%d%d%p%s%p%p%s\n", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0 ;
-	if (!strcmp(argv[1], "%S"))
+	else if (!strcmp(argv[1], "%S"))
 	{
 		ret += printf("{%S}\n", NULL);
 		ret += printf("{%S}\n", L"Ã©");
@@ -104,8 +98,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%D"))
+	else if (!strcmp(argv[1], "%D"))
 	{	
 		ret += printf("1. %D\n", 0L);
 		ret += printf("2. %D\n", 1L);
@@ -117,8 +110,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%i"))
+	else if (!strcmp(argv[1], "%i"))
 	{
 		ret += printf("%i\n", 42);
 		ret += printf("%i\n", -42);
@@ -129,8 +121,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%o"))
+	else if (!strcmp(argv[1], "%o"))
 	{
 		ret += printf("%o\n", 42);
 		ret += printf("before %o after\n", 42);
@@ -142,8 +133,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%O"))
+	else if (!strcmp(argv[1], "%O"))
 	{
 		ret += printf("%O\n", 42);
 		ret += printf("before %O after\n", 42);
@@ -155,8 +145,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%u"))
+	else if (!strcmp(argv[1], "%u"))
 	{
 		ret += printf("%u\n", 42);
 		ret += printf("before %u after\n", 42);
@@ -168,8 +157,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%U"))
+	else if (!strcmp(argv[1], "%U"))
 	{
 		ret += printf("%U\n", 42);
 		ret += printf("before %U after\n", -42);
@@ -179,8 +167,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%x"))
+	else if (!strcmp(argv[1], "%x"))
 	{
 		ret += printf("%x\n", 42);
 		ret += printf("before %x after\n", 42);
@@ -191,8 +178,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%X"))
+	else if (!strcmp(argv[1], "%X"))
 	{
 		ret += printf("%X\n", 42);
 		ret += printf("Before %X after\n", 42);
@@ -205,8 +191,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%c"))
+	else if (!strcmp(argv[1], "%c"))
 	{
 		ret += printf("%c\n", 'c');
 		ret += printf("%c %c\n", '4', '2');
@@ -222,8 +207,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%C"))
+	else if (!strcmp(argv[1], "%C"))
 	{
 		ret += printf("1. %C\n", 'c');
 		ret += printf("2. %C%C\n", '4', '2');
@@ -240,16 +224,14 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "multiple2"))
+	else if (!strcmp(argv[1], "multiple2"))
 	{
 		ret += printf("1. %s %d %p %x %S %C\n", "bonjour ", 42, &free, 42, L"Bonjour", L'C');
 		ret += printf("2. %s%S%d%p%D%i%o%O%u%U%x%X%c%C\n","bonjour", L"Ã©Ã©Ã©Ã©", 42, &strcmp, LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'Ã');
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%l%"))
+	else if (!strcmp(argv[1], "%l%"))
 	{
 		ret += printf("1. %ld%ld\n", 0, 42);
 		//ret += printf("2. %ld\n", (long)INT_MAX + 1);
@@ -274,8 +256,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%ll%"))
+	else if (!strcmp(argv[1], "%ll%"))
 	{
 		ret += printf("1. %lld%lld\n", 0, 42);
 		ret += printf("2. %lld\n", LLONG_MAX);
@@ -293,8 +274,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%h%"))
+	else if (!strcmp(argv[1], "%h%"))
 	{
 		ret += printf("1. %hd%hd\n", (short int)0, (short int)42);
 		ret += printf("2. %hd\n", SHRT_MAX);
@@ -312,8 +292,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	ret = 0;
-	if (!strcmp(argv[1], "%hh%"))
+	else if (!strcmp(argv[1], "%hh%"))
 	{
 		ret += printf("1. %hhd%hhd\n", 1, 42);
 		ret += printf("2. %hhd\n", CHAR_MAX);
@@ -341,7 +320,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "%j%"))
+	else if (!strcmp(argv[1], "%j%"))
 	{
 		ret += printf("%jd%jd\n", 0, 42);
 		ret += printf("%jd\n", LLONG_MAX);
@@ -359,7 +338,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "%z%"))
+	else if (!strcmp(argv[1], "%z%"))
 	{
 		ret += printf("1. %zd%zd\n", 0, 42);
 		//ret += printf("2. %zd\n", LLONG_MAX);
@@ -375,7 +354,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "%#%"))
+	else if (!strcmp(argv[1], "%#%"))
 	{
 		ret += printf("1. %#o\n", 42);
 		ret += printf("2. %#o\n", 0);
@@ -391,7 +370,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "%+%"))
+	else if (!strcmp(argv[1], "%+%"))
 	{
 		ret += printf("1. %+d\n", 42);
 		ret += printf("2. %+d\n", -42);
@@ -409,7 +388,7 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "% %"))
+	else if (!strcmp(argv[1], "% %"))
 	{
 		ret += printf("1. % d\n", 9999);
 		ret += printf("2. % d\n", -9999);
@@ -429,7 +408,52 @@ int		main(int argc, char **argv)
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "%.%"))
+	else if (!strcmp(argv[1], "ad1"))
+	{
+		ret += printf("1. {%10d}\n", 42);
+		ret += printf("2. {%4d}\n", 10000);
+		ret += printf("3. {%30d}\n", 10000);
+		ret += printf("4. {%10d}\n", -42);
+		//ret += printf("5. {%3c}\n", 0);
+		ret += printf("6. {%5p}\n", 0);
+		ret += printf("7. {%-15p}\n", 0);
+		ret += printf("8. {%-13p}\n", &strlen);
+		ret += printf("9. {%-12p}\n", &strlen);
+		ret += printf("10. {%-10d}", 42);
+		ret += printf("11. {%-4d}\n", 10000);
+		ret += printf("12. {%-30d}\n", 10000);
+		//ret += printf("{%30S}", L"我是一只猫。");
+		//ret += printf("{%-30S}", L"我是一只猫。");
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	else if (!strcmp(argv[1], "ad2"))
+	{
+		ret += printf("1. {%010d}\n", 42);
+		ret += printf("2. {%010d}\n", 0);
+		ret += printf("3. {%04d}\n", 10000);
+		ret += printf("4. {%030d}\n", 10000);
+		ret += printf("5. {%030x}\n", 0xFFFF);
+		ret += printf("6. {%030X}\n", 0xFFFF);
+		//ret += printf("{%03c}", 0);
+		ret += printf("7. {%05s}\n", "abc");
+		//ret += printf("{%030S}", L"我是一只猫。");
+		//ret += printf("8. {%05p}\n", 0);
+		//ret += printf("9. {%015p}\n", &strcmp);
+		//ret += printf("10. {%-15Z}\n", 123);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	else if (!strcmp(argv[1], "ad3"))
+	{
+		ret += printf("1. {% +d}\n", 42);
+		ret += printf("2. {%+ d}\n", 42);
+		ret += printf("3. {%+03d}\n", 123456);
+		ret += printf("4. %#O", 0);
+		printf("\n Written char : %d Bad return value\n", ret);
+		return (0);
+	}
+	else if (!strcmp(argv[1], "B%.1%"))
 	{
 		ret += printf("1. %.4d\n", 42);
 		ret += printf("2. %.4d\n", 424242);
@@ -449,52 +473,79 @@ int		main(int argc, char **argv)
 		ret += printf("16. %15.4u\n", 424242);
 		ret += printf("17. %8.4u\n", 424242424);
 		ret += printf("18. %4.8u\n", 424242424);
+		ret += printf("19. %8.14u\n", 424242424);
+		ret += printf("20. %4.18u\n", 424242424);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "ad1"))
+	else if (!strcmp(argv[1], "B%.2%"))
 	{
-		ret += printf("1. {%10d}\n", 42);
-		ret += printf("2. {%4d}\n", 10000);
-		ret += printf("3. {%30d}\n", 10000);
-		ret += printf("4. {%10d}\n", -42);
-		//ret += printf("5. {%3c}\n", 0);
-		ret += printf("6. {%5p}\n", 0);
-		ret += printf("7. {%-15p}\n", 0);
-		ret += printf("8. {%-13p}\n", &strlen);
-		ret += printf("9. {%-12p}\n", &strlen);
-		ret += printf("10. {%-10d}", 42);
-		ret += printf("11. {%-4d}\n", 10000);
-		ret += printf("12. {%-30d}\n", 10000);
-		//ret += printf("{%30S}", L"我是一只猫。");
-		//ret += printf("{%-30S}", L"我是一只猫。");
+		ret += printf("1. %.4o\n", 42);
+		ret += printf("2. %.4o\n", 424242);
+		ret += printf("3. %15.4o\n", 42);
+		ret += printf("4. %15.4o\n", 424242);
+		ret += printf("5. %8.4o\n", 424242424);
+		ret += printf("6. %4.15o\n", 42);
+		ret += printf("7. %4.15o\n", 424242);
+		ret += printf("8. %4.8o\n", 424242424);
+		ret += printf("10. %.4O\n", 42);
+		ret += printf("11. %15.4O\n", 42);
+		ret += printf("12. %4.15O\n", 42);
+		ret += printf("13. %.4x\n", 42);
+		ret += printf("14. %.4x\n", 424242);
+		ret += printf("15. %15.4x\n", 42);
+		ret += printf("16. %15.4x\n", 424242);
+		ret += printf("17. %8.4x\n", 424242424);
+		ret += printf("18. %4.15x\n", 42);
+		ret += printf("19. %4.15x\n", 42424242);
+		ret += printf("20. %4.8x\n", 424242424);
+		ret += printf("21. %.4X\n", 42);
+		ret += printf("22. %.4X\n", 424242);
+		ret += printf("23. %15.4X\n", 42);
+		ret += printf("24. %15.4X\n", 424242);
+		ret += printf("25. %8.4X\n", 424242424);
+		ret += printf("26. %4.15X\n", 42);
+		ret += printf("27. %4.15X\n", 424242);
+		ret += printf("28. %4.8X\n", 424242424);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "ad2"))
+	else if (!strcmp(argv[1], "B%.3%"))
 	{
-		ret += printf("1. {%010d}\n", 42);
-		ret += printf("2. {%010d}\n", 0);
-		ret += printf("3. {%04d}\n", 10000);
-		ret += printf("4. {%030d}\n", 10000);
-		ret += printf("5. {%030x}\n", 0xFFFF);
-		ret += printf("6. {%030X}\n", 0xFFFF);
-		//ret += printf("{%03c}", 0);
-		ret += printf("7. {%05s}\n", "abc");
-		//ret += printf("{%030S}", L"我是一只猫。");
-		//ret += printf("8. {%05p}\n", 0);
-		//ret += printf("9. {%015p}\n", &strcmp);
-		//ret += printf("10. {%-15Z}\n", 123);
+		ret += printf("1. %.4s\n", "42");
+		ret += printf("2. %15.4s\n", "42");
+		ret += printf("3. %4.15s\n", "42");
+		ret += printf("4. %4.15s\n", "I am 42");
+		ret += printf("5. %.c\n", 0);
+		ret += printf("6. %.5c\n", 0);
+		ret += printf("7. %.5c\n", 42);
+		ret += printf("8. %9.2p\n", 1234);
+		ret += printf("9. %9.2p\n", 1234567);
+		ret += printf("10. %.3%\n");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	if (!strcmp(argv[1], "ad3"))
+	else if (!strcmp(argv[1], "B%b"))
 	{
-		ret += printf("1. {% +d}\n", 42);
-		ret += printf("2. {%+ d}\n", 42);
-		ret += printf("3. {%+03d}\n", 123456);
-		ret += printf("4. %#O", 0);
-		printf("\n Written char : %d Bad return value\n", ret);
+		ret += printf("1. {%b}\n", 0);
+		ret += printf("2. {%b}\n", 42);
+		ret += printf("3. {%b}\n", 123456);
+		ret += printf("4. %b\n", -42);
+		printf("Written char : %d\n", ret);
+		return (0);
+	}
+	else if (!strcmp(argv[1], "Bcolor"))
+	{
+		ret += printf("1. {red}%s{eof} julien de {dred}%d{eof}\n", "Bonjour", 42);
+		ret += printf("2. {Bonjour}\n");
+		ret += printf("3. {red}a{black}b{green}c{yellow}d{blue}e{purple}f{cyan}g{eof}h\n");
+		printf("Written char : %d\n", ret);
+		return (0);
+	}
+	else if (!strcmp(argv[1], "user"))
+	{
+		ret += printf("Adding test here\n");
+		printf("Written char : %d\n", ret);
 		return (0);
 	}
 }

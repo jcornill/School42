@@ -1,5 +1,2 @@
-1. {+42}
-2. {+42}
-3. {+123456}
-4. 0
- Written char : 35 Bad return value
+Adding test here
+Written char : 17

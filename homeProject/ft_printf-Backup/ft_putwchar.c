@@ -26,7 +26,7 @@ int		ft_putwchar(wchar_t *str)
 	}
 	while (*(str + i))
 	{
-		if (*(str + i) < 0 || *(str + i) > 255)
+		if (*(str + i) > 255)
 			return (-1);
 		i++;
 	}
@@ -34,7 +34,7 @@ int		ft_putwchar(wchar_t *str)
 	while (*(str + i))
 	{
 		val += 1;
-		if (*(str + i) >= 0 && *(str + i) <= 255)
+		if (*(str + i) <= 255)
 			write(1, (str + i), 1);
 		else
 			return (-1);

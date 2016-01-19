@@ -1,16 +1,5 @@
 clear
 echo "=====START====="
-echo "=====MAKEFILE====="
-touch file_makefile.txt
-#make | grep "Makefile"
-#make all | grep "Makefile"
-#make fclean | grep "Makefile" 
-make re 2>&1 > file_makefile.txt
-make clean 2>&1 >> file_makefile.txt
-cat file_makefile.txt | grep " error" > file_test.txt
-cat file_makefile.txt | grep "Stop" >> file_test.txt
-file=file_test.txt
-actualsize=$(wc -c <"$file")
 function g {
 	echo "\033[032m$1\033[0m"
 }
@@ -30,6 +19,17 @@ else
 	g OK
 fi
 }
+echo "=====MAKEFILE====="
+touch file_makefile.txt
+#make | grep "Makefile"
+#make all | grep "Makefile"
+#make fclean | grep "Makefile" 
+make re 2>&1 > file_makefile.txt
+make clean 2>&1 >> file_makefile.txt
+cat file_makefile.txt | grep " error" > file_test.txt
+cat file_makefile.txt | grep "Stop" >> file_test.txt
+file=file_test.txt
+actualsize=$(wc -c <"$file")
 if [ $actualsize -ge 1 ]; then
 	r Fail
 	echo "=====ERROR====="
@@ -49,7 +49,14 @@ sed 's/ft_printf(/printf(/g' main.c > main_ref.c
 mv main.c main
 gcc -w -I $i *.c libft/*.c -o ref.out
 mv main main.c
-g OK
+file=user.out
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	g OK
+else
+	echo "=====ERROR====="
+	exit
+fi
 echo "====STARTING TEST===="
 touch file_user.txt
 touch file_ref.txt
@@ -163,10 +170,6 @@ echo "=====% % TEST====="
 ./user.out "% %" > file_user.txt
 ./ref.out "% %" > file_ref.txt
 funct_comp
-echo "=====%.% TEST====="
-./user.out "%.%" > file_user.txt
-./ref.out "%.%" > file_ref.txt
-funct_comp
 echo "=====ad1 TEST====="
 ./user.out "ad1" > file_user.txt
 ./ref.out "ad1" > file_ref.txt
@@ -179,6 +182,29 @@ echo "=====ad3 TEST====="
 ./user.out "ad3" > file_user.txt
 ./ref.out "ad3" > file_ref.txt
 funct_comp
+echo "=====BONUS TEST====="
+echo "=====B%.1% TEST====="
+./user.out "B%.1%" > file_user.txt
+./ref.out "B%.1%" > file_ref.txt
+funct_comp
+echo "=====B%.2% TEST====="
+./user.out "B%.2%" > file_user.txt
+./ref.out "B%.2%" > file_ref.txt
+funct_comp
+echo "=====B%.3% TEST====="
+./user.out "B%.3%" > file_user.txt
+./ref.out "B%.3%" > file_ref.txt
+funct_comp
+echo "=====B%b TEST====="
+./user.out "B%b"
+echo "=====Bcolor TEST====="
+./user.out "Bcolor"
+echo "=====User TEST====="
+./user.out "user" > file_user.txt
+./ref.out "user" > file_ref.txt
+funct_comp
+echo "=====DISPLAY====="
+cat file_user.txt
 #rm file_user.txt
 #rm file_ref.txt
 #rm ./user.out

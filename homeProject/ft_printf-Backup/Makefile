@@ -13,10 +13,11 @@
 NAME=libftprintf.a
 SRC=ft_printf.c ft_putstrprintf.c ft_putnbr_long.c ft_putaddr.c \
 ft_putnbr_base.c ft_putwchar.c ft_putnbr_base_long.c \
-ft_putnbr_ulong.c ft_putonewchar.c
+ft_putnbr_ulong.c ft_putonewchar.c process_flag.c print_arg.c process_color.c \
+process_arg_2.c process_arg_nrome.c
 OBJ=$(SRC:.c=.o)
-FLAG=-w
-#-Wall -Wextra -Werror
+FLAG=-Wall -Wextra \
+#-Werror
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)
