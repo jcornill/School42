@@ -13,14 +13,20 @@ int		process_sharp(void *content, char c)
 
 int		process_add(void *content, char c)
 {
-	if ((long)content >= 0 && c != 'o' && c != 'O')
+	long	temp;
+
+	temp = (long)content - 4294967296;
+	if (temp <= -10000000 && c != 'o' && c != 'O')
 		return (write(1, "+", 1));
 	return (0);
 }
 
 int		process_space(void *content, char c)
 {
-	if ((long)content >= 0 && c != 'u')
+    long    temp;
+
+    temp = (long)content - 4294967296;
+	if (temp <= -1000000 && c != 'u')
 		return (write(1, " ", 1));
 	return (0);
 }

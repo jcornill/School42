@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/01/19 16:26:44 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:04:02 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,8 +250,6 @@ int		main(int argc, char **argv)
 		ret += ft_printf("12. %lo, %lo\n", 0, ULONG_MAX);
 		ret += ft_printf("13. %lx, %lx\n", 0, ULONG_MAX);
 		ret += ft_printf("14. %lX, %lX\n", 0, ULONG_MAX);
-		ret += ft_printf("%lc, %lc\n", L'暖', L'ح');
-		ret += ft_printf("%ls, %ls\n", L"暖炉", L"Bonjour");
 		ret += ft_printf("15. %lO, %lO\n", 0, USHRT_MAX);
 		ret += ft_printf("16. %lU, %lU\n", 0, USHRT_MAX);
 		ret += ft_printf("17. %lD, %lD\n", 0, USHRT_MAX);
@@ -318,8 +316,6 @@ int		main(int argc, char **argv)
 		ret += ft_printf("19. %hhO, %hhO\n", 0, USHRT_MAX);
 		ret += ft_printf("20. %hhU, %hhU\n", 0, USHRT_MAX);
 		ret += ft_printf("21. %hhD, %hhD\n", 0, USHRT_MAX);
-		//ret += ft_printf("22. %hhC, %hhC\n", 0, L'米');
-		//ret += ft_printf("23. %hhS, %hhS\n", 0, L"米米");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -344,9 +340,9 @@ int		main(int argc, char **argv)
 	else if (!strcmp(argv[1], "%z%"))
 	{
 		ret += ft_printf("1. %zd%zd\n", 0, 42);
-		//ret += ft_printf("2. %zd\n", LLONG_MAX);
+		ret += ft_printf("2. %zd\n", LLONG_MAX);
 		ret += ft_printf("3. %zi%zi\n", 0, 42);
-		//ret += ft_printf("4. %zi\n", LLONG_MAX);
+		ret += ft_printf("4. %zi\n", LLONG_MAX);
 		ret += ft_printf("5. %zu, %zu\n", 0, ULLONG_MAX);
 		ret += ft_printf("6. %zo, %zo\n", 0, ULLONG_MAX);
 		ret += ft_printf("7. %zx, %zx\n", 0, ULLONG_MAX);
@@ -369,7 +365,7 @@ int		main(int argc, char **argv)
 		ret += ft_printf("8. %#X\n", 42);
 		ret += ft_printf("9. %#X\n", 0);
 		ret += ft_printf("10. %#X\n", INT_MAX);
-		//ret += ft_printf("11. %#c\n", 0);
+		ret += ft_printf("11. %#c\n", 0);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -379,15 +375,12 @@ int		main(int argc, char **argv)
 		ret += ft_printf("2. %+d\n", -42);
 		ret += ft_printf("3. %+i\n", 42);
 		ret += ft_printf("4. %+i\n", -42);
-		ret += ft_printf("5. %+c", 0);
-		//ret += ft_printf("6. %+C", 0);
-		ret += ft_printf("7. %+o\n", 0);
-		ret += ft_printf("8. %+o\n", 42);
-		ret += ft_printf("9. %+O\n", 0);
-		ret += ft_printf("10. %+O\n", 42);
-		//ret += ft_printf("11. [%+s]\n", 0);
-		ret += ft_printf("12. [%+s]\n", "(null)");
-		ret += ft_printf("13. %+O\n", 1);
+		ret += ft_printf("5. %+o\n", 0);
+		ret += ft_printf("6. %+o\n", 42);
+		ret += ft_printf("7. %+O\n", 0);
+		ret += ft_printf("8. %+O\n", 42);
+		ret += ft_printf("9. [%+s]\n", "(null)");
+		ret += ft_printf("10. %+O\n", 1);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -398,16 +391,10 @@ int		main(int argc, char **argv)
 		ret += ft_printf("3. % i\n", 9999);
 		ret += ft_printf("4. % i\n", -9999);
 		ret += ft_printf("5. % u\n", 9999);
-		ret += ft_printf("6. {% c}\n", 0);
-		ret += ft_printf("7. {% c}\n", 'a');
-		ret += ft_printf("8. {% s}\n", NULL);
-		ret += ft_printf("9. {% s}\n", "(null)");
-		ret += ft_printf("10. {% s}\n", "");
-		//ret += ft_printf("11. {% C}\n", 0);
-		//ret += ft_printf("12. {% C}\n", L'a');
-		//ret += ft_printf("13. {% S}\n", NULL);
-		//ret += ft_printf("14. {% S}\n", L"(null)");
-		//ret += ft_printf("15. {% S}\n", L"");
+		ret += ft_printf("6. {% c}\n", 'a');
+		ret += ft_printf("7. {% s}\n", NULL);
+		ret += ft_printf("8. {% s}\n", "(null)");
+		ret += ft_printf("9. {% s}\n", "");
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -416,17 +403,13 @@ int		main(int argc, char **argv)
 		ret += ft_printf("1. {%10d}\n", 42);
 		ret += ft_printf("2. {%4d}\n", 10000);
 		ret += ft_printf("3. {%30d}\n", 10000);
-		ret += ft_printf("4. {%10d}\n", -42);
-		//ret += ft_printf("5. {%3c}\n", 0);
-		ret += ft_printf("6. {%5p}\n", 0);
-		ret += ft_printf("7. {%-15p}\n", 0);
-		ret += ft_printf("8. {%-13p}\n", &strlen);
-		ret += ft_printf("9. {%-12p}\n", &strlen);
-		ret += ft_printf("10. {%-10d}", 42);
-		ret += ft_printf("11. {%-4d}\n", 10000);
-		ret += ft_printf("12. {%-30d}\n", 10000);
-		//ret += ft_printf("{%30S}", L"我是一只猫。");
-		//ret += ft_printf("{%-30S}", L"我是一只猫。");
+		ret += ft_printf("4. {%5p}\n", 0);
+		ret += ft_printf("5. {%-15p}\n", 0);
+		ret += ft_printf("6. {%-13p}\n", &strlen);
+		ret += ft_printf("7. {%-12p}\n", &strlen);
+		ret += ft_printf("8. {%-10d}", 42);
+		ret += ft_printf("9. {%-4d}\n", 10000);
+		ret += ft_printf("10. {%-30d}\n", 10000);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
@@ -438,25 +421,15 @@ int		main(int argc, char **argv)
 		ret += ft_printf("4. {%030d}\n", 10000);
 		ret += ft_printf("5. {%030x}\n", 0xFFFF);
 		ret += ft_printf("6. {%030X}\n", 0xFFFF);
-		//ret += ft_printf("{%03c}", 0);
 		ret += ft_printf("7. {%05s}\n", "abc");
-		//ret += ft_printf("{%030S}", L"我是一只猫。");
-		//ret += ft_printf("8. {%05p}\n", 0);
-		//ret += ft_printf("9. {%015p}\n", &strcmp);
-		//ret += ft_printf("10. {%-15Z}\n", 123);
+        ret += ft_printf("8. {% +d}\n", 42);
+        ret += ft_printf("9. {%+ d}\n", 42);
+        ret += ft_printf("10. {%+03d}\n", 123456);
+        ret += ft_printf("11. %#O", 0);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	else if (!strcmp(argv[1], "ad3"))
-	{
-		ret += ft_printf("1. {% +d}\n", 42);
-		ret += ft_printf("2. {%+ d}\n", 42);
-		ret += ft_printf("3. {%+03d}\n", 123456);
-		ret += ft_printf("4. %#O", 0);
-		printf("\n Written char : %d Bad return value\n", ret);
-		return (0);
-	}
-	else if (!strcmp(argv[1], "B%.1%"))
+	else if (!strcmp(argv[1], "%.1%"))
 	{
 		ret += ft_printf("1. %.4d\n", 42);
 		ret += ft_printf("2. %.4d\n", 424242);
@@ -464,24 +437,23 @@ int		main(int argc, char **argv)
 		ret += ft_printf("4. %15.4d\n", 42);
 		ret += ft_printf("5. %15.4d\n", 424242);
 		ret += ft_printf("6. %8.4d\n", 424242424);
-		ret += ft_printf("7. %15.4d\n", -424242);
-		ret += ft_printf("8. %8.4d\n", -424242424);
-		ret += ft_printf("9. %4.8d\n", 424242424);
-		ret += ft_printf("10. %4.8d\n", -424242424);
-		ret += ft_printf("11. %.4i\n", 42);
-		ret += ft_printf("12. %15.4i\n", 42);
-		ret += ft_printf("13. %.4u\n", 42);
-		ret += ft_printf("14. %.4u\n", 424242);
-		ret += ft_printf("15. %15.4u\n", 42);
-		ret += ft_printf("16. %15.4u\n", 424242);
-		ret += ft_printf("17. %8.4u\n", 424242424);
-		ret += ft_printf("18. %4.8u\n", 424242424);
-		ret += ft_printf("19. %8.14u\n", 424242424);
-		ret += ft_printf("20. %4.18u\n", 424242424);
+		ret += ft_printf("7. %8.4d\n", -424242424);
+		ret += ft_printf("8. %4.8d\n", 424242424);
+		ret += ft_printf("9. %4.8d\n", -424242424);
+		ret += ft_printf("10. %.4i\n", 42);
+		ret += ft_printf("11. %15.4i\n", 42);
+		ret += ft_printf("12. %.4u\n", 42);
+		ret += ft_printf("13. %.4u\n", 424242);
+		ret += ft_printf("14. %15.4u\n", 42);
+		ret += ft_printf("15. %15.4u\n", 424242);
+		ret += ft_printf("16. %8.4u\n", 424242424);
+		ret += ft_printf("17. %4.8u\n", 424242424);
+		ret += ft_printf("18. %8.14u\n", 424242424);
+		ret += ft_printf("19. %4.18u\n", 424242424);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	else if (!strcmp(argv[1], "B%.2%"))
+	else if (!strcmp(argv[1], "%.2%"))
 	{
 		ret += ft_printf("1. %.4o\n", 42);
 		ret += ft_printf("2. %.4o\n", 424242);
@@ -491,29 +463,29 @@ int		main(int argc, char **argv)
 		ret += ft_printf("6. %4.15o\n", 42);
 		ret += ft_printf("7. %4.15o\n", 424242);
 		ret += ft_printf("8. %4.8o\n", 424242424);
-		ret += ft_printf("10. %.4O\n", 42);
-		ret += ft_printf("11. %15.4O\n", 42);
-		ret += ft_printf("12. %4.15O\n", 42);
-		ret += ft_printf("13. %.4x\n", 42);
-		ret += ft_printf("14. %.4x\n", 424242);
-		ret += ft_printf("15. %15.4x\n", 42);
-		ret += ft_printf("16. %15.4x\n", 424242);
-		ret += ft_printf("17. %8.4x\n", 424242424);
-		ret += ft_printf("18. %4.15x\n", 42);
-		ret += ft_printf("19. %4.15x\n", 42424242);
-		ret += ft_printf("20. %4.8x\n", 424242424);
-		ret += ft_printf("21. %.4X\n", 42);
-		ret += ft_printf("22. %.4X\n", 424242);
-		ret += ft_printf("23. %15.4X\n", 42);
-		ret += ft_printf("24. %15.4X\n", 424242);
-		ret += ft_printf("25. %8.4X\n", 424242424);
-		ret += ft_printf("26. %4.15X\n", 42);
-		ret += ft_printf("27. %4.15X\n", 424242);
-		ret += ft_printf("28. %4.8X\n", 424242424);
+		ret += ft_printf("9. %.4O\n", 42);
+		ret += ft_printf("10. %15.4O\n", 42);
+		ret += ft_printf("11. %4.15O\n", 42);
+		ret += ft_printf("12. %.4x\n", 42);
+		ret += ft_printf("13. %.4x\n", 424242);
+		ret += ft_printf("14. %15.4x\n", 42);
+		ret += ft_printf("15. %15.4x\n", 424242);
+		ret += ft_printf("16. %8.4x\n", 424242424);
+		ret += ft_printf("17. %4.15x\n", 42);
+		ret += ft_printf("18. %4.15x\n", 42424242);
+		ret += ft_printf("19. %4.8x\n", 424242424);
+		ret += ft_printf("20. %.4X\n", 42);
+		ret += ft_printf("21. %.4X\n", 424242);
+		ret += ft_printf("22. %15.4X\n", 42);
+		ret += ft_printf("23. %15.4X\n", 424242);
+		ret += ft_printf("24. %8.4X\n", 424242424);
+		ret += ft_printf("25. %4.15X\n", 42);
+		ret += ft_printf("26. %4.15X\n", 424242);
+		ret += ft_printf("27. %4.8X\n", 424242424);
 		printf("\n Written char : %d Bad return value\n", ret);
 		return (0);
 	}
-	else if (!strcmp(argv[1], "B%.3%"))
+	else if (!strcmp(argv[1], "%.3%"))
 	{
 		ret += ft_printf("1. %.4s\n", "42");
 		ret += ft_printf("2. %15.4s\n", "42");
@@ -539,7 +511,7 @@ int		main(int argc, char **argv)
 	}
 	else if (!strcmp(argv[1], "Bcolor"))
 	{
-		ret += ft_printf("1. {red}%s{eof} julien de {dred}%d{eof}\n", "Bonjour", 42);
+		ret += ft_printf("1. {red}%s{eof} julien de {lred}%d{eof}\n", "Bonjour", 42);
 		ret += ft_printf("2. {Bonjour}\n");
 		ret += ft_printf("3. {red}a{black}b{green}c{yellow}d{blue}e{purple}f{cyan}g{eof}h\n");
 		printf("Written char : %d\n", ret);

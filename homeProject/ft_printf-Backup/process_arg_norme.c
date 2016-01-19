@@ -82,16 +82,15 @@ int				process_arg(void *content, char *p, char c)
 				t[3] += process_point(content, c, p, t[1]);
 			else if (p[t[1]] == '.')
 				t[3] += process_point_str(str, p, t[1]);
+			else if ((p[t[1]] == 'l' || p[t[1]] == 'j') && (c != 'u' && c != 'o' && c != 'x') && p[t[1] - 1] != 'l')
+				t[0] = (long)content;
+			else if ((p[t[1]] == 'l' && t[0] > 0) || p[t[1]] == 'j' || p[t[1]] == 'z')
+			{
+				unumber = (unsigned long)content;
+				t[2] = 1;
+			}
 			else
-				if ((p[t[1]] == 'l' || p[t[1]] == 'j') && (c != 'u' || c != 'o' || c != 'x') && p[t[1] - 1] != 'l')
-					t[0] = (long)content;
-				else if (p[t[1]] == 'l' || p[t[1]] == 'j' || p[t[1]] == 'z')
-				{
-					unumber = (unsigned long)content;
-					t[2] = 1;
-				}
-				else
-					process(p, t, c, content);
+				process(p, t, c, content);
 		}
 	}
 	if (t[3] < 0)

@@ -4,7 +4,7 @@ static int	print_color(char *color, int i)
 {
 	if (!ft_strcmp(color, "red"))
 		return (write(1, "\033[31m", 5) * 0 + i + 1);
-	else if (!ft_strcmp(color, "dred"))
+	else if (!ft_strcmp(color, "lred"))
 		return (write(1, "\033[1;31m", 7) * 0 + i + 1);
 	else if (!ft_strcmp(color, "green"))
 		return (write(1, "\033[32m", 5) * 0 + i + 1);

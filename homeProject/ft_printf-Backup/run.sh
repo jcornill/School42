@@ -179,23 +179,19 @@ echo "=====ad2 TEST====="
 ./user.out "ad2" > file_user.txt
 ./ref.out "ad2" > file_ref.txt
 funct_comp
-echo "=====ad3 TEST====="
-./user.out "ad3" > file_user.txt
-./ref.out "ad3" > file_ref.txt
+echo "=====%.1% TEST====="
+./user.out "%.1%" > file_user.txt
+./ref.out "%.1%" > file_ref.txt
+funct_comp
+echo "=====%.2% TEST====="
+./user.out "%.2%" > file_user.txt
+./ref.out "%.2%" > file_ref.txt
+funct_comp
+echo "=====%.3% TEST====="
+./user.out "%.3%" > file_user.txt
+./ref.out "%.3%" > file_ref.txt
 funct_comp
 echo "=====BONUS TEST====="
-echo "=====B%.1% TEST====="
-./user.out "B%.1%" > file_user.txt
-./ref.out "B%.1%" > file_ref.txt
-funct_comp
-echo "=====B%.2% TEST====="
-./user.out "B%.2%" > file_user.txt
-./ref.out "B%.2%" > file_ref.txt
-funct_comp
-echo "=====B%.3% TEST====="
-./user.out "B%.3%" > file_user.txt
-./ref.out "B%.3%" > file_ref.txt
-funct_comp
 echo "=====B%b TEST====="
 ./user.out "B%b"
 echo "=====Bcolor TEST====="
