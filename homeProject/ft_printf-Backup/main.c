@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/01/19 17:04:02 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:10:50 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -520,6 +520,7 @@ int		main(int argc, char **argv)
 	else if (!strcmp(argv[1], "user"))
 	{
 		ret += ft_printf("Adding test here\n");
+		ret += ft_printf("Bonjour %s !\n", "Julien");
 		printf("Written char : %d\n", ret);
 		return (0);
 	}

@@ -1,2 +1,3 @@
 Adding test here
-Written char : 17
+Bonjour Julien !
+Written char : 34

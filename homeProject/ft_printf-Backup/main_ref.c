@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:33:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/01/19 17:02:40 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:10:50 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -511,7 +511,7 @@ int		main(int argc, char **argv)
 	}
 	else if (!strcmp(argv[1], "Bcolor"))
 	{
-		ret += printf("1. {red}%s{eof} julien de {dred}%d{eof}\n", "Bonjour", 42);
+		ret += printf("1. {red}%s{eof} julien de {lred}%d{eof}\n", "Bonjour", 42);
 		ret += printf("2. {Bonjour}\n");
 		ret += printf("3. {red}a{black}b{green}c{yellow}d{blue}e{purple}f{cyan}g{eof}h\n");
 		printf("Written char : %d\n", ret);
@@ -520,6 +520,7 @@ int		main(int argc, char **argv)
 	else if (!strcmp(argv[1], "user"))
 	{
 		ret += printf("Adding test here\n");
+		ret += printf("Bonjour %s !\n", "Julien");
 		printf("Written char : %d\n", ret);
 		return (0);
 	}
