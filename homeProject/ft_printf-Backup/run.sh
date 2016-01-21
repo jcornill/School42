@@ -19,6 +19,25 @@ else
 	g OK
 fi
 }
+i=$(find . | grep "ft_printf.h" | cut -f 1 -d "f")
+echo "Found ft_printf.h in $i"
+echo "=====NORME====="
+touch file_norme.txt
+find *.c | sed 's/main.c//g' | sed 's/main_ref.c//g' | xargs norminette | grep "Error" > file_norme.txt
+norminette $i | grep "Error" >> file_norme.txt
+file=file_norme.txt
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge 1 ]; then
+	r Fail
+	echo "=====ERROR====="
+	find *.c | sed 's/main.c//g' | sed 's/main_ref.c//g' | xargs norminette > file_norme.txt
+	norminette $i >> file_norme.txt
+	cat file_norme.txt
+	exit
+else
+	g OK
+fi
+rm file_norme.txt
 echo "=====MAKEFILE====="
 touch file_makefile.txt
 #make | grep "Makefile"
@@ -42,8 +61,6 @@ fi
 rm file_test.txt
 echo "=====COMPILING====="
 rm main_ref.c
-i=$(find . | grep "ft_printf.h" | cut -f 1 -d "f")
-echo "Found ft_printf.h in $i"
 gcc -I $i main.c libftprintf.a -o user.out
 j=$(cat main.c | grep "ft_printf(" | wc -l | tr -d " ")
 sed 's/ft_printf(/printf(/g' main.c > main_ref.c

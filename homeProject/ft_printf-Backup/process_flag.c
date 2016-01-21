@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_flag.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/21 15:28:54 by jcornill          #+#    #+#             */
+/*   Updated: 2016/01/21 15:30:30 by jcornill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		process_sharp(void *content, char c)
@@ -23,9 +35,9 @@ int		process_add(void *content, char c)
 
 int		process_space(void *content, char c)
 {
-    long    temp;
+	long	temp;
 
-    temp = (long)content - 4294967296;
+	temp = (long)content - 4294967296;
 	if (temp <= -1000000 && c != 'u')
 		return (write(1, " ", 1));
 	return (0);

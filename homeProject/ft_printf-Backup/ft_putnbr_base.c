@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 16:25:42 by jcornill          #+#    #+#             */
-/*   Updated: 2016/01/19 15:35:42 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/21 14:24:18 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_putnbr_base(long nb, int base, char a)
 {
-	char    c;
+	char	c;
 	int		val;
 
 	val = 0;
@@ -36,8 +36,7 @@ int		ft_putnbr_base(long nb, int base, char a)
 			c = 'A' + (nb - 10);
 		else
 			c = '0' + nb;
-		write(1, &c, 1);
-		return (val + 1);
+		return (val + write(1, &c, 1));
 	}
 	return (val);
 }

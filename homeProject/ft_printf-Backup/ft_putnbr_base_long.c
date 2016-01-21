@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 16:25:42 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 23:50:54 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/21 14:23:21 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_putnbr_base_long(unsigned long nb, int base, char a)
 {
-	char    c;
+	char	c;
 	int		val;
 
 	val = 0;

@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 13:35:01 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/19 16:55:26 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/21 14:32:17 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@ int		ft_putwchar(wchar_t *str)
 {
 	int		i;
 	int		val;
-	
+
 	i = 0;
 	val = 0;
 	if (str == NULL)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
+		return (write(1, "(null)", 6));
 	while (*(str + i))
 	{
 		if (*(str + i) > 255)

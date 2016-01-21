@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 15:36:40 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/17 17:25:31 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/21 14:27:11 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	process(long nb)
 	char    		c;
 	int				val;
 	unsigned long	work;
-	
+
 	val = 0;
 	work = nb;
 	if (nb < 0)
@@ -44,5 +44,6 @@ static int	process(long nb)
 
 int			ft_putnbr_uint(long nb)
 {
-	return (process(nb));
+	return (0);
+	//return (process(nb));
 }

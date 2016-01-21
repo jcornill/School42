@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:10:40 by jcornill          #+#    #+#             */
-/*   Updated: 2016/01/19 15:40:43 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/21 15:27:40 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static int		process_convertion(char *s, char **param, int *i)
 			s[*i] == 'z' || s[*i] == '.' || ft_isdigit(s[*i]))
 			(*i)++;
 		else
-			break;
+			break ;
 	}
 	return (0);
 }
 
-static char	*search_convertion(char *s)
+static char		*search_convertion(char *s)
 {
 	char	*param;
 	int		i;
@@ -51,7 +51,7 @@ static char	*search_convertion(char *s)
 	return (param);
 }
 
-static int init(char *str, int *i, char **param)
+static int		init(char *str, int *i, char **param)
 {
 	if (str[*i] == '{')
 		(*i) += process_color(&str[*i]);
@@ -62,36 +62,38 @@ static int init(char *str, int *i, char **param)
 	return (1);
 }
 
-int			ft_printf(char *str, ...)
+static char		*var(int t[3])
 {
-	va_list		args;
-	int			i;
-	int			written_char;
-	char		*param;
-	int			temp;
+	t[0] = -1;
+	t[1] = 0;
+	return (NULL);
+}
 
-	i = -1;
-	written_char = 0;
-	va_start(args, str);
-	param = NULL;
-	while (str[++i])
-		if (init(str, &i, &param) && param != NULL)
+int				ft_printf(char *str, ...)
+{
+	va_list		a;
+	int			t[3];
+	char		*p;
+
+	va_start(a, str);
+	p = var(t);
+	while (str[++t[0]])
+		if (init(str, &t[0], &p) && p != NULL)
 		{
-			if (ft_strlen(param) > 1)
-			{
-				if (param[ft_strlen(param) - 1] != '%')
-					temp = process_arg(va_arg(args, void *), param, param[ft_strlen(param) - 1]);
-				else
-					temp = write(1, "%", 1);
-				if (temp == -1)
-					return (-1);
-				else
-					written_char += temp;
-				i += ft_strlen(param) - 1;
-			}
+			if (ft_strlen(p) <= 1)
+				continue ;
+			if (p[ft_strlen(p) - 1] != '%')
+				t[2] = p_arg(va_arg(a, void*), p, p[ft_strlen(p) - 1]);
+			else
+				t[2] = write(1, "%", 1);
+			if (t[2] == -1)
+				return (-1);
+			else
+				t[1] += t[2];
+			t[0] += ft_strlen(p) - 1;
 		}
 		else
-			written_char += write(1, &str[i], 1);
-	va_end(args);
-	return (written_char);
+			t[1] += write(1, &str[t[0]], 1);
+	va_end(a);
+	return (t[1]);
 }

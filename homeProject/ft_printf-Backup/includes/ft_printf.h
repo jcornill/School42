@@ -6,7 +6,7 @@
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 22:11:27 by jcornill          #+#    #+#             */
-/*   Updated: 2015/12/18 00:32:05 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/01/21 16:09:43 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h"
-#  include <stdio.h>
 
-int		ft_printf(char *str, ...);
+int				ft_printf(char *str, ...);
 
 int				ft_putwchar(wchar_t *str);
 int				ft_putaddr(long nb);
@@ -41,6 +40,7 @@ int				process_point(void *content, char c, char *param, int i);
 int				ft_get_nbr_from_back(char *p, int i);
 int				process_point_str(char *str, char *param, int i);
 int				process_color(char *s);
-int				process_arg(void *content, char *p, char c);
-void			process_2(char *p, char c, long t[4], void *content);
+int				p_arg(void *content, char *p, char c);
+int				process_2(char c, void *content);
+unsigned long	process_3(char c, char **str, void *content, long t[5]);
 #endif
