@@ -1,9 +1,0 @@
-1. %
-2. aa%bb
-3. %%%%%
-4. .%.%.%.%.%.%.%.%.
-5. 
-6. {}
-7. Zoooo
-8. {%}
- Written char : 69 Bad return value
