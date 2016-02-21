@@ -12,6 +12,12 @@
 
 #include "push_swap.h"
 
+char	*concat_str(char **str)
+{
+	char	*ret;
+
+}
+
 t_list	get_pile_a(char *str)
 {
 	t_list	ret;

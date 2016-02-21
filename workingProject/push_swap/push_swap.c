@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 0)
 	{
-		ft_putstr(ft_strdup(argv[0]));
+		pile_a = 
 	}
 	return (0);
 }
