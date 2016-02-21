@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 16:21:31 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/26 18:01:32 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include "libft.h"
 
-t_list		*get_pile_a(char **str, int nb_num);
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	int					dst_len;
+	unsigned int		j;
+	int					s;
 
-#endif
+	dst_len = ft_strlen(dst);
+	s = size - dst_len;
+	if (s <= 0)
+		return (size + ft_strlen(src));
+	j = 0;
+	while (src[j] && j < (size - dst_len - 1))
+	{
+		dst[dst_len + j] = src[j];
+		j++;
+	}
+	dst[dst_len + j] = 0;
+	return (dst_len + (ft_strlen(src)));
+}

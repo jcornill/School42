@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 14:42:18 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/25 15:01:40 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	*result;
 
-t_list		*get_pile_a(char **str, int nb_num);
-
-#endif
+	i = 0;
+	result = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			result = (char *)s + i;
+		i++;
+	}
+	if (c == 0)
+		return ((char *)s + i);
+	return (result);
+}

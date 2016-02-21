@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 14:32:26 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/25 14:32:39 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
-
-t_list		*get_pile_a(char **str, int nb_num);
-
-#endif
+int		ft_tolower(int c)
+{
+	if (c + 32 >= 'a' && c + 32 <= 'z')
+		return (c + 32);
+	return (c);
+}

@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:46:20 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:46:22 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 15:13:00 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/25 15:13:21 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-t_list	get_pile_a(char *str)
+int		ft_isdigit(int c)
 {
-	t_list	ret;
-	int		i;
-
-	i = 0;
-	ret = ft_lstnew(ft_atoi(str[i]),  
-	while (str[i])
-	{
-		
-		i++;
-	}
-	return (ret);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

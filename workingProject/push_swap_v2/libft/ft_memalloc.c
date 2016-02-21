@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 14:14:42 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/26 14:35:37 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include "libft.h"
 
-t_list		*get_pile_a(char **str, int nb_num);
+void	*ft_memalloc(size_t size)
+{
+	char			*result;
+	unsigned int	i;
 
-#endif
+	i = 0;
+	if (!(result = malloc(size)))
+		return (NULL);
+	while (i < size)
+	{
+		result[i] = 0;
+		i++;
+	}
+	return ((void *)result);
+}

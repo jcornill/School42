@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/23 16:35:56 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:15:33 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include <unistd.h>
 
-t_list		*get_pile_a(char **str, int nb_num);
+void	*ft_memset(void *b, int c, size_t len)
+{
+	int				i;
+	unsigned char	*dst;
 
-#endif
+	i = 0;
+	dst = (unsigned char *)b;
+	while (len > 0)
+	{
+		dst[i] = (unsigned char)c;
+		len--;
+		i++;
+	}
+	return (b);
+}

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:15:49 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:38:30 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/27 15:57:08 by jcornill          #+#    #+#             */
+/*   Updated: 2015/12/15 18:09:50 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	print(t_list *elem)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	ft_putnbr(ft_atoi(elem->content));
-	ft_putchar('\n');
-}
+	t_list			*result;
 
-int		main(int argc, char **argv)
-{
-	t_list *pile_a;
-
-	if (argc != 1)
+	result = (t_list *)malloc(sizeof(t_list));
+	if (result == NULL)
+		return (NULL);
+	result->next = NULL;
+	if (content == NULL)
 	{
-		pile_a = get_pile_a(argv, argc);
-		ft_lstiter(pile_a, &print);
+		result->content = NULL;
+		result->content_size = 0;
+		return (result);
 	}
-	return (0);
+	result->content_size = content_size;
+	result->content = ft_memdup(content, content_size);
+	return (result);
 }

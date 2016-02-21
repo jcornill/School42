@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/26 18:24:20 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 14:37:06 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include "libft.h"
 
-t_list		*get_pile_a(char **str, int nb_num);
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned int	i;
+	unsigned char	*is1;
+	unsigned char	*is2;
 
-#endif
+	is1 = (unsigned char*)s1;
+	is2 = (unsigned char*)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (is1[i] - is2[i] != 0)
+			return (is1[i] - is2[i]);
+		i++;
+	}
+	return (0);
+}

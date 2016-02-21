@@ -15,6 +15,6 @@
 # include "../libft/includes/libft.h"
 #  include <stdio.h>
 
-t_list		*get_pile_a(char **str, int nb_num);
+int		*get_pile_a(char **str, int nb_num);
 
 #endif

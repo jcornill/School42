@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/25 13:15:02 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/25 13:35:36 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-t_list		*get_pile_a(char **str, int nb_num);
+char	*ft_strnew(size_t size)
+{
+	char	*result;
 
-#endif
+	if ((result = (char*)malloc(sizeof(char) * (size + 1))) == NULL)
+		return (NULL);
+	while (size > 0)
+	{
+		result[size] = 0;
+		size--;
+	}
+	result[size] = 0;
+	return (result);
+}

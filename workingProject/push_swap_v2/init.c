@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+static int		check_double(int *pile, int num, int nb)
+{
+	int		i;
+
+	i = 0;
+	while ( i < nb)
+	{
+		if (*(pile + i * sizeof(int)) == num)
+		{
+			ft_putnbr(num);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 static int		check_error(char *str)
 {
 	int		i;
@@ -26,21 +43,19 @@ static int		check_error(char *str)
 	return (1);
 }
 
-t_list			*get_pile_a(char **str, int nb_num)
+int				*get_pile_a(char **str, int nb_num)
 {
-	t_list	*ret;
 	int		i;
+	int		*ret;
 
 	i = 1;
-	if (!check_error(str[i]))
-		return (NULL);
-	if (!(ret = ft_lstnew(str[i], ft_strlen(str[i]))))
-		return (NULL);
-	i++;
+	ret = ft_memalloc(sizeof(int) * nb_num);
 	while (i < nb_num)
 	{
-		if (check_error(str[i]))
-			ft_lstadd(&ret, ft_lstnew(str[i], ft_strlen(str[i])));
+		if (check_error(str[i]) && check_double(ret, ft_atoi(str[i]), i))
+			*(ret + (i - 1) * sizeof(int)) = ft_atoi(str[i]);
+		else
+			return (NULL);
 		i++;
 	}
 	return (ret);

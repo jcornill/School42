@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/23 16:06:02 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 22:41:54 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include "libft.h"
 
-t_list		*get_pile_a(char **str, int nb_num);
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	unsigned int	i;
+	char			a;
 
-#endif
+	i = 0;
+	a = 0;
+	while (i < n)
+	{
+		if (!src[i])
+			a = 1;
+		if (a)
+			dst[i] = 0;
+		else
+			dst[i] = src[i];
+		i++;
+	}
+	return (dst);
+}
