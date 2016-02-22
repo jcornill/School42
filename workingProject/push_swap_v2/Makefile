@@ -11,19 +11,25 @@
 #******************************************************************************#
 
 NAME=push_swap
-SRC=push_swap.c init.c
+SRC=push_swap.c init.c action1.c action2.c process.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra 
-#-Werror
+FLAG=-Wall -Wextra -Werror -g
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)
 	Make -C libft/
 	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
 
-m: re eclean norme
+cleanwitlib:
+	rm -f $(OBJ)
+	rm -f $(NAME)
+
+rewitlib: cleanwitlib $(OBJ)
+	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
+
+m: rewitlib eclean norme
 	@echo "==========PROG=========="
-	@./$(NAME) 0 1 2 3 4 5 6 7 8 9 10
+	@./$(NAME) 8 5 6 3 1 2
 
 save:fclean eclean
 	git add --all
