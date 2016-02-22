@@ -33,8 +33,9 @@ int			main(const int argc, char **argv)
 	int		debug;
 
 	debug = 0;
-	if (argv[1] == "-v")
+	if (ft_strcmp(argv[1], "-v") == 0)
 		debug = 1;
+	ft_putnbr(debug);
 	if (argc != 1)
 	{
 		if ((pile_a = get_pile_a(argv, argc)) == NULL)
