@@ -33,7 +33,7 @@ m: rewitlib eclean norme
 
 save:fclean eclean
 	git add --all
-	git commit -m "Autosaving on push_swap"
+	git commit -m "Autosaving on lem_in"
 	git push
 
 all:$(NAME)
