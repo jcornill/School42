@@ -16,7 +16,7 @@ int		ft_strlenstr(const char *s, const char *find)
 {
 	size_t			len;
 	unsigned int	i;
-	
+
 	len = 0;
 	i = 0;
 	while (s[len])

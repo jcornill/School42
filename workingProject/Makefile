@@ -13,7 +13,7 @@
 NAME=push_swap
 SRC=push_swap.c init.c action1.c action2.c process.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra -Werror -g
+FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)

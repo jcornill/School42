@@ -11,45 +11,28 @@
 #******************************************************************************#
 
 NAME=push_swap
-SRC=push_swap.c init.c
+SRC=push_swap.c init.c action1.c action2.c process.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra 
-#-Werror
+FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)
 	Make -C libft/
 	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
 
-m: re eclean norme
-	@echo "==========PROG=========="
-	@./$(NAME) 299 1 3 6 5 8
-
-save:fclean eclean
-	git add --all
-	git commit -m "Autosaving on push_swap"
-	git push
-
 all:$(NAME)
 
-norme:
-	@echo "==========NORME=========="
-	@norminette $(SRC) includes
-	@echo "==========DONE=========="
-
 clean:
+	make -C libft/ clean
 	rm -f $(OBJ)
 
 fclean:clean
+	make -C libft/ fclean
 	rm -f $(NAME)
-
-eclean:clean
-	rm -f *~
-	rm -f includes/*~
 
 re:fclean all
 
 %.o:%.c
 	gcc -c $(FLAG) $(INCLUDE) $(SRC)
 
-.PHONY: $(NAME) all clean fclean re save m
+.PHONY: $(NAME) all clean fclean

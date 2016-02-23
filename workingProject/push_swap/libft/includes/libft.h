@@ -86,5 +86,5 @@ void				ft_lstpush(t_list **alst, t_list *new);
 int					ft_isspace(int c);
 void				*ft_memdup(void const *s, size_t n);
 void				ft_strrev(char *s);
-int                 ft_nbrlen(long nbr, int base);
+int					ft_nbrlen(long nbr, int base);
 #endif

@@ -54,7 +54,7 @@ static int	check_max(int *pile, int num, int max)
 	return (1);
 }
 
-void		process(int *pile_a, int *pile_b, int num)
+void		process(int *pile_a, int *pile_b, int num, int opt)
 {
 	int	i;
 
@@ -65,17 +65,17 @@ void		process(int *pile_a, int *pile_b, int num)
 	{
 		if (*(pile_a) > *(pile_a + *(pile_a + num) - 1) && *(pile_a)
 			> *(pile_a + *(pile_a + num) - 2))
-			rrotate(pile_a, num, 'a');
+			rrotate(pile_a, num, 'a', opt);
 		if (*(pile_a + num - i) < *(pile_a + num - i - 1))
-			swap(pile_a, num, 'a');
+			swap(pile_a, num, 'a', opt);
 		while (!check_max(pile_a, num, *(pile_a + (*(pile_a + num)) - 1)))
-			rrotate(pile_a, num, 'a');
+			rrotate(pile_a, num, 'a', opt);
 		if (!check_pile_order(pile_a, num))
-			push(pile_a, pile_b, num, 'b');
+			push(pile_a, pile_b, num, 'b' + (opt * 10));
 		if (check_pile_rorder(pile_b, num) && check_pile_order(pile_a, num))
 		{
 			while (*(pile_b + num) != 0)
-				push(pile_b, pile_a, num, 'a');
+				push(pile_b, pile_a, num, 'a' + (opt * 10));
 			return ;
 		}
 		i++;

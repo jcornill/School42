@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rrotate(int *pile, int num, char c)
+void	rrotate(int *pile, int num, char c, int opt)
 {
 	int		i;
 	int		temp;
@@ -31,11 +31,13 @@ void	rrotate(int *pile, int num, char c)
 		write(1, &c, 1);
 		write(1, " ", 1);
 	}
+	if (opt == 1)
+		debug_print(0, 0, num);
 }
 
 void	rrotates(int *pile_a, int *pile_b, int num)
 {
-	rrotate(pile_a, num, 0);
-	rrotate(pile_b, num, 0);
+	rrotate(pile_a, num, 0, 0);
+	rrotate(pile_b, num, 0, 0);
 	write(1, "rrr ", 4);
 }

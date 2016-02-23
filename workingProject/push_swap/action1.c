@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	swap(int *pile, int num, char c)
+void	swap(int *pile, int num, char c, int opt)
 {
 	int		num_pile;
 	int		temp;
@@ -30,17 +30,24 @@ void	swap(int *pile, int num, char c)
 			write(1, " ", 1);
 		}
 	}
+	if (opt == 1)
+		debug_print(0, 0, num);
 }
 
 void	swaps(int *pile_a, int *pile_b, int num)
 {
-	swap(pile_a, num, 0);
-	swap(pile_b, num, 0);
+	swap(pile_a, num, 0, 0);
+	swap(pile_b, num, 0, 0);
 	write(1, "ss ", 3);
 }
 
 void	push(int *pile1, int *pile2, int num, char c)
 {
+	int		opt;
+
+	opt = (c == 107 || c == 108);
+	while (c > 100)
+		c -= 10;
 	if (*(pile1 + num) > 0)
 	{
 		*(pile2 + (*(pile2 + num))) = *(pile1 + (*(pile1 + num)) - 1);
@@ -51,6 +58,8 @@ void	push(int *pile1, int *pile2, int num, char c)
 		write(1, &c, 1);
 		write(1, " ", 1);
 	}
+	if (opt)
+		debug_print(0, 0, num);
 }
 
 void	rotate(int *pile, int num, char c)

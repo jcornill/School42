@@ -12,36 +12,71 @@
 
 #include "push_swap.h"
 
-static int		check_error(char *str)
+static int		c_double(int *pile, int num, int nb)
+{
+	int			i;
+	static int	bool = 0;
+
+	i = 0;
+	while (i < nb)
+	{
+		if (bool > 0 && num == 0)
+			return (0);
+		if (*(pile + i) == num && num != 0)
+			return (0);
+		i++;
+		if (num == 0)
+			bool++;
+	}
+	return (1);
+}
+
+static int		c_error(char *str)
 {
 	int		i;
 
 	i = 0;
+	if (ft_strlen(str) >= 10 && ft_strcmp("2147483647", str) < 0)
+		return (0);
+	else if (ft_strlen(str) > 10 && ft_strcmp("-2147483648", str) < 0)
+		return (0);
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) && str[i] != '-')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-t_list			*get_pile_a(char **str, int nb_num)
+int				*get_pile_a(char **str, int nb_num, int opt)
 {
-	t_list	*ret;
 	int		i;
+	int		*ret;
 
 	i = 1;
-	if (!check_error(str[i]))
+	if (opt > 0)
+		opt = 1;
+	if (!(ret = ft_memalloc(4 * nb_num)))
 		return (NULL);
-	if (!(ret = ft_lstnew(str[i], ft_strlen(str[i]))))
-		return (NULL);
-	i++;
 	while (i < nb_num)
 	{
-		if (check_error(str[i]))
-			ft_lstadd(&ret, ft_lstnew(str[i], ft_strlen(str[i])));
+		if (c_error(str[i + opt]) && c_double(ret, ft_atoi(str[i + opt]), i))
+			*(ret + (i - 1)) = ft_atoi(str[i + opt]);
+		else
+			return (NULL);
 		i++;
 	}
+	*(ret + (i - 1)) = nb_num - 1;
+	return (ret);
+}
+
+int				*get_pile_b(int nb_num)
+{
+	int		*ret;
+
+	if (!(ret = ft_memalloc(4 * nb_num)))
+		return (NULL);
+	*(ret + (nb_num - 1)) = 0;
 	return (ret);
 }
