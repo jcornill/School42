@@ -13,8 +13,9 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 # include "../libft/includes/libft.h"
+#  include <stdio.h>
 
-int		check_entry(int argc, char **argv);
+int		check_entry(char *str);
 void	err_exit(void);
 
 #endif

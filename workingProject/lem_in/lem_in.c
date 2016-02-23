@@ -18,8 +18,8 @@ void	err_exit(void)
 	exit(1);
 }
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	
+	check_entry(0);
 	return (0);
 }

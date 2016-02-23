@@ -11,7 +11,7 @@
 #******************************************************************************#
 
 NAME=lem-in
-SRC=lem_in.c
+SRC=lem_in.c check_entry.c
 OBJ=$(SRC:.c=.o)
 FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes
@@ -29,7 +29,7 @@ rewitlib: cleanwitlib $(OBJ)
 
 m: rewitlib eclean norme
 	@echo "==========PROG=========="
-	@./$(NAME)
+	@./$(NAME) < test.map
 
 save:fclean eclean
 	git add --all
