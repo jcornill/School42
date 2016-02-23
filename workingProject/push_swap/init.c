@@ -25,9 +25,9 @@ static int		c_double(int *pile, int num, int nb)
 		if (*(pile + i) == num && num != 0)
 			return (0);
 		i++;
-		if (num == 0)
-			bool++;
 	}
+	if (num == 0)
+		bool++;
 	return (1);
 }
 

@@ -47,7 +47,8 @@ int			main(const int argc, char **argv)
 	int		*pile_b;
 	int		opt;
 
-	opt = 0;
+	if (argc == 1 && (opt = 0) == 0)
+		return (0);
 	if (ft_strcmp(argv[1], "-v") == 0)
 		opt = 1;
 	else if (ft_strcmp(argv[1], "-a") == 0)
