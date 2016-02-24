@@ -20,7 +20,6 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	if (result == NULL)
 		return (NULL);
 	result->next = NULL;
-	result->previous = NULL;
 	if (content == NULL)
 	{
 		result->content = NULL;

@@ -27,6 +27,6 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		return (result);
 	}
 	result->content_size = content_size;
-	result->content = ft_memdup(content, content_size);
+	result->content = (void *)content;
 	return (result);
 }

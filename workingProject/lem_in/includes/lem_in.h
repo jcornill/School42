@@ -26,10 +26,12 @@ typedef struct		s_data
 	int				nb_ants;
 	t_list			*rooms_name;
 	t_list			*links;
+	char			*start_room;
+	char			*end_room;
 }					t_data;
 
-t_data				*check_entry(char *str, t_list *entry);
-void				err_exit(int id);
+t_data				*check_entry(char *str, t_list **entry);
+void				err_exit(int id, char *err);
 void				print_list(t_list *elem);
-
+int					set_s_e_room(int nb_sp, int room, t_data *data, char *ret);
 #endif
