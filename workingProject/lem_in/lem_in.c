@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem-in.c                                           :+:      :+:    :+:   */
+/*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/23 16:32:11 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/23 16:32:15 by jcornill         ###   ########.fr       */
+/*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
+/*   Updated: 2016/02/24 19:34:11 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		main(void)
 	entry = 0;
 	data = check_entry(0, &entry);
 	ft_lstiter(data->links, print_link);
+	link_checker(data);
 	ft_lstiter(entry, print_list);
 	print_data(data);
 	return (0);
