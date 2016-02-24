@@ -75,6 +75,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -90,4 +91,5 @@ int					ft_isspace(int c);
 void				*ft_memdup(void const *s, size_t n);
 void				ft_strrev(char *s);
 int					ft_nbrlen(long nbr, int base);
+
 #endif

@@ -37,9 +37,15 @@ clean:
 fclean:clean
 	rm -f $(NAME)
 
+eclean:
+	rm -f *~
+	rm -f includes/*~
+
+ffclean:fclean eclean
+
 re:fclean all
 
 %.o:%.c
-	gcc -c $(FLAG) -I includes $(SRC)
+	gcc -c $< $(FLAG) -I includes -o $@
 
 .PHONY: $(NAME) all clean fclean re

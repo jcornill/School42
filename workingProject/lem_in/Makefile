@@ -21,8 +21,8 @@ $(NAME): $(OBJ)
 	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
 
 cleanwitlib:
-	rm -f $(OBJ)
-	rm -f $(NAME)
+	@rm -f $(OBJ)
+	@rm -f $(NAME)
 
 rewitlib: cleanwitlib $(OBJ)
 	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
@@ -51,13 +51,13 @@ fclean:clean
 	make -C libft/ fclean
 	rm -f $(NAME)
 
-eclean:clean
-	rm -f *~
-	rm -f includes/*~
+eclean:
+	@rm -f *~
+	@rm -f includes/*~
 
 re:fclean all
 
 %.o:%.c
-	gcc -c $(FLAG) $(INCLUDE) $(SRC)
+	gcc -c $< $(FLAG) $(INCLUDE) -o $@
 
 .PHONY: $(NAME) all clean fclean re save m

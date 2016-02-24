@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-static int		check_nbants(char *str)
+static int			c_nbants(char *str)
 {
 	int		i;
 
@@ -24,26 +24,67 @@ static int		check_nbants(char *str)
 		i++;
 	}
 	if (ft_strlen(str) >= 10 && ft_strcmp("2147483647", str) < 0)
-		err_exit();
+		err_exit(6);
+	if (ft_atoi(str) == 0)
+		err_exit(10);
 	return (ft_atoi(str));
 }
-/*
-static void		check_link(char *str)
+
+static int			check_link(char *room_a, char *room_b, t_list **rooms_name)
+{
+	t_list	*begin;
+	int		find_room;
+
+	find_room = 0;
+	begin = *rooms_name;
+	if (begin == NULL)
+		err_exit(7);
+	if (ft_strcmp(begin->content, room_a) == 0)
+		find_room++;
+	else if (ft_strcmp(begin->content, room_b) == 0)
+		find_room++;
+	while (begin->next != NULL)
+	{
+		begin = begin->next;
+		if (ft_strcmp(begin->content, room_a) == 0)
+			find_room++;
+		else if (ft_strcmp(begin->content, room_b) == 0)
+			find_room++;
+	}
+	if (find_room == 2)
+		return (1);
+	return (0);
+}
+
+static t_link		*create_link(char *str, t_list **rooms_name)
 {
 	int		i;
+	char	*room_a;
+	char	*room_b;
+	t_link	*ret;
+	t_list	*begin;
 
-	i = 0;
-	if (str[i] != 'L')
-		return ;
-	i++;
-	while (str[i])
-	{
-		
-		i++;
-	}
+	begin = *rooms_name;
+	room_a = 0;
+	room_b = 0;
+	ret = ft_memalloc(sizeof(t_link));
+	i = -1;
+	while (str[++i])
+		if (str[i] == '-')
+		{
+			room_a = ft_strsub(str, 0, i);
+			i++;
+			room_b = ft_strsub(str, i, ft_strlen(str));
+			if (!check_link(room_a, room_b, rooms_name))
+				err_exit(8);
+			ret->room_a = room_a;
+			ret->room_b = room_b;
+			return (ret);
+		}
+	return (0);
 }
-*/
-static char		*check_room(char *str)
+
+static char			*check_room(char *str)
 {
 	int		i;
 	int		nb_space;
@@ -56,32 +97,45 @@ static char		*check_room(char *str)
 		return (NULL);
 	while (str[i])
 	{
+		if (str[i] == '-')
+			return (NULL);
 		if (str[i] == ' ')
 			nb_space++;
 		if (nb_space == 1 && ret == 0)
 			ret = ft_strsub(str, 0, i);
 		if (nb_space > 0 && (!ft_isdigit(str[i]) && str[i] != ' '))
-			err_exit();
+			err_exit(5);
 		i++;
 	}
 	if (nb_space > 2)
-		err_exit();
+		err_exit(4);
 	return (ret);
 }
 
-int				check_entry(char *str)
+t_data				*check_entry(char *str, t_list *entry)
 {
-	int		nb_ants;
+	char	*room;
+	t_data	*data;
 
-	nb_ants = -1;
+	data = ft_memalloc(sizeof(t_data));
+	data->nb_ants = -1;
+	data->rooms_name = 0;
+	data->links = 0;
 	while (get_next_line(0, &str))
 	{
-		printf("%s\n", str);
-		if (check_nbants(str) > 0 && (nb_ants *= check_nbants(str) * -1) < 0)
-			err_exit();
-		printf("%s\n", check_room(str));
+		if (c_nbants(str) > 0 && (data->nb_ants *= c_nbants(str) * -1) < 0)
+			err_exit(1);
+		room = check_room(str);
+		if (room != 0)
+			ft_lstadd(&data->rooms_name, ft_lstnew(room, ft_strlen(room)));
+		ft_lstpush(&entry, ft_lstnew(str, ft_strlen(str)));
+		ft_lstpush(&data->links,
+		ft_lstnew(create_link(str, &data->rooms_name), sizeof(t_link)));
 	}
-	if (nb_ants < 0)
-		err_exit();
-	return (1);
+	if (data->rooms_name == 0)
+		err_exit(2);
+	if (data->nb_ants < 0)
+		err_exit(3);
+	ft_lstiter(entry, print_list);
+	return (data);
 }

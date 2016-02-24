@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem-in.h                                           :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/23 16:32:44 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/23 16:32:46 by jcornill         ###   ########.fr       */
+/*   Created: 2015/11/27 19:49:46 by jcornill          #+#    #+#             */
+/*   Updated: 2015/11/27 20:08:03 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
-# include "../libft/includes/libft.h"
-#  include <stdio.h>
+#include "libft.h"
 
-typedef struct		s_link
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	char			*room_a;
-	char			*room_b;
-}					t_link;
+	t_list	*src;
 
-typedef struct		s_data
-{
-	int				nb_ants;
-	t_list			*rooms_name;
-	t_list			*links;
-}					t_data;
-
-t_data				*check_entry(char *str, t_list *entry);
-void				err_exit(int id);
-void				print_list(t_list *elem);
-
-#endif
+	src = *alst;
+	new->next = src;
+	src = new;
+}

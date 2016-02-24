@@ -12,14 +12,37 @@
 
 #include "lem_in.h"
 
-void	err_exit(void)
+void	print_list(t_list *elem)
 {
-	ft_putstr_fd("ERROR\n", 2);
+	ft_putstr(elem->content);
+	ft_putstr("\n");
+}
+
+void	print_link(t_list *elem)
+{
+	t_link	*link;
+
+	link = (t_link *)elem->content;
+	printf("%p\n", elem->content);
+	ft_putstr(link->room_a);
+	ft_putstr(" : ");
+	ft_putstr(link->room_b);
+	ft_putstr("\n");
+}
+
+void	err_exit(int id)
+{
+	ft_putstr_fd("ERROR : ", 2);
+	ft_putnbr_fd(id, 2);
+	ft_putstr_fd("\n", 2);
 	exit(1);
 }
 
 int		main(void)
 {
-	check_entry(0);
+	t_data	*data;
+
+	data = check_entry(0, 0);
+	ft_lstiter(data->links, print_link);
 	return (0);
 }
