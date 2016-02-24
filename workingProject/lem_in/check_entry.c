@@ -63,9 +63,7 @@ static t_link		*create_link(char *str, t_list **rooms_name)
 	char	*room_a;
 	char	*room_b;
 	t_link	*ret;
-	t_list	*begin;
 
-	begin = *rooms_name;
 	room_a = 0;
 	room_b = 0;
 	ret = ft_memalloc(sizeof(t_link));
