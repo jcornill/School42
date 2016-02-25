@@ -1,5 +1,12 @@
 ##start
-Bonjour 1 0
+a 0 0
+b 1 0
+c 0 1
+d 1 1
 ##end
-Bonsoir 2 0
+e 2 1
+a-c
+c-d
+b-d
+d-e
 1

@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/24 19:34:11 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/02/25 18:00:39 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@ void	print_list(t_list *elem)
 {
 	ft_putstr(elem->content);
 	ft_putstr("\n");
+}
+
+void	print_linked(t_list *elem)
+{
+	t_room_link *link;
+
+	link = (t_room_link *)elem->content;
+	ft_putstr("Room : ");
+	ft_putstr(link->room);
+	ft_putstr(" linked to room :\n");
+	ft_lstiter(link->linked, print_list);
 }
 
 void	print_link(t_list *elem)
@@ -42,6 +53,8 @@ void	print_data(t_data *data)
 	ft_lstiter(data->rooms_name, print_list);
 	ft_putstr("Links list :\n");
 	ft_lstiter(data->links, print_link);
+	ft_putstr("Room linked :\n");
+	ft_lstiter(data->room_links, print_linked);
 }
 
 void	err_exit(int id, char *err)
@@ -61,7 +74,6 @@ int		main(void)
 
 	entry = 0;
 	data = check_entry(0, &entry);
-	ft_lstiter(data->links, print_link);
 	link_checker(data);
 	ft_lstiter(entry, print_list);
 	print_data(data);

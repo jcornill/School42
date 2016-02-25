@@ -6,10 +6,9 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:53 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/24 18:33:00 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/02/25 14:59:56 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "lem_in.h"
 
@@ -68,6 +67,8 @@ static t_link		*create_link(char *str, t_list **rooms_name)
 	room_b = 0;
 	ret = ft_memalloc(sizeof(t_link));
 	i = -1;
+	if (str[0] == '#')
+		return (0);
 	while (str[++i])
 		if (str[i] == '-')
 		{
