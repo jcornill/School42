@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/25 18:00:39 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/03 18:12:49 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void	print_data(t_data *data)
 	ft_lstiter(data->links, print_link);
 	ft_putstr("Room linked :\n");
 	ft_lstiter(data->room_links, print_linked);
+	ft_putstr("Best Path :\n");
+	ft_lstiter(data->best_path->room_path, print_list);
+	ft_putnbr(data->best_path->length);
 }
 
 void	err_exit(int id, char *err)
@@ -74,8 +77,15 @@ int		main(void)
 
 	entry = 0;
 	data = check_entry(0, &entry);
+	//printf("a\n");
 	link_checker(data);
+	//printf("b\n");
+	path_process(data);
+	//printf("c\n");
 	ft_lstiter(entry, print_list);
 	print_data(data);
+//	while (1)
+//	{
+//	}
 	return (0);
 }

@@ -1,9 +1,14 @@
 start : a
 end : e
-
-a b
-| |
-c-d-e
+@----@
+|    |
+a-b  |
+  |  |
+  g  |
+  |  |
+c-d  |
+| |  |
+f-e--@
 
 
 a: b,c
@@ -11,22 +16,3 @@ b: d
 c: a,d
 d: c,b,e
 e: d
-
-
-
-je sais e est la fin
-e est link to d
-je sais que d n'est pas le depart
-je sais que d est link a b,c et e
-je sais que je viens de e
-je test de voir si b est link au depart
-je sais que b n'est pas le depart
-je sais que b est link a d
-je sais que je viens de d (j'annule ma recherche)
-je sais que d est link a c
-je test de voir si c est link au depart
-je sais que c n'est pas le depart
-je sais que c est link a a et d
-je sais que je viens de d
-je vais vers a
-je voie que a est le depart je termine en ecrivant le chemin trouver soit a-c-d-e

@@ -6,12 +6,12 @@
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/24 18:32:00 by jcornill          #+#    #+#              #
-#    Updated: 2016/02/24 19:30:24 by jcornill         ###   ########.fr        #
+#    Updated: 2016/03/03 16:58:59 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=lem-in
-SRC=lem_in.c check_entry.c check_entry2.c link_checker.c
+SRC=lem_in.c check_entry.c check_entry2.c link_checker.c path_process.c
 OBJ=$(SRC:.c=.o)
 FLAG=-Wall -Wextra -Werror
 INCLUDE=-I includes
