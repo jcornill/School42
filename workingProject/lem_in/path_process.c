@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 19:47:01 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/03 19:13:00 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/04 17:44:29 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ int		is_room_tested(char *room, t_data *data)
 		if (ft_strcmp(rooms->content, room) == 0)
 			return (1);
 		rooms = rooms->next;
+	}
+	return (0);
+}
+
+int		check_length(t_data *data, int length)
+{
+	t_list	*list;
+	t_path	*path;
+
+	list = (t_list *)data->best_paths;
+	while (list != NULL)
+	{
+		path = (t_path *)list->content;
+		if (path->length == length)
+			return (1);
+		list = list->next;
 	}
 	return (0);
 }
@@ -84,4 +100,6 @@ void	path_process(t_data *data)
 	ft_lstpush(&data->tested_room,
 	ft_lstnew(data->end_room, ft_strlen(data->end_room)));
 	data->best_path->length = process_room(data->end_room, data);
+	ft_lstpush(&data->best_paths,
+	ft_lstnew(data->best_path, sizeof(t_path)));
 }

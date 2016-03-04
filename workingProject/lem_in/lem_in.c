@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/03 18:12:49 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:23:30 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int		main(void)
 	//printf("c\n");
 	ft_lstiter(entry, print_list);
 	print_data(data);
-//	while (1)
-//	{
-//	}
+	while (1)
+	{
+	}
 	return (0);
 }
