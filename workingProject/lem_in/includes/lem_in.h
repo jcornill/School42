@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/05 16:37:20 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/05 17:41:56 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ typedef struct		s_data
 	t_list			*room_links;
 	t_list			*tested_room;
 	t_path			*best_path;
-	int				best_length;
 	int				act_length;
+//	t_list			*lst_length;
+	char			*roomlinkpath;
+	t_list			*lst_roomlinkpath;
 }					t_data;
 
 t_data				*check_entry(char *str, t_list **entry);
@@ -53,6 +55,6 @@ void				print_list(t_list *elem);
 int					set_s_e_room(int nb_sp, int room, t_data *data, char *ret);
 void				link_checker(t_data *data);
 void				path_process(t_data *data);
-int					process_room(char *room, t_data *data, int length);
+int					process_room(char *room, t_data *data);
 
 #endif
