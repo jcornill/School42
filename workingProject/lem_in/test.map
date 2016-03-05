@@ -7,7 +7,7 @@ f 1 1
 ##end
 e 2 1
 a-b
-c-d
+#c-d
 d-e
 f-e
 f-c
@@ -15,4 +15,5 @@ e-a
 g 2 2
 b-g
 d-g
+c-a
 1
