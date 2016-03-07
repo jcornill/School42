@@ -6,13 +6,15 @@ a-b  |
 | |  |
 | g  |
 | |  |
-c d  |
+c-d  |
 | |  |
-f-e--@
+f e--@
 
 
-a: b,c
-b: d
-c: a,d
-d: c,b,e
-e: d
+a: b,c,e
+b: g,a
+c: a,f
+d: g,e
+e: d,f,a
+f: e,c
+g: b,d

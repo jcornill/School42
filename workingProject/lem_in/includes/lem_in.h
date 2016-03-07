@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/05 17:41:56 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/07 15:55:54 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct		s_data
 	t_list			*tested_room;
 	t_path			*best_path;
 	int				act_length;
-//	t_list			*lst_length;
 	char			*roomlinkpath;
 	t_list			*lst_roomlinkpath;
 }					t_data;
