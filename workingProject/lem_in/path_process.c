@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 19:47:01 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/07 17:31:12 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/07 18:17:22 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		is_room_tested(char *room, t_data *data, char *prev_room)
 	rooms = data->tested_room;
 	while (rooms != NULL)
 	{
+		printf("Cmp : %s : %s : %s\n", rooms->content, room, prev_room);
 		if (ft_strcmp(rooms->content, room) == 45)
 		{
 			if (ft_strstr(rooms->content, prev_room) != 0)
