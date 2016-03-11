@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 16:21:45 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:25:24 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/11 20:51:12 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	rrotates(int *pile_a, int *pile_b, int num);
 void	process(int *pile_a, int *pile_b, int num, int opt);
 
 void	debug_print(int *pile_a, int *pile_b, int num);
+void	move_left_pile(int *pile, int num);
 
 #endif

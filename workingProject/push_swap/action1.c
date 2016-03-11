@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 14:44:22 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/07 18:22:32 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/11 20:45:02 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	swap(int *pile, int num, char c, int opt)
 	num_pile = *(pile + num);
 	if (num_pile > 1)
 	{
-		temp = *(pile + (num_pile - 1));
-		*(pile + (num_pile - 1)) = *(pile + (num_pile - 2));
-		*(pile + (num_pile - 2)) = temp;
+		temp = *(pile);
+		*(pile) = *(pile + 1);
+		*(pile + 1) = temp;
 		if (c == 'a' || c == 'b')
 		{
 			write(1, "s", 1);

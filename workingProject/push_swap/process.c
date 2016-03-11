@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 16:22:31 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/07 18:25:43 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/02/22 16:22:32 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void		process(int *pile_a, int *pile_b, int num, int opt)
 		return ;
 	while (!check_pile_order(pile_a, num) || *(pile_b + num) != 0)
 	{
-		if (*(pile_a) < *(pile_a + *(pile_a + num) - 1) && *(pile_a)
-			< *(pile_a + *(pile_a + num) - 2))
+		if (*(pile_a) > *(pile_a + *(pile_a + num) - 1) && *(pile_a)
+			> *(pile_a + *(pile_a + num) - 2))
 			rrotate(pile_a, num, 'a', opt);
-		if (*(pile_a + num - i) > *(pile_a + num - i - 1))
+		if (*(pile_a + num - i) < *(pile_a + num - i - 1))
 			swap(pile_a, num, 'a', opt);
 		while (!check_max(pile_a, num, *(pile_a + (*(pile_a + num)) - 1)))
 			rrotate(pile_a, num, 'a', opt);
