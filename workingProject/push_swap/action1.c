@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 14:44:22 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/11 20:45:02 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/14 16:54:59 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ void	push(int *pile1, int *pile2, int num, char c)
 		c -= 10;
 	if (*(pile1 + num) > 0)
 	{
-		*(pile2 + (*(pile2 + num))) = *(pile1 + (*(pile1 + num)) - 1);
-		*(pile1 + (*(pile1 + num)) - 1) = 0;
+		move_right_pile(pile2, num);
+		*(pile2) = *(pile1);
+		*(pile1) = 0;
+		move_left_pile(pile1, num);
 		*(pile1 + num) = *(pile1 + num) - 1;
 		*(pile2 + num) = *(pile2 + num) + 1;
 		write(1, "p", 1);
@@ -62,7 +64,7 @@ void	push(int *pile1, int *pile2, int num, char c)
 		debug_print(0, 0, num);
 }
 
-void	rotate(int *pile, int num, char c)
+void	rrotate(int *pile, int num, char c, int opt)
 {
 	int		i;
 	int		temp;
@@ -77,15 +79,17 @@ void	rotate(int *pile, int num, char c)
 	*(pile + i) = temp;
 	if (c == 'a' || c == 'b')
 	{
-		write(1, "r", 1);
+		write(1, "rr", 2);
 		write(1, &c, 1);
 		write(1, " ", 1);
 	}
+	if (opt == 1)
+		debug_print(0, 0, num);
 }
 
-void	rotates(int *pile_a, int *pile_b, int num)
+void	rrotates(int *pile_a, int *pile_b, int num, int opt)
 {
-	rotate(pile_a, num, 0);
-	rotate(pile_b, num, 0);
-	write(1, "rr ", 3);
+	rotate(pile_a, num, 0, opt);
+	rotate(pile_b, num, 0, opt);
+	write(1, "rrr ", 4);
 }

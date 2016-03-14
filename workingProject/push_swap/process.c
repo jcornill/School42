@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 16:22:31 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/22 16:22:32 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/14 19:32:29 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,44 +40,61 @@ static int	check_pile_order(int *pile, int num)
 	return (1);
 }
 
-static int	check_max(int *pile, int num, int max)
+static int	check_min(int *pile, int num, int min)
 {
 	int	i;
 
 	i = 0;
 	while (i < *(pile + num) - 1)
 	{
-		if ((*(pile + i)) > max)
+		if ((*(pile + i)) < min)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void		process(int *pile_a, int *pile_b, int num, int opt)
+int			opti(int *pile, int num, int opt)
 {
 	int	i;
 
-	i = 1;
-	if (check_pile_order(pile_a, num) && *(pile_b + num) == 0)
-		return ;
-	while (!check_pile_order(pile_a, num) || *(pile_b + num) != 0)
+	i = 0;
+	while (i < *(pile + num) - 3)
 	{
-		if (*(pile_a) > *(pile_a + *(pile_a + num) - 1) && *(pile_a)
-			> *(pile_a + *(pile_a + num) - 2))
-			rrotate(pile_a, num, 'a', opt);
-		if (*(pile_a + num - i) < *(pile_a + num - i - 1))
-			swap(pile_a, num, 'a', opt);
-		while (!check_max(pile_a, num, *(pile_a + (*(pile_a + num)) - 1)))
-			rrotate(pile_a, num, 'a', opt);
-		if (!check_pile_order(pile_a, num))
-			push(pile_a, pile_b, num, 'b' + (opt * 10));
-		if (check_pile_rorder(pile_b, num) && check_pile_order(pile_a, num))
-		{
-			while (*(pile_b + num) != 0)
-				push(pile_b, pile_a, num, 'a' + (opt * 10));
-			return ;
-		}
+		if ((*(pile + i)) > (*(pile + i + 1)))
+			return (0);
 		i++;
 	}
+	if (*(pile + num - 1) < *(pile + num - 2))
+	{
+		rrotate(pile, num, 'a', opt);
+		rrotate(pile, num, 'a', opt);
+		swap(pile, num, 'a', opt);
+		rotate(pile, num, 'a', opt);
+		rotate(pile, num, 'a', opt);
+	}
+	else
+	{
+		return (0);
+	}
+	return (1);
+}
+
+void		process(int *pile_a, int *pile_b, int num, int opt)
+{
+	if (num <= 1 || check_pile_order(pile_a, num) || opti(pile_a, num, opt))
+		return ;
+	while (check_pile_order(pile_a, num) != 1 || *(pile_b + num) > 0)
+	{
+		if (*(pile_a) > *(pile_a + 1))
+			swap(pile_a, num, 'a', opt);
+		if (check_min(pile_a, num, *(pile_a)) && !check_pile_order(pile_a, num))
+			push(pile_a, pile_b, num, 'b' + (opt * 10));
+		else if (!check_pile_order(pile_a, num))
+			rotate(pile_a, num, 'a', opt);
+		while (check_pile_order(pile_a, num) && *(pile_b + num) > 0)
+			push(pile_b, pile_a, num, 'a' + (opt * 10));
+	}
+	return ;
+	check_pile_rorder(pile_b, 0);
 }
