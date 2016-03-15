@@ -71,6 +71,27 @@ int				*get_pile_a(char **str, int nb_num, int opt)
 	return (ret);
 }
 
+int			where_min(int *pile, int num)
+{
+	int		i;
+	int		min;
+	int		min_val;
+
+	i = 0;
+	min = 9999;
+	min_val = 0;
+	while (i < *(pile + num))
+	{
+		if ((*(pile + i)) < min)
+		{
+			min = *(pile + i);
+			min_val = i;
+		}
+		i++;
+	}
+	return (min_val >= *(pile + num) / 2 + 1);
+}
+
 int				*get_pile_b(int nb_num)
 {
 	int		*ret;

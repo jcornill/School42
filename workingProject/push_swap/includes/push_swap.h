@@ -24,6 +24,7 @@ void	rotates(int *pile_a, int *pile_b, int num);
 void	rrotate(int *pile, int num, char c, int opt);
 void	rrotates(int *pile_a, int *pile_b, int num, int opt);
 void	process(int *pile_a, int *pile_b, int num, int opt);
+int		where_min(int *pile, int num);
 
 void	debug_print(int *pile_a, int *pile_b, int num);
 void	move_left_pile(int *pile, int num);

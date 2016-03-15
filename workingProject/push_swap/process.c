@@ -45,7 +45,7 @@ static int	check_min(int *pile, int num, int min)
 	int	i;
 
 	i = 0;
-	while (i < *(pile + num) - 1)
+	while (i < *(pile + num))
 	{
 		if ((*(pile + i)) < min)
 			return (0);
@@ -59,7 +59,7 @@ int			opti(int *pile, int num, int opt)
 	int	i;
 
 	i = 0;
-	while (i < *(pile + num) - 3)
+	while (i < *(pile + num) - 2)
 	{
 		if ((*(pile + i)) > (*(pile + i + 1)))
 			return (0);
@@ -86,12 +86,17 @@ void		process(int *pile_a, int *pile_b, int num, int opt)
 		return ;
 	while (check_pile_order(pile_a, num) != 1 || *(pile_b + num) > 0)
 	{
-		if (*(pile_a) > *(pile_a + 1))
+		if (*(pile_a) > *(pile_a + 1) && check_min(pile_a, num, *(pile_a + 1)))
 			swap(pile_a, num, 'a', opt);
 		if (check_min(pile_a, num, *(pile_a)) && !check_pile_order(pile_a, num))
 			push(pile_a, pile_b, num, 'b' + (opt * 10));
 		else if (!check_pile_order(pile_a, num))
-			rotate(pile_a, num, 'a', opt);
+		{
+			if (where_min(pile_a, num) == 0)
+				rotate(pile_a, num, 'a', opt);
+			else
+				rrotate(pile_a, num, 'a', opt);
+		}
 		while (check_pile_order(pile_a, num) && *(pile_b + num) > 0)
 			push(pile_b, pile_a, num, 'a' + (opt * 10));
 	}
