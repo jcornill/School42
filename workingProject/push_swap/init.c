@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 16:46:20 by jcornill          #+#    #+#             */
-/*   Updated: 2016/02/21 16:46:22 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/16 13:05:31 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				*get_pile_a(char **str, int nb_num, int opt)
 	return (ret);
 }
 
-int			where_min(int *pile, int num)
+int				where_min(int *pile, int num)
 {
 	int		i;
 	int		min;

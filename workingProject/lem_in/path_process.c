@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 19:47:01 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/07 17:31:12 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/16 16:41:52 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,16 @@ void	add_tested_room(char *room, t_data *data, char *prev_room)
 	ft_lstnew(tested_room, ft_strlen(tested_room)));
 }
 
-int		process_room_v2(char *room, t_data *data, char *prev_room)
+int			process_room_v3(char *room, t_data *data)
 {
 	t_list		*rooms;
+	int			best;
+	int			act;
 
-	printf("Prev Room : '%s'\n", prev_room);
-	if (ft_strcmp(room, data->end_room) == 0 && !is_path_tested(data))
+	if (ft_strcmp(room, data->end_room) == 0)
 		return (1);
 	rooms = get_linked_room(room, data);
+	best = 0;
 	while (rooms != NULL)
 	{
 		if (is_room_tested(rooms->content, data, room))
@@ -119,15 +121,38 @@ int		process_room_v2(char *room, t_data *data, char *prev_room)
 			rooms = rooms->next;
 			continue ;
 		}
-		add_tested_room(rooms->content, data, room);
-		adding_str(data->roomlinkpath, rooms->content, data);
-		if (process_room_v2(rooms->content, data, room))
-			return (1);
-		else
-			rem_str(data, rooms->content);
+		if ((act = process_room_v3(rooms->content, data)) > best)
+		{
+			best = act;
+		}
 	}
-	return (0);
+	return (best + 1);
 }
+
+// int		process_room_v2(char *room, t_data *data, char *prev_room)
+// {
+// 	t_list		*rooms;
+//
+// 	printf("Prev Room : '%s'\n", prev_room);
+// 	if (ft_strcmp(room, data->end_room) == 0 && !is_path_tested(data))
+// 		return (1);
+// 	rooms = get_linked_room(room, data);
+// 	while (rooms != NULL)
+// 	{
+// 		if (is_room_tested(rooms->content, data, room))
+// 		{
+// 			rooms = rooms->next;
+// 			continue ;
+// 		}
+// 		add_tested_room(rooms->content, data, room);
+// 		adding_str(data->roomlinkpath, rooms->content, data);
+// 		if (process_room_v2(rooms->content, data, room))
+// 			return (1);
+// 		else
+// 			rem_str(data, rooms->content);
+// 	}
+// 	return (0);
+// }
 
 // int		process_room(char *room, t_data *data)
 // {
@@ -187,22 +212,22 @@ int		process_room_v2(char *room, t_data *data, char *prev_room)
 // 	return (-1);
 // }
 
-void	lstfree(t_list **alst, t_data *data)
-{
-	t_list	*src;
-
-	src = *alst;
-	if (src->next != NULL)
-		lstfree(&src->next, data);
-	free(src);
-	*alst = NULL;
-}
-
-void	delete(void *cont, size_t size)
-{
-	size = 0;
-	ft_memdel(&cont);
-}
+// void	lstfree(t_list **alst, t_data *data)
+// {
+// 	t_list	*src;
+//
+// 	src = *alst;
+// 	if (src->next != NULL)
+// 		lstfree(&src->next, data);
+// 	free(src);
+// 	*alst = NULL;
+// }
+//
+// void	delete(void *cont, size_t size)
+// {
+// 	size = 0;
+// 	ft_memdel(&cont);
+// }
 
 void	path_process(t_data *data)
 {
@@ -213,19 +238,32 @@ void	path_process(t_data *data)
 	cpt = 0;
 	while (i > 0 && cpt < 10)
 	{
-		data->roomlinkpath = (char *)ft_memalloc(1);
-		data->act_length = 0;
-		add_tested_room(data->start_room, data, data->start_room);
-		adding_str(data->roomlinkpath, data->start_room, data);
-		i = process_room_v2(data->start_room, data, data->start_room);
-		printf("Final : '%s'\n", data->roomlinkpath);
-		ft_lstpush(&data->lst_roomlinkpath,
-		ft_lstnew(data->roomlinkpath, ft_strlen(data->roomlinkpath)));
-		ft_lstdel(&data->tested_room, delete);
-		//free(data->roomlinkpath);
-		cpt++;
+
 	}
 }
+
+// void	path_process(t_data *data)
+// {
+// 	int		i;
+// 	int		cpt;
+//
+// 	i = 1;
+// 	cpt = 0;
+// 	while (i > 0 && cpt < 10)
+// 	{
+// 		data->roomlinkpath = (char *)ft_memalloc(1);
+// 		data->act_length = 0;
+// 		add_tested_room(data->start_room, data, data->start_room);
+// 		adding_str(data->roomlinkpath, data->start_room, data);
+// 		i = process_room_v2(data->start_room, data, data->start_room);
+// 		printf("Final : '%s'\n", data->roomlinkpath);
+// 		ft_lstpush(&data->lst_roomlinkpath,
+// 		ft_lstnew(data->roomlinkpath, ft_strlen(data->roomlinkpath)));
+// 		ft_lstdel(&data->tested_room, delete);
+// 		//free(data->roomlinkpath);
+// 		cpt++;
+// 	}
+// }
 
 // void	path_process(t_data *data)
 // {

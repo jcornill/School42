@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcornill <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2015/12/10 23:31:11 by jcornill         ###   ########.fr        #
+#    Updated: 2016/03/16 10:32:16 by jcornill         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME=libft.a
 SRC=ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
@@ -23,8 +23,7 @@ ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c \
 ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 ft_isspace.c ft_memdup.c ft_strrev.c ft_lstpush.c ft_strlenstr.c
 OBJ=$(SRC:.c=.o)
-FLAG=
-#-Wall -Wextra -Werror
+FLAG=-Wall -Wextra -Werror
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
