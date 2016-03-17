@@ -6,7 +6,7 @@
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/24 18:32:00 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/03 16:58:59 by jcornill         ###   ########.fr        #
+#    Updated: 2016/03/17 12:58:01 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ cleanwitlib:
 rewitlib: cleanwitlib $(OBJ)
 	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
 
-m: rewitlib eclean norme
+m: rewitlib eclean #norme
 	@echo "==========PROG=========="
 	@./$(NAME) < test.map
 

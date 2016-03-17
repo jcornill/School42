@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/07 15:55:54 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/17 14:35:53 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ typedef struct		s_room_link
 	t_list			*linked;
 }					t_room_link;
 
-typedef struct		s_path
+typedef struct		s_room
 {
-	t_list			*room_path;
-	int				length;
-}					t_path;
+	char			*room;
+	int				dist_to_end;
+}					t_room;
 
 typedef struct		s_data
 {
@@ -41,11 +41,8 @@ typedef struct		s_data
 	char			*start_room;
 	char			*end_room;
 	t_list			*room_links;
-	t_list			*tested_room;
-	t_path			*best_path;
-	int				act_length;
-	char			*roomlinkpath;
-	t_list			*lst_roomlinkpath;
+	t_list			*best_path;
+	t_list			*lst_room;
 }					t_data;
 
 t_data				*check_entry(char *str, t_list **entry);

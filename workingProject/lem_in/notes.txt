@@ -16,5 +16,13 @@ b: g,a
 c: a,f
 d: g,e
 e: d,f,a
-f: e,c
+f: c
 g: b,d
+
+e:0
+d:1
+a:1
+c:2
+g:2
+b:3
+f:3

@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/16 14:13:43 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/17 12:53:10 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ void	print_link(t_list *elem)
 	ft_putstr("\n");
 }
 
+void	print_dist(t_list *elem)
+{
+	t_room	*room;
+
+	room = elem->content;
+	ft_putstr("Room : ");
+	ft_putstr(room->room);
+	ft_putstr(" dist : ");
+	ft_putnbr(room->dist_to_end);
+	ft_putstr("\n");
+}
+
 void	print_data(t_data *data)
 {
 	ft_putstr("==Map data==\n");
@@ -55,9 +67,8 @@ void	print_data(t_data *data)
 	ft_lstiter(data->links, print_link);
 	ft_putstr("Room linked :\n");
 	ft_lstiter(data->room_links, print_linked);
-	ft_putstr("Best Path :\n");
-	ft_lstiter(data->best_path->room_path, print_list);
-	ft_putnbr(data->best_path->length);
+	ft_putstr("Room dist to end :\n");
+	ft_lstiter(data->lst_room, print_dist);
 }
 
 void	err_exit(int id, char *err)
