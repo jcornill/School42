@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/17 12:53:10 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/17 15:37:32 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	print_data(t_data *data)
 	ft_lstiter(data->room_links, print_linked);
 	ft_putstr("Room dist to end :\n");
 	ft_lstiter(data->lst_room, print_dist);
+	ft_putstr("Best path :\n");
+	ft_lstiter(data->best_path, print_list);
 }
 
 void	err_exit(int id, char *err)

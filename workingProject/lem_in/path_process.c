@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 19:47:01 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/17 14:51:22 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/17 16:08:06 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ int		is_room_tested(char *room, t_data *data, int length)
 		test_room = (t_room *)rooms->content;
 		if (ft_strcmp(test_room->room, room) == 0)
 		{
-			printf("Already tested\n");
 			if (test_room->dist_to_end > length)
-			{
-				printf ("best length \n");
 				test_room->dist_to_end = length + 1;
-			}
 			return (1);
 		}
 		rooms = rooms->next;
@@ -61,12 +57,12 @@ void		process_room_v3(char *room, t_data *data, int length)
 	new_room = ft_memalloc(sizeof(t_room));
 	new_room->room = room;
 	new_room->dist_to_end = length;
+	new_room->ants_in_room = 0;
 	ft_lstpush(&data->lst_room, ft_lstnew(new_room, sizeof(t_room)));
 	if (ft_strcmp(room, data->start_room) == 0)
 		return ;
 	while (rooms != NULL)
 	{
-		printf("Testing room : %s - %d\n", rooms->content, length);
 		if (is_room_tested(rooms->content, data, length))
 		{
 			rooms = rooms->next;
@@ -77,22 +73,53 @@ void		process_room_v3(char *room, t_data *data, int length)
 	}
 }
 
-/*
-
-void	get_best_path(t_data *data)
+int		get_dist_from_room(char *room, t_data *data)
 {
-	t_list	*best_path;
-	t_list	*linked;
+	t_list		*rooms;
+	t_room		*test_room;
 
-	best_path = ft_memalloc(sizeof(t_list));
-
+	rooms = data->lst_room;
+	while (rooms != NULL)
+	{
+		test_room = (t_room *)rooms->content;
+		if (ft_strcmp(test_room->room, room) == 0)
+			return (test_room->dist_to_end);
+		rooms = rooms->next;
+	}
+	return (-1);
 }
 
-*/
+void	get_best_path(char *room, t_data *data)
+{
+	t_list	*linked;
+	int		act;
+	int		best;
+	char	*best_room;
+
+	best = 99999;
+	linked = get_linked_room(room, data);
+	printf("%s\n", "test");
+	while (linked != NULL)
+	{
+		if ((act = get_dist_from_room(linked->content, data)) < best)
+		{
+			best = act;
+			best_room = linked->content;
+		}
+		linked = linked->next;
+	}
+	ft_lstpush(&data->best_path,
+	ft_lstnew(best_room, ft_strlen(best_room)));
+	if (ft_strcmp(best_room, data->end_room) != 0)
+		get_best_path(best_room, data);
+}
 
 void	path_process(t_data *data)
 {
 	process_room_v3(data->end_room, data, 0);
+	ft_lstpush(&data->best_path,
+	ft_lstnew(data->start_room, ft_strlen(data->start_room)));
+	get_best_path(data->start_room, data);
 }
 
 // void	path_process(t_data *data)

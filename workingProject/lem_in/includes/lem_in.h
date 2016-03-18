@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/17 14:35:53 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/17 16:07:31 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ typedef struct		s_room
 {
 	char			*room;
 	int				dist_to_end;
+	int				ants_in_room;
 }					t_room;
 
 typedef struct		s_data
 {
 	int				nb_ants;
+	int				end_ants;
 	t_list			*rooms_name;
 	t_list			*links;
 	char			*start_room;
