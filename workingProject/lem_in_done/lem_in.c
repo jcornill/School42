@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:25:52 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/18 14:32:38 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ void	free_data(t_data *data)
 
 void	err_exit(int id, char *err)
 {
+	id = 0;
+	err = 0;
 	ft_putstr_fd("ERROR : ", 2);
-	ft_putnbr_fd(id, 2);
 	ft_putstr_fd("\n", 2);
-	ft_putstr_fd(err, 2);
-	ft_putstr("\n");
 	exit(1);
 }
 

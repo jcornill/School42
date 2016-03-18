@@ -6,7 +6,7 @@
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/24 18:32:00 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/18 14:24:50 by jcornill         ###   ########.fr        #
+#    Updated: 2016/03/18 14:35:35 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,11 @@ $(NAME): $(OBJ)
 	Make -C libft/
 	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
 
-cleanwitlib:
-	@rm -f $(OBJ)
-	@rm -f $(NAME)
-
-rewitlib: cleanwitlib $(OBJ)
-	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a
-
-m: rewitlib eclean #norme
+m: $(NAME)
 	@echo "==========PROG=========="
 	@./$(NAME) < test.map
 
-save:fclean eclean
+save:fclean
 	git add --all
 	git commit -m "Autosaving on lem_in"
 	git push
@@ -52,13 +45,9 @@ fclean:clean
 	make -C libft/ fclean
 	rm -f $(NAME)
 
-eclean:
-	@rm -f *~
-	@rm -f includes/*~
-
 re:fclean all
 
 %.o:%.c
 	gcc -c $< $(FLAG) $(INCLUDE) -o $@
 
-.PHONY: $(NAME) all clean fclean re save m
+.PHONY: all clean fclean re save m
