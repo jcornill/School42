@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 19:47:01 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:23:39 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/19 16:02:58 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void		get_best_path(char *room, t_data *data)
 
 	best = 99999;
 	linked = get_linked_room(room, data);
+	if (linked == NULL)
+		best_room = room;
 	while (linked != NULL)
 	{
 		if ((act = get_dist_from_room(linked->content, data)) < best)
