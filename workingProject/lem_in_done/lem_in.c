@@ -27,11 +27,13 @@ void	delete_list(void *cont, size_t size)
 
 void	free_data(t_data *data)
 {
+	printf("%s\n", "51");
 	ft_lstdel(&data->rooms_name, delete_list);
 	if (data->links != NULL)
 		ft_lstdel(&data->links, delete_list);
 	if (data->room_links != NULL)
 		ft_lstdel(&data->room_links, delete_list);
+	printf("%s\n", "52");
 	free(data->best_path);
 	ft_lstdel(&data->lst_room, delete_list);
 	ft_lstdel(&data->lst_ants, delete_list);

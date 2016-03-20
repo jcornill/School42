@@ -99,7 +99,11 @@ void		get_best_path(char *room, t_data *data)
 	best = 99999;
 	linked = get_linked_room(room, data);
 	if (linked == NULL)
+	{
 		best_room = room;
+		if (get_dist_from_room(best_room, data) == -1)
+			err_exit(13, "No path found");
+	}
 	while (linked != NULL)
 	{
 		if ((act = get_dist_from_room(linked->content, data)) < best)
