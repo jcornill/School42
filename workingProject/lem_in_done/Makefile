@@ -14,7 +14,8 @@ NAME=lem-in
 SRC=lem_in.c check_entry.c check_entry2.c link_checker.c path_process.c \
 ants_mover.c utils.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra -Werror
+FLAG=
+#-Wall -Wextra -Werror
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)

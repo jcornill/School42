@@ -84,6 +84,8 @@ void	ants_mover(t_data *data)
 
 	set_ant(data);
 	i = data->nb_ants;
+	if (ft_strcmp(data->start_room, data->end_room) == 0)
+		return ;
 	while (i > 0)
 	{
 		ants = data->lst_ants;

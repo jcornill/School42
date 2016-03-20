@@ -24,7 +24,8 @@ ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 ft_isspace.c ft_memdup.c ft_strrev.c ft_lstpush.c ft_strlenstr.c ft_nbrlen.c \
 get_next_line.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra -Werror
+FLAG=
+#-Wall -Wextra -Werror
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
