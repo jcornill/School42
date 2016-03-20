@@ -59,8 +59,8 @@ void		process_room_v3(char *room, t_data *data, int length)
 	new_room->dist_to_end = length;
 	new_room->ants_in_room = 0;
 	ft_lstpush(&data->lst_room, ft_lstnew(new_room, sizeof(t_room)));
-	if (ft_strcmp(room, data->start_room) == 0)
-		return ;
+	//if (ft_strcmp(room, data->start_room) == 0)
+	//	return ;
 	while (rooms != NULL)
 	{
 		if (is_room_tested(rooms->content, data, length))
@@ -113,6 +113,8 @@ void		get_best_path(char *room, t_data *data)
 		}
 		linked = linked->next;
 	}
+	if (best == -1)
+		err_exit(14, "No path found 2");
 	ft_lstpush(&data->best_path,
 	ft_lstnew(best_room, ft_strlen(best_room)));
 	if (ft_strcmp(best_room, data->end_room) != 0)

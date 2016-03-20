@@ -1,6 +1,7 @@
-42
 ##start
-1 1 1
 ##end
-0 0 0
-1-0
+Bye 0 0
+Hello 2 2
+Bye-Hello
+Hello-Bye
+12

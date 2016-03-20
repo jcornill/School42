@@ -105,7 +105,7 @@ static char			*check_room(char *str, t_data *data, int nb_sp, int i)
 		if (nb_sp == 1 && ret == 0)
 			ret = ft_strsub(str, 0, i);
 		if (nb_sp > 0 && (!ft_isdigit(str[i]) && str[i] != ' '))
-			err_exit(5, "??");
+			err_exit(5, "Inccorect room coord");
 		i++;
 	}
 	room = set_s_e_room(nb_sp, room, data, ret);

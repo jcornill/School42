@@ -27,16 +27,16 @@ void	delete_list(void *cont, size_t size)
 
 void	free_data(t_data *data)
 {
-	printf("%s\n", "51");
 	ft_lstdel(&data->rooms_name, delete_list);
 	if (data->links != NULL)
 		ft_lstdel(&data->links, delete_list);
 	if (data->room_links != NULL)
 		ft_lstdel(&data->room_links, delete_list);
-	printf("%s\n", "52");
 	free(data->best_path);
-	ft_lstdel(&data->lst_room, delete_list);
-	ft_lstdel(&data->lst_ants, delete_list);
+	if (data->lst_room != NULL)
+		ft_lstdel(&data->lst_room, delete_list);
+	if (data->lst_ants != NULL)
+		ft_lstdel(&data->lst_ants, delete_list);
 	free(data);
 }
 
@@ -56,17 +56,11 @@ int		main(void)
 
 	entry = 0;
 	data = check_entry(0, &entry);
-	printf("%s\n", "1");
 	link_checker(data);
-	printf("%s\n", "2");
 	path_process(data);
-	printf("%s\n", "3");
 	ft_lstiter(entry, print_list);
 	ft_putchar('\n');
-	printf("%s\n", "4");
-	if (data->start_room == data->end_room)
-		ants_mover(data);
-	printf("%s\n", "5");
+	ants_mover(data);
 	ft_lstdel(&entry, delete_list);
 	free_data(data);
 	return (0);
