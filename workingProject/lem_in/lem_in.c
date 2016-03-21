@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:25:52 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/21 11:13:51 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,24 @@ void	delete_list(void *cont, size_t size)
 void	free_data(t_data *data)
 {
 	ft_lstdel(&data->rooms_name, delete_list);
-	ft_lstdel(&data->links, delete_list);
-	ft_lstdel(&data->room_links, delete_list);
+	if (data->links != NULL)
+		ft_lstdel(&data->links, delete_list);
+	if (data->room_links != NULL)
+		ft_lstdel(&data->room_links, delete_list);
 	free(data->best_path);
-	ft_lstdel(&data->lst_room, delete_list);
-	ft_lstdel(&data->lst_ants, delete_list);
+	if (data->lst_room != NULL)
+		ft_lstdel(&data->lst_room, delete_list);
+	if (data->lst_ants != NULL)
+		ft_lstdel(&data->lst_ants, delete_list);
 	free(data);
 }
 
 void	err_exit(int id, char *err)
 {
+	id = 0;
 	ft_putstr_fd("ERROR : ", 2);
-	ft_putnbr_fd(id, 2);
-	ft_putstr_fd("\n", 2);
 	ft_putstr_fd(err, 2);
-	ft_putstr("\n");
+	ft_putstr_fd("\n", 2);
 	exit(1);
 }
 

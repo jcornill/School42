@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:00:12 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:21:12 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/21 11:13:12 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,19 @@ void	ants_mover(t_data *data)
 
 	set_ant(data);
 	i = data->nb_ants;
+	if (ft_strcmp(data->start_room, data->end_room) == 0)
+		return ;
 	while (i > 0)
 	{
 		ants = data->lst_ants;
 		while (ants != NULL)
 		{
 			ant = ants->content;
-			if (ft_strcmp(ant->actual_room, data->end_room) == 0)
-			{
-				ants = ants->next;
-				continue ;
-			}
-			if (check_empty_room(ant->next_room, data))
-				if (move_ant(data, ant) &&
-				ft_strcmp(ant->actual_room, data->end_room) == 0)
-					i--;
+			if (ft_strcmp(ant->actual_room, data->end_room) != 0)
+				if (check_empty_room(ant->next_room, data))
+					if (move_ant(data, ant) &&
+					ft_strcmp(ant->actual_room, data->end_room) == 0)
+						i--;
 			ants = ants->next;
 		}
 		ft_putchar('\n');

@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 19:47:01 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:23:39 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/21 11:16:16 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void		process_room_v3(char *room, t_data *data, int length)
 	new_room->dist_to_end = length;
 	new_room->ants_in_room = 0;
 	ft_lstpush(&data->lst_room, ft_lstnew(new_room, sizeof(t_room)));
-	if (ft_strcmp(room, data->start_room) == 0)
-		return ;
 	while (rooms != NULL)
 	{
 		if (is_room_tested(rooms->content, data, length))
@@ -97,7 +95,10 @@ void		get_best_path(char *room, t_data *data)
 	char	*best_room;
 
 	best = 99999;
-	linked = get_linked_room(room, data);
+	if ((linked = get_linked_room(room, data)) == NULL)
+		if ((best_room = room) == room &&
+		get_dist_from_room(best_room, data) == -1)
+			err_exit(13, "No path found");
 	while (linked != NULL)
 	{
 		if ((act = get_dist_from_room(linked->content, data)) < best)
@@ -107,8 +108,9 @@ void		get_best_path(char *room, t_data *data)
 		}
 		linked = linked->next;
 	}
-	ft_lstpush(&data->best_path,
-	ft_lstnew(best_room, ft_strlen(best_room)));
+	if (best == -1)
+		err_exit(14, "No path found");
+	ft_lstpush(&data->best_path, ft_lstnew(best_room, ft_strlen(best_room)));
 	if (ft_strcmp(best_room, data->end_room) != 0)
 		get_best_path(best_room, data);
 }

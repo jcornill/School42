@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:23:37 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/21 12:08:23 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void				reset_room(char *room, t_data *data);
 void				print_move(int ants_id, char *room);
 void				get_best_path(char *room, t_data *data);
 void				process_room_v3(char *room, t_data *data, int length);
+int					check_room_2(char *room, t_data *data, char *str);
 
 #endif

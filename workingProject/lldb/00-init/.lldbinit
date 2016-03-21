@@ -1,2 +1,0 @@
-settings set target.x86-disassembly-flavor intel
-script print "Here is some text ."

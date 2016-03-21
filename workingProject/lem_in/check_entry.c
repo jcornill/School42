@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:53 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/18 14:21:25 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/21 12:42:55 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,11 @@ static char			*check_room(char *str, t_data *data, int nb_sp, int i)
 		if (nb_sp == 1 && ret == 0)
 			ret = ft_strsub(str, 0, i);
 		if (nb_sp > 0 && (!ft_isdigit(str[i]) && str[i] != ' '))
-			err_exit(5, "??");
+			err_exit(5, "Inccorect room coord");
 		i++;
 	}
 	room = set_s_e_room(nb_sp, room, data, ret);
+	check_room_2(ret, data, str);
 	return (ret);
 }
 
@@ -123,6 +124,8 @@ t_data				*check_entry(char *str, t_list **entry)
 	data->links = 0;
 	while (get_next_line(0, &str))
 	{
+		if (str[0] == 0)
+			break ;
 		if (c_nbants(str) > 0 && (data->nb_ants *= c_nbants(str) * -1) < 0)
 			err_exit(1, "Multiple ants number !");
 		room = check_room(str, data, 0, 0);
