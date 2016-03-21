@@ -5,19 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/21 13:29:10 by jcornill         ###   ########.fr        #
+#    Created: 2016/03/21 13:08:23 by jcornill          #+#    #+#              #
+#    Updated: 2016/03/21 14:28:22 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLEAN_LEMIN=make -C lem_in/ fclean
-CLEAN_FDF=make -C fdf/ fclean
+NAME=fdf
+SRC=fdf.c utils.c graphics.c
+OBJ=$(SRC:.c=.o)
+FLAG=-Wall -Wextra -Werror
+INCLUDE=-I includes
+MINILIBX=-lmlx -framework OpenGL -framework AppKit
+
+$(NAME): $(OBJ)
+	Make -C libft/
+	gcc $(FLAG) -o $(NAME) $(OBJ) libft/libft.a $(MINILIBX)
+
+exec: $(NAME)
+	./fdf
+
+all:$(NAME)
 
 clean:
-	$(CLEAN_LEMIN)
-	$(CLEAN_FDF)
+	make -C libft/ clean
+	rm -f $(OBJ)
 
-save: clean
-	git add --all
-	git commit -m "Autosaving on push_swap"
-	git push
+fclean:clean
+	make -C libft/ fclean
+	rm -f $(NAME)
+
+re:fclean all
+
+%.o:%.c
+	gcc -c $< $(FLAG) $(INCLUDE) -o $@
+
+.PHONY: all clean fclean re save
