@@ -1,7 +1,4 @@
+12
 ##start
 ##end
-Bye 0 0
-Hello 2 2
-Bye-Hello
-Hello-Bye
-12
+0 0 0

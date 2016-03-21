@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:53 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/19 15:56:08 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/21 12:42:55 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ static char			*check_room(char *str, t_data *data, int nb_sp, int i)
 		i++;
 	}
 	room = set_s_e_room(nb_sp, room, data, ret);
+	check_room_2(ret, data, str);
 	return (ret);
 }
 
@@ -123,6 +124,8 @@ t_data				*check_entry(char *str, t_list **entry)
 	data->links = 0;
 	while (get_next_line(0, &str))
 	{
+		if (str[0] == 0)
+			break ;
 		if (c_nbants(str) > 0 && (data->nb_ants *= c_nbants(str) * -1) < 0)
 			err_exit(1, "Multiple ants number !");
 		room = check_room(str, data, 0, 0);
