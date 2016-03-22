@@ -1,0 +1,10 @@
+int main()
+{
+	int N,x,y,w,z,s,i;
+	scanf("%d",&N);
+	for(i=0;i++<N;)
+	{
+		scanf("%d%d%d%d%d",&x,&y,&w,&z,&s);
+		printf((x+s>w&&y+s>z&&w+s>x&&z+s>y)?"true\n":"false\n");
+	}
+}
