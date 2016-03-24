@@ -6,7 +6,7 @@
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/21 13:29:10 by jcornill         ###   ########.fr        #
+#    Updated: 2016/03/24 16:24:55 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,5 +19,5 @@ clean:
 
 save: clean
 	git add --all
-	git commit -m "Autosaving on push_swap"
+	git commit -m "Autosaving"
 	git push

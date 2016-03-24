@@ -6,13 +6,14 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/21 12:08:23 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/24 15:46:17 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 # include "../libft/includes/libft.h"
+#  include <stdio.h>
 
 typedef struct		s_link
 {
@@ -57,18 +58,19 @@ typedef struct		s_data
 t_data				*check_entry(char *str, t_list **entry);
 void				err_exit(int id, char *err);
 void				print_list(t_list *elem);
-int					set_s_e_room(int nb_sp, int room, t_data *data, char *ret);
+int					set_s_e_room(int room, t_data *data, char *ret);
 void				link_checker(t_data *data);
 void				path_process(t_data *data);
 int					process_room(char *room, t_data *data);
 void				ants_mover(t_data *data);
 void				set_ant(t_data *data);
 char				*get_next_room(char *room, t_data *data);
+void				set_room_link(t_data *data);
 int					move_ant(t_data *data, t_ant *ant);
 void				reset_room(char *room, t_data *data);
 void				print_move(int ants_id, char *room);
 void				get_best_path(char *room, t_data *data);
 void				process_room_v3(char *room, t_data *data, int length);
-int					check_room_2(char *room, t_data *data, char *str);
+int					check_room_2(char *room, t_data *data);
 
 #endif

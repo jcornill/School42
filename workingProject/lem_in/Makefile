@@ -6,7 +6,7 @@
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/24 18:32:00 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/18 14:35:35 by jcornill         ###   ########.fr        #
+#    Updated: 2016/03/24 14:29:08 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME=lem-in
 SRC=lem_in.c check_entry.c check_entry2.c link_checker.c path_process.c \
 ants_mover.c utils.c
 OBJ=$(SRC:.c=.o)
-FLAG=-Wall -Wextra -Werror
+FLAG=-Wall -Wextra -Werror \
+-g
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)

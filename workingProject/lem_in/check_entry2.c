@@ -6,13 +6,13 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:49 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/21 12:09:44 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/24 15:32:22 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	check_room_2(char *room, t_data *data, char *str)
+int	check_room_2(char *room, t_data *data)
 {
 	t_list		*rooms;
 
@@ -20,18 +20,14 @@ int	check_room_2(char *room, t_data *data, char *str)
 	while (rooms != NULL)
 	{
 		if (ft_strcmp(rooms->content, room) == 0)
-			err_exit(15, "Room already exist");
+			return(0);
 		rooms = rooms->next;
 	}
-	if (!ft_isdigit(str[0]) && room == NULL)
-		err_exit(16, "Uncorrect line");
 	return (1);
 }
 
-int	set_s_e_room(int nb_sp, int room, t_data *data, char *ret)
+int	set_s_e_room(int room, t_data *data, char *ret)
 {
-	if (nb_sp != 2 && nb_sp != 0)
-		err_exit(4, "Unknown line ! (Space in room name ? Or incorrect coord)");
 	if ((room == 10 || room == 5) && data->start_room != 0)
 		err_exit(10, "Two start room define !");
 	if ((room == -5 || room == 5) && data->end_room != 0)
