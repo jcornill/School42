@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:53 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/29 10:36:02 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/29 10:56:07 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ static t_link		*create_link(char *str, t_list **rooms_name)
 		{
 			room_a = ft_strsub(str, 0, i);
 			i++;
-			room_b = ft_strsub(str, i, ft_strlen(str));
-			i--;
+			room_b = ft_strsub(str, i--, ft_strlen(str));
 			if (!check_link(room_a, room_b, rooms_name))
 				continue ;
 			ret->room_a = room_a;
