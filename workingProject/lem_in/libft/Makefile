@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+         #
+#    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 12:48:49 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/29 09:28:06 by anonymous        ###   ########.fr        #
+#    Updated: 2016/03/29 10:37:52 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 ft_isspace.c ft_memdup.c ft_strrev.c ft_lstpush.c ft_strlenstr.c ft_nbrlen.c \
 get_next_line.c
 OBJ=$(SRC:.c=.o)
-#FLAG=-Wall -Wextra -Werror
+FLAG=-Wall -Wextra -Werror
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
