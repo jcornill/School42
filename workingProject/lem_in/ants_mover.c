@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ants_mover.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:00:12 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/21 11:13:12 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/29 10:01:57 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ int		check_empty_room(char *room, t_data *data)
 		act_room = rooms->content;
 		if (ft_strcmp(room, act_room->room) == 0 && act_room->ants_in_room == 0)
 		{
-			if (ft_strcmp(act_room->room, data->end_room) != 0)
-				act_room->ants_in_room = 1;
+			act_room->ants_in_room = 1;
 			return (1);
 		}
 		rooms = rooms->next;
@@ -99,6 +98,7 @@ void	ants_mover(t_data *data)
 						i--;
 			ants = ants->next;
 		}
+		reset_room(data->end_room, data);
 		ft_putchar('\n');
 	}
 }

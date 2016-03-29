@@ -6,13 +6,13 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:53 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/24 16:24:18 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/29 10:36:02 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int			c_nbants(char *str)
+int					c_nbants(char *str)
 {
 	int		i;
 
@@ -78,13 +78,14 @@ static t_link		*create_link(char *str, t_list **rooms_name)
 			room_a = ft_strsub(str, 0, i);
 			i++;
 			room_b = ft_strsub(str, i, ft_strlen(str));
+			i--;
 			if (!check_link(room_a, room_b, rooms_name))
-				return ((t_link *)1);
+				continue ;
 			ret->room_a = room_a;
 			ret->room_b = room_b;
 			return (ret);
 		}
-	return (0);
+	return ((t_link *)1);
 }
 
 static char			*check_room(char *str, t_data *data, int i)
@@ -92,30 +93,24 @@ static char			*check_room(char *str, t_data *data, int i)
 	char		*ret;
 	static int	room = 0;
 
-	ret = 0;
-	if (ft_strcmp(str, "##start") == 0)
+	if ((ret = 0) == 0 && ft_strcmp(str, "##start") == 0)
 		room += 10;
 	else if (ft_strcmp(str, "##end") == 0)
 		room -= 5;
 	if (str[0] == 'L' || str[0] == '#')
 		return (NULL);
-	while (i >= 0)
-	{
-		while ((ft_isdigit(str[i]) || str[i] == '-') && i >= 0)
-			i--;
-		if (i <= 0)
+	while ((ft_isdigit(str[i]) || str[i] == '-'))
+		if (i-- < 0)
 			return (0);
-		if (str[i--] != ' ')
-			return ((char *)1);
-		while ((ft_isdigit(str[i]) || str[i] == '-') && i >= 0)
-			i--;
-		if (i <= 0)
-			return (0);
-		if (str[i--] != ' ')
-			return ((char *)1);
-		ret = ft_strsub(str, 0, i + 1);
+	if (str[i--] != ' ')
+		return (0);
+	while ((ft_isdigit(str[i]) || str[i] == '-') && i >= 0)
 		i--;
-	}
+	if (i <= 0)
+		return (0);
+	if (str[i--] != ' ')
+		return ((char *)1);
+	ret = ft_strsub(str, 0, i + 1);
 	room = set_s_e_room(room, data, ret);
 	if (check_room_2(ret, data) == 0)
 		return ((char *)1);
@@ -127,26 +122,7 @@ t_data				*check_entry(char *str, t_list **entry)
 	char	*room;
 	t_data	*data;
 
-	if (!(data = ft_memalloc(sizeof(t_data))))
-		err_exit(-1, "Malloc error");
-	data->nb_ants = -1;
-	data->rooms_name = 0;
-	data->links = 0;
-	while (get_next_line(0, &str) > 0)
-	{
-		if (c_nbants(str) == 0)
-		{
-			ft_lstpush(&(*entry), ft_lstnew(str, ft_strlen(str)));
-			continue ;
-		}
-		else
-		{
-			if (data->nb_ants == -1 && (data->nb_ants = c_nbants(str)) <= 0)
-				err_exit(1, "Need ant number !");
-			ft_lstpush(&(*entry), ft_lstnew(str, ft_strlen(str)));
-			break ;
-		}
-	}
+	data = init_data(str, entry);
 	while (get_next_line(0, &str) > 0)
 	{
 		if (str[0] == 0)
@@ -165,8 +141,7 @@ t_data				*check_entry(char *str, t_list **entry)
 			break ;
 		ft_lstpush(&(*entry), ft_lstnew(str, ft_strlen(str)));
 	}
-	if (data->nb_ants < 0 || data->start_room == 0
-		|| data->end_room == 0 || data->rooms_name == 0)
+	if (data->start_room == 0 || data->end_room == 0 || data->rooms_name == 0)
 		err_exit(3, "No enought data !");
 	return (data);
 }

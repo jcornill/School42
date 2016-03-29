@@ -1,8 +1,23 @@
-12
-bon jour -420 0
+#42
+##42
+1
 ##start
+0 0 0
 1 1 1
-##end
 2 2 2
-bon jour-1
-2-bon jour
+3 3 3
+4 4 4
+##end
+5 5 5
+##visual
+#color
+##color
+0-1
+0-1
+1-2
+1-2
+2-3
+3-4
+4-5
+kgd
+4-5

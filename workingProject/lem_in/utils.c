@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:14:31 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/19 15:23:51 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/29 10:34:45 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,17 @@ void	path_process(t_data *data)
 	ft_lstpush(&data->best_path,
 	ft_lstnew(data->start_room, ft_strlen(data->start_room)));
 	get_best_path(data->start_room, data);
+}
+
+t_data	*init_data(char * str, t_list **entry)
+{
+	t_data	*data;
+
+	if (!(data = ft_memalloc(sizeof(t_data))))
+		err_exit(-1, "Malloc error");
+	data->nb_ants = -1;
+	data->rooms_name = 0;
+	data->links = 0;
+	check_nb_ants(data, str, entry);
+	return (data);
 }
