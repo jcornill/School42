@@ -6,11 +6,24 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:49 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/29 10:25:26 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/31 15:36:49 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+int		test(char *str, t_data *data)
+{
+	if (ft_strcmp(str, "##start") == 0 && data->s != 0)
+		return (1);
+	if (ft_strcmp(str, "##start") == 0)
+		data->s = 1;
+	if (ft_strcmp(str, "##end") == 0 && data->e != 0)
+		return (1);
+	if (ft_strcmp(str, "##end") == 0)
+		data->e = 1;
+	return (0);
+}
 
 int		check_room_2(char *room, t_data *data)
 {
@@ -20,7 +33,7 @@ int		check_room_2(char *room, t_data *data)
 	while (rooms != NULL)
 	{
 		if (ft_strcmp(rooms->content, room) == 0)
-			return(0);
+			return (0);
 		rooms = rooms->next;
 	}
 	return (1);
@@ -28,10 +41,6 @@ int		check_room_2(char *room, t_data *data)
 
 int		set_s_e_room(int room, t_data *data, char *ret)
 {
-	if ((room == 10 || room == 5) && data->start_room != 0)
-		err_exit(10, "Two start room define !");
-	if ((room == -5 || room == 5) && data->end_room != 0)
-		err_exit(11, "Two end room define !");
 	if (room == 10)
 		data->start_room = ret;
 	else if (room == -5)
@@ -48,6 +57,8 @@ void	check_nb_ants(t_data *data, char *str, t_list **entry)
 		if (c_nbants(str) == 0)
 		{
 			ft_lstpush(&(*entry), ft_lstnew(str, ft_strlen(str)));
+			if (c_nbants(str) == -1)
+				err_exit(1, "Need ant number !");
 			continue ;
 		}
 		else

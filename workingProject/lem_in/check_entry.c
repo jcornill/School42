@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:53 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/29 10:56:07 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/31 15:27:17 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int					c_nbants(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return (-1);
 		i++;
 	}
 	if (ft_atoi(str) > 2147483647)
@@ -116,15 +116,14 @@ static char			*check_room(char *str, t_data *data, int i)
 	return (ret);
 }
 
-t_data				*check_entry(char *str, t_list **entry)
+t_data				*check_entry(char *str, t_list **entry, char *room)
 {
-	char	*room;
 	t_data	*data;
 
 	data = init_data(str, entry);
 	while (get_next_line(0, &str) > 0)
 	{
-		if (str[0] == 0)
+		if (str[0] == 0 || test(str, data))
 			break ;
 		if ((room = check_room(str, data, ft_strlen(str) - 1)) == 0)
 			if (create_link(str, &data->rooms_name) != 0 &&
@@ -133,7 +132,8 @@ t_data				*check_entry(char *str, t_list **entry)
 				create_link(str, &data->rooms_name), sizeof(t_link)));
 			else if (create_link(str, &data->rooms_name) == (t_link *)1)
 				break ;
-			else;
+			else
+				;
 		else if (room != (char *)1)
 			ft_lstadd(&data->rooms_name, ft_lstnew(room, ft_strlen(room)));
 		else

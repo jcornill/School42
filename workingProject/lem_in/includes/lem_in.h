@@ -6,14 +6,13 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:32:07 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/29 10:33:48 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/31 15:35:51 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 # include "../libft/includes/libft.h"
-#  include <stdio.h>
 
 typedef struct		s_link
 {
@@ -53,9 +52,11 @@ typedef struct		s_data
 	t_list			*best_path;
 	t_list			*lst_room;
 	t_list			*lst_ants;
+	int				s;
+	int				e;
 }					t_data;
 
-t_data				*check_entry(char *str, t_list **entry);
+t_data				*check_entry(char *str, t_list **entry, char *room);
 void				err_exit(int id, char *err);
 void				print_list(t_list *elem);
 int					set_s_e_room(int room, t_data *data, char *ret);
@@ -75,5 +76,6 @@ int					check_room_2(char *room, t_data *data);
 void				check_nb_ants(t_data *data, char *str, t_list **entry);
 int					c_nbants(char *str);
 t_data				*init_data(char *str, t_list **entry);
+int					test(char *str, t_data *data);
 
 #endif

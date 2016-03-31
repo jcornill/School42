@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:14:31 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/29 10:34:45 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/31 15:37:07 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	path_process(t_data *data)
 	get_best_path(data->start_room, data);
 }
 
-t_data	*init_data(char * str, t_list **entry)
+t_data	*init_data(char *str, t_list **entry)
 {
 	t_data	*data;
 
@@ -56,6 +56,8 @@ t_data	*init_data(char * str, t_list **entry)
 	data->nb_ants = -1;
 	data->rooms_name = 0;
 	data->links = 0;
+	data->s = 0;
+	data->e = 0;
 	check_nb_ants(data, str, entry);
 	return (data);
 }

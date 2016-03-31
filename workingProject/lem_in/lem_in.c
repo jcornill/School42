@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 18:31:39 by jcornill          #+#    #+#             */
-/*   Updated: 2016/03/29 10:19:31 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/03/31 14:14:39 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ int		main(void)
 {
 	t_data	*data;
 	t_list	*entry;
+	char	*room;
 
 	entry = 0;
-	data = check_entry(0, &entry);
-	ft_lstiter(entry, print_list);
+	room = 0;
+	data = check_entry(0, &entry, room);
 	set_room_link(data);
 	path_process(data);
+	ft_lstiter(entry, print_list);
 	ft_putchar('\n');
 	ants_mover(data);
 	ft_lstdel(&entry, delete_list);
