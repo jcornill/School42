@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/02/24 18:32:00 by jcornill          #+#    #+#              #
-#    Updated: 2016/03/29 17:51:44 by jcornill         ###   ########.fr        #
+#    Created: 2016/04/01 12:47:21 by jcornill          #+#    #+#              #
+#    Updated: 2016/04/01 16:20:55 by jcornill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+SRC=filler.c process_input.c init_piece.c process.c
 NAME=filler
-SRC=filler.c
 OBJ=$(SRC:.c=.o)
-FLAG=#-Wall -Wextra -Werror
+FLAG=-Wall -Wextra -Werror -g
 INCLUDE=-I includes
 
 $(NAME): $(OBJ)
@@ -22,7 +22,8 @@ $(NAME): $(OBJ)
 
 m: $(NAME)
 	@echo "==========PROG=========="
-	@./$(NAME)
+	@./resources/filler_vm -p1 ./resources/hcao.filler -p2 ./filler -f \
+	./resources/sample
 
 save:fclean
 	git add --all
