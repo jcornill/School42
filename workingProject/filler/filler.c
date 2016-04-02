@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/01 13:05:05 by jcornill          #+#    #+#             */
-/*   Updated: 2016/04/01 17:59:29 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/04/02 14:51:09 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int		main(void)
 	while (get_next_line(0, &str) > 0)
 	{
 		data = process_input(str, player);
+		if (data == 0)
+			return (0);
 		process(data);
 		if (player == 0)
 			player = data->player;

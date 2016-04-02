@@ -6,7 +6,7 @@
 /*   By: jcornill <jcornill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/01 12:38:06 by jcornill          #+#    #+#             */
-/*   Updated: 2016/04/01 17:59:16 by jcornill         ###   ########.fr       */
+/*   Updated: 2016/04/02 14:50:42 by jcornill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ void	get_player(char *str, t_data *data)
 			data->player = 2;
 		else if (ft_strcmp(str, "$$$ exec p1") == 0)
 			data->player = 1;
+		else
+			data->player = 3;
 	}
+	else
+		data->player = 3;
 }
 
 t_data	*process_input(char *str, int player)
@@ -78,6 +82,8 @@ t_data	*process_input(char *str, int player)
 	if (data->player == 0)
 	{
 		get_player(str, data);
+		if (data->player == 3)
+			return (0);
 		temp = 1;
 	}
 	if (temp == 1)
