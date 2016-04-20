@@ -1,22 +1,20 @@
 .name "zork"
 .comment "I'M ALIIIIVE"
 
-l2:
+init:
 	sti		r1, %:live, %1
-	and		r1, %0, r1
+	and		r2, %0, r2
+	ld		%57671680, r2
+	st		r2, 38
+	and		r3, %0, r3
+	ld		%196617, r3
+	and		r4, %0, r4
 
 live:
 	live	%1
-	ld		%10, r2
-	st		r2, -31
-	ld		%0, r2
-	st		r2, -48
-	ld		%0, r2
-	st		r2, -65
-	ld		%0, r2
-	st		r2, -82
-	ld		%0, r2
-	st		r2, -99
-	ld		%0, r3
-	st		r3, 8
-	zjmp	%:live
+	st		r3, 7
+#	st		r2, 15
+#	zjmp	%:live
+
+#	live	%1
+#	zjmp	%:live
